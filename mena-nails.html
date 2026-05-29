@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mena Nails, case study de Mateo Vazquez sobre turnos, pagos, OCR, Convex, Clerk y Google Calendar para un negocio local." />
+    <title>Mena Nails | Caso técnico</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="section-shell" style="padding-top: 96px; max-width: 980px">
+      <a class="button ghost" href="./index.html#projects">Volver al portfolio</a>
+      <section class="hero-copy reveal is-visible" style="margin-top: 42px">
+        <p class="eyebrow">Case study</p>
+        <h1>Mena Nails</h1>
+        <p class="role-line"><span>Sistema de turnos, pagos y automatización</span><span aria-hidden="true" class="role-dot"></span><span>Producto real e integraciones</span></p>
+        <p class="hero-lead">Aplicación full-stack para digitalizar reservas, pagos de seña y gestión administrativa de un salón de uñas. Integra autenticación, panel admin, MercadoPago, flujo alternativo por transferencia, OCR como apoyo a revisión, reglas de disponibilidad y sincronización con Google Calendar.</p>
+        <div class="hero-actions" aria-label="Evidencia pública de Mena Nails">
+          <a class="button primary" href="https://test-kimi.vercel.app/" target="_blank" rel="noreferrer">Demo vigente</a>
+          <a class="button ghost" href="https://landing-rose-theta.vercel.app/" target="_blank" rel="noreferrer">Versión anterior funcional</a>
+        </div>
+      </section>
+
+      <section class="proof reveal is-visible" style="margin-top: 46px">
+        <div class="section-heading split"><div><p class="eyebrow">Problema</p><h2>Reservas, señas y comprobantes dependían de trabajo manual.</h2></div><p>El negocio necesitaba ordenar disponibilidad, pagos, confirmaciones y agenda sin multiplicar mensajes repetidos.</p></div>
+        <div class="credential-rail">
+          <article><span>Solución</span><b>Reserva + pago + admin + calendario</b><p>Landing orientada a conversión, wizard de reserva, MercadoPago, transferencia con comprobante, revisión administrativa y Google Calendar.</p></article>
+          <article><span>Tradeoffs</span><b>OCR como apoyo, no autoridad final</b><p>Gemini OCR ayuda a revisar comprobantes, pero el sistema conserva revisión humana para evitar automatizar decisiones sensibles de pago.</p></article>
+          <article><span>Resultado</span><b>Flujo operativo más claro</b><p>El caso muestra producto aplicado: estados, auth, integraciones, reglas de disponibilidad, panel interno y documentación operativa.</p></article>
+          <article><span>Límites honestos</span><b>Claim defendible</b><p>No afirmo operación cerrada sin evidencia pública de monitoreo, secretos, webhooks live y runbook final. El foco es funcionalidad probada y criterio técnico.</p></article>
+        </div>
+      </section>
+
+      <section class="section-shell" style="padding-left: 0; padding-right: 0">
+        <div class="section-heading split"><div><p class="eyebrow">Stack</p><h2>Tecnologías usadas</h2></div></div>
+        <div class="tech-list compact"><span class="tech-chip">Next.js</span><span class="tech-chip">React</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Tailwind CSS</span><span class="tech-chip">Convex</span><span class="tech-chip">Clerk</span><span class="tech-chip">MercadoPago</span><span class="tech-chip">Gemini OCR</span><span class="tech-chip">Google Calendar API</span><span class="tech-chip">SEO técnico</span><span class="tech-chip">Vitest</span><span class="tech-chip">Playwright</span></div>
+      </section>
+    </main>
+  </body>
+</html>

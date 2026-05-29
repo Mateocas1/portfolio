@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="InventStock, case study técnico de Mateo Vazquez: bot de inventario por Telegram con Node.js, TypeScript, Railway, métricas y rollback documentado."
+    />
+    <title>InventStock | Caso técnico</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="section-shell" style="padding-top: 96px; max-width: 980px">
+      <a class="button ghost" href="./index.html#projects"
+        >Volver al portfolio</a
+      >
+      <section class="hero-copy reveal is-visible" style="margin-top: 42px">
+        <p class="eyebrow">Caso técnico</p>
+        <h1>InventStock</h1>
+        <p class="role-line">
+          <span>Bot de inventario por Telegram</span
+          ><span aria-hidden="true" class="role-dot"></span
+          ><span>Backend, operaciones y evidencia</span>
+        </p>
+        <p class="hero-lead">
+          InventStock es un bot operativo de inventario para un salón de uñas.
+          El caso muestra comandos reales de Telegram para consultar, agregar y
+          descontar stock, deploy en Railway, métricas runtime, rollback
+          documentado y hardening guiado por specs.
+        </p>
+      </section>
+
+      <section class="proof reveal is-visible" style="margin-top: 46px">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Qué prueba</p>
+            <h2>Funcionalidad usable separada de hardening opcional.</h2>
+          </div>
+          <p>
+            El proyecto está presentado como caso de ingeniería, no como SaaS
+            terminado.
+          </p>
+        </div>
+        <div class="credential-rail">
+          <article>
+            <span>Core funcional</span><b>/start, /stock, /agregar, /quitar</b>
+            <p>
+              Flujo de stock probado con operador real y comandos visibles en
+              Telegram.
+            </p>
+          </article>
+          <article>
+            <span>Producción</span><b>Railway + release evidence</b>
+            <p>
+              Runtime verificado con release/build, queue idle y contadores sin
+              fallas.
+            </p>
+          </article>
+          <article>
+            <span>Rollback</span><b>Mutación reversible</b>
+            <p>Evidencia controlada: top 2 ml → 3 ml → 2 ml.</p>
+          </article>
+          <article>
+            <span>Proceso</span><b>Specs, PRs y claim gates</b>
+            <p>
+              Issues, branches, auditorías y límites explícitos para no
+              sobreprometer.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell" style="padding-left: 0; padding-right: 0">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Stack</p>
+            <h2>Tecnologías usadas</h2>
+          </div>
+        </div>
+        <div class="tech-list compact">
+          <span class="tech-chip">Node.js</span
+          ><span class="tech-chip">TypeScript</span
+          ><span class="tech-chip">Telegram Bot API</span
+          ><span class="tech-chip">PostgreSQL</span
+          ><span class="tech-chip">SQLite</span
+          ><span class="tech-chip">Railway</span
+          ><span class="tech-chip">Runtime metrics</span
+          ><span class="tech-chip">GitHub PRs</span
+          ><span class="tech-chip">Technical docs</span>
+        </div>
+      </section>
+
+      <section class="section-shell" style="padding-left: 0; padding-right: 0">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Límite honesto</p>
+            <h2>Qué no estoy prometiendo</h2>
+          </div>
+        </div>
+        <p class="hero-lead">
+          No lo presento como plataforma full production-ready. Quedan como
+          hardening opcional: `/alertas ack` live, backup/restore real, webhook
+          externo de alertas, failover multi-réplica y piloto sostenido con
+          reconciliación física. Tampoco linkeo el repo como evidencia pública
+          mientras siga privado; el enlace seguro es este caso técnico.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
