@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ofertasSUPER, case study de Mateo Vazquez sobre datos, APIs, ingesta, normalización/deduplicación, cache y límites honestos." />
+    <title>ofertasSUPER | Caso técnico</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="section-shell" style="padding-top: 96px; max-width: 980px">
+      <a class="button ghost" href="./index.html#projects">Volver al portfolio</a>
+      <section class="hero-copy reveal is-visible" style="margin-top: 42px">
+        <p class="eyebrow">Case study</p>
+        <h1>ofertasSUPER</h1>
+        <p class="role-line"><span>Comparador de ofertas y precios</span><span aria-hidden="true" class="role-dot"></span><span>Backend, datos y operación</span></p>
+        <p class="hero-lead">Aplicación full-stack para buscar productos, comparar precios y armar una canasta local con foco en confianza del dato. Incluye APIs públicas, modelo de catálogo con Prisma/Supabase, ingesta, normalización/deduplicación, control de calidad de datos, cache/rate limiting y documentación de límites.</p>
+      </section>
+
+      <section class="proof reveal is-visible" style="margin-top: 46px">
+        <div class="section-heading split"><div><p class="eyebrow">Problema</p><h2>Comparar precios exige confianza del dato, no solo UI.</h2></div><p>Un precio sin fuente, fecha, deduplicación ni límite visible puede confundir al usuario y debilitar el producto.</p></div>
+        <div class="credential-rail">
+          <article><span>Solución</span><b>Búsqueda, catálogo, APIs y canasta</b><p>Flujo público con búsqueda, detalle de producto, ofertas, canasta local y modelo de datos para sostener historial y categorías.</p></article>
+          <article><span>Tradeoffs</span><b>Freshness explícito</b><p>El proyecto prioriza límites claros: no afirmar precios siempre vigentes ni ingesta activa sin evidencia fresca.</p></article>
+          <article><span>Resultado</span><b>Prueba full-stack defendible</b><p>Muestra backend, datos, cache, rate limiting, admin protegido, documentación y criterio para no sobreprometer.</p></article>
+          <article><span>Límites honestos</span><b>Demo y evidencia controlada</b><p>No afirmo producto cerrado, precios siempre vigentes, admin positivo productivo ni ingesta productiva activa sin smoke público reciente.</p></article>
+        </div>
+      </section>
+
+      <section class="section-shell" style="padding-left: 0; padding-right: 0">
+        <div class="section-heading split"><div><p class="eyebrow">Links</p><h2>Evidencia pública</h2></div></div>
+        <div class="project-links"><a href="https://ofertas-super.vercel.app" target="_blank" rel="noreferrer">Demo pública</a><a href="https://github.com/Mateocas1/ofertaSUPER" target="_blank" rel="noreferrer">Repositorio</a></div>
+      </section>
+
+      <section class="section-shell" style="padding-left: 0; padding-right: 0">
+        <div class="section-heading split"><div><p class="eyebrow">Stack</p><h2>Tecnologías usadas</h2></div></div>
+        <div class="tech-list compact"><span class="tech-chip">Next.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Prisma</span><span class="tech-chip">Supabase</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">RLS</span><span class="tech-chip">Pipelines de datos</span><span class="tech-chip">Deduplicación</span><span class="tech-chip">Upstash Redis</span><span class="tech-chip">GitHub Actions</span><span class="tech-chip">Vercel</span></div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="es" data-lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio de Mateo Vazquez, Full-stack Developer orientado a producto, integraciones, datos e IA. Proyectos principales: ofertasSUPER, Mena Nails e InventStock."
+    />
+    <title>Mateo Vazquez | Full-stack Developer</title>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const storedTheme = localStorage.getItem("portfolio:theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : prefersDark
+                ? "dark"
+                : "dark";
+          const storedLang = localStorage.getItem("portfolio:lang");
+          const lang = storedLang === "en" ? "en" : "es";
+          root.dataset.theme = theme;
+          root.dataset.lang = lang;
+          root.lang = lang;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.dataset.lang = "es";
+        }
+      })();
+    </script>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%2311151f%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23d94a7d%27%3EMV%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-noise" aria-hidden="true"></div>
+    <div class="ambient-gradient ambient-one" aria-hidden="true"></div>
+    <div class="ambient-gradient ambient-two" aria-hidden="true"></div>
+
+    <aside class="social-rail" aria-label="Links de contacto">
+      <a href="mailto:castiglionemateo1@gmail.com" data-i18n="rail.email"
+        >Correo</a
+      >
+      <a
+        href="https://www.linkedin.com/in/vazquezmateo"
+        target="_blank"
+        rel="noreferrer"
+        >LinkedIn</a
+      >
+      <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
+        >GitHub</a
+      >
+      <span aria-hidden="true"></span>
+    </aside>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#home" aria-label="Ir al inicio">
+          <span class="brand-mark">MV</span>
+          <span>Mateo</span>
+        </a>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="#about" data-i18n="nav.about">Sobre mí</a>
+          <a href="#skills" data-i18n="nav.skills">Stack</a>
+          <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+          <a href="#contact" data-i18n="nav.contact">Contacto</a>
+          <a
+            href="../CV_IT_Mateo_Vazquez_ATS_v2.pdf"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="nav.resume"
+            >CV</a
+          >
+        </nav>
+        <div class="header-actions" aria-label="Preferencias de visualización">
+          <button
+            class="toggle-button"
+            type="button"
+            data-language-toggle
+            aria-label="Cambiar idioma"
+            aria-pressed="false"
+          >
+            <span data-i18n="toggle.lang">EN</span>
+          </button>
+          <button
+            class="toggle-button"
+            type="button"
+            data-theme-toggle
+            aria-label="Cambiar tema"
+            aria-pressed="false"
+          >
+            <span data-i18n="toggle.theme">Claro</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow text-appear" data-i18n="hero.eyebrow">Hola, soy</p>
+          <h1 class="text-appear">Mateo Vazquez</h1>
+          <p class="role-line text-appear">
+            <span data-i18n="hero.role.primary"
+              >Full-stack Developer</span
+            ><span aria-hidden="true" class="role-dot"></span
+            ><span data-i18n="hero.role.secondary"
+              >Producto, integraciones, datos e IA</span
+            >
+          </p>
+          <p class="hero-lead text-appear" data-i18n="hero.lead">
+            Full-stack Developer orientado a producto, integraciones, datos e IA.
+            Construyo interfaces, flujos e integraciones con criterio práctico:
+            pagos, OCR, calendarios, APIs, datos, SEO técnico y automatización
+            apoyada en IA.
+          </p>
+          <div
+            class="hero-actions text-appear"
+            aria-label="Acciones principales"
+          >
+            <a
+              class="button primary"
+              href="../CV_IT_Mateo_Vazquez_ATS_v2.pdf"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="cta.resume"
+              >Descargar CV</a
+            >
+            <a class="button ghost" href="#projects" data-i18n="cta.projects"
+              >Ver proyectos</a
+            >
+          </div>
+        </div>
+        <div
+          class="hero-visual reveal"
+          aria-label="Foto profesional de Mateo Vazquez"
+        >
+          <div class="hero-photo-frame">
+            <img
+              src="./assets/profile.png"
+              alt="Foto profesional de Mateo Vazquez"
+              width="720"
+              height="720"
+            />
+          </div>
+          <div class="status-note text-appear">
+            <span class="status-dot" aria-hidden="true"></span
+            ><span data-i18n="hero.status"
+              >Disponible para equipos web, startups y producto digital</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section-shell about reveal">
+        <div class="section-kicker">
+          <p class="eyebrow text-appear" data-i18n="about.eyebrow">Sobre mí</p>
+          <h2 class="text-appear" data-i18n="about.title">
+            Criterio operativo llevado a desarrollo web.
+          </h2>
+        </div>
+        <div class="journey-timeline" aria-label="Recorrido profesional">
+          <article class="journey-step text-appear">
+            <span class="step-index">01</span>
+            <div>
+              <span class="step-label" data-i18n="about.past.label">Antes</span>
+              <h3 data-i18n="about.past.title">
+                Procesos reales y usuarios reales
+              </h3>
+              <p data-i18n="about.past.text">
+                Mi base viene de Carrefour y tareas operativas: atención al
+                cliente, reposición, inventario, rotación, conteo y criterios
+                FIFO/FEFO. Esa experiencia me entrenó para entender flujos,
+                prioridades y problemas de negocio.
+              </p>
+            </div>
+          </article>
+          <article class="journey-step text-appear is-current">
+            <span class="step-index">02</span>
+            <div>
+              <span class="step-label" data-i18n="about.present.label"
+                >Ahora</span
+              >
+              <h3 data-i18n="about.present.title">
+                Formación full-stack y proyectos aplicados
+              </h3>
+              <p data-i18n="about.present.text">
+                Diplomatura en Professional Full-Stack Developer aprobada en UTN
+                FRBA: 187 horas, modalidad a distancia, nota Aprobado. También
+                aprobé el Curso de Desarrollo con NodeJS con nota Excelente.
+                Trabajo con Git, debugging e IA como herramienta de desarrollo.
+              </p>
+            </div>
+          </article>
+          <article class="journey-step text-appear">
+            <span class="step-index">03</span>
+            <div>
+              <span class="step-label" data-i18n="about.future.label"
+                >Próximo paso</span
+              >
+              <h3 data-i18n="about.future.title">
+                Entrar a un equipo de producto
+              </h3>
+              <p data-i18n="about.future.text">
+                Busco aportar en una startup, equipo de producto digital o
+                compañía que valore criterio, aprendizaje rápido, comunicación
+                clara y capacidad para convertir necesidades reales en software
+                útil.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section-shell skills reveal">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow text-appear" data-i18n="skills.eyebrow">Stack</p>
+            <h2 class="text-appear" data-i18n="skills.title">
+              Stack técnico aplicado a productos web reales.
+            </h2>
+          </div>
+          <p class="text-appear" data-i18n="skills.intro">
+            Tecnologías ordenadas por uso real: interfaz, datos, integraciones y
+            entrega.
+          </p>
+        </div>
+        <div class="stack-atlas" aria-label="Stack técnico">
+          <section class="stack-cluster text-appear">
+            <span class="stack-number">01</span>
+            <h3>Frontend</h3>
+            <p data-i18n="skills.frontend.text">
+              Interfaces responsivas, accesibles y orientadas a conversión.
+            </p>
+            <div class="tech-list" aria-label="Tecnologías frontend">
+              <span class="tech-chip">HTML</span
+              ><span class="tech-chip">CSS</span
+              ><span class="tech-chip">JavaScript</span
+              ><span class="tech-chip">TypeScript</span
+              ><span class="tech-chip">React</span
+              ><span class="tech-chip">Angular</span
+              ><span class="tech-chip">Next.js</span
+              ><span class="tech-chip">Astro</span
+              ><span class="tech-chip">Tailwind CSS</span
+              ><span class="tech-chip">Responsive UI</span
+              ><span class="tech-chip" data-i18n="skill.seo">SEO técnico</span
+              ><span class="tech-chip" data-i18n="skill.accessibility"
+                >Accesibilidad</span
+              >
+            </div>
+          </section>
+          <section class="stack-cluster text-appear">
+            <span class="stack-number">02</span>
+            <h3>Backend & Data</h3>
+            <p data-i18n="skills.backend.text">
+              APIs, persistencia, reglas de negocio y datos multi-tenant.
+            </p>
+            <div class="tech-list" aria-label="Tecnologías backend y datos">
+              <span class="tech-chip">Node.js</span
+              ><span class="tech-chip">REST APIs</span
+              ><span class="tech-chip">MongoDB</span
+              ><span class="tech-chip">Firebase</span
+              ><span class="tech-chip">Supabase</span
+              ><span class="tech-chip">PostgreSQL</span
+              ><span class="tech-chip">SQL</span
+              ><span class="tech-chip">RLS</span
+              ><span class="tech-chip">Auth</span
+              ><span class="tech-chip">Zod</span>
+            </div>
+          </section>
+          <section class="stack-cluster text-appear">
+            <span class="stack-number">03</span>
+            <h3 data-i18n="skills.tools.title">Integraciones y herramientas</h3>
+            <p data-i18n="skills.tools.text">
+              Automatización, validación, testing y entrega con criterio.
+            </p>
+            <div class="tech-list" aria-label="Integraciones y herramientas">
+              <span class="tech-chip">MercadoPago</span
+              ><span class="tech-chip">Webhooks</span
+              ><span class="tech-chip">Google Calendar</span
+              ><span class="tech-chip">Gemini OCR</span
+              ><span class="tech-chip">Clerk Organizations</span
+              ><span class="tech-chip">n8n</span
+              ><span class="tech-chip">Git</span
+              ><span class="tech-chip">GitHub</span
+              ><span class="tech-chip">Vitest</span
+              ><span class="tech-chip">Playwright</span
+              ><span class="tech-chip">Debugging</span
+              ><span class="tech-chip" data-i18n="skill.ai">IA aplicada</span>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="projects" class="section-shell projects reveal">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow text-appear" data-i18n="projects.eyebrow">
+              Proyectos
+            </p>
+            <h2 class="text-appear" data-i18n="projects.title">
+              Proyectos pensados para resolver procesos reales.
+            </h2>
+          </div>
+          <p class="text-appear" data-i18n="projects.intro">
+            Cada caso muestra una parte distinta del trabajo: integraciones,
+            reglas de negocio, datos, automatización y experiencia de usuario.
+          </p>
+        </div>
+        <article class="case-study text-appear">
+          <div class="case-index">01</div>
+          <div
+            class="project-preview tools"
+            aria-label="Vista conceptual del comparador de ofertas"
+          >
+            <span class="browser-dot"></span><span class="browser-dot"></span
+            ><span class="browser-dot"></span>
+            <div class="mock-table">
+              <b data-i18n="mock.offer.title">Comparador de ofertas</b
+              ><span>datos normalizados</span
+              ><span data-i18n="mock.offer.basket">canasta</span
+              ><span data-i18n="mock.offer.metrics">métricas</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <p class="project-label" data-i18n="project.one.label">
+              Backend, datos y operación
+            </p>
+            <h3 data-i18n="project.one.title">
+              ofertasSUPER
+            </h3>
+            <p data-i18n="project.one.text">
+              Comparador de ofertas y precios de supermercados argentinos con
+              demo pública, búsqueda, canasta local, APIs públicas, ingesta,
+              normalización/deduplicación y control de calidad de datos,
+              cache/rate limiting y límites operativos documentados.
+            </p>
+            <p class="made-with" data-i18n="project.made">
+              Tecnologías usadas:
+            </p>
+            
+              <a
+                href="https://ofertas-super.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="project.link.demo"
+                >Demo pública</a
+              ><a href="./ofertas-super.html" data-i18n="project.link.case"
+                >Caso técnico</a
+              ><a
+                href="https://github.com/Mateocas1/ofertaSUPER"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="project.link.repo"
+                >Repositorio</a
+              >
+            
+            <div
+              class="tech-list compact"
+              aria-label="Tecnologías usadas en comparador de ofertas"
+            >
+              <span class="tech-chip">Next.js</span
+              ><span class="tech-chip">TypeScript</span
+              ><span class="tech-chip">Prisma</span
+              ><span class="tech-chip">Supabase</span
+              ><span class="tech-chip">PostgreSQL</span
+              ><span class="tech-chip">RLS</span
+              ><span class="tech-chip">Pipelines de datos</span
+              ><span class="tech-chip">Deduplicación</span
+              ><span class="tech-chip">Upstash Redis</span
+              ><span class="tech-chip">Vercel</span
+              ><span class="tech-chip">GitHub Actions</span>
+            </div>
+          </div>
+        </article>
+        <article class="case-study reversed text-appear">
+          <div class="case-index">02</div>
+          <div
+            class="project-preview"
+            aria-label="Vista conceptual del sistema de turnos"
+          >
+            <span class="browser-dot"></span><span class="browser-dot"></span
+            ><span class="browser-dot"></span>
+            <div class="mock-calendar">
+              <b data-i18n="mock.booking.title">Turno confirmado</b
+              ><span data-i18n="mock.booking.pay">Pago verificado</span
+              ><span>OCR OK</span
+              ><span data-i18n="mock.booking.calendar"
+                >Calendario sincronizado</span
+              >
+            </div>
+          </div>
+          <div class="project-copy">
+            <p class="project-label" data-i18n="project.two.label">
+              Producto real e integraciones
+            </p>
+            <h3 data-i18n="project.two.title">
+              Mena Nails
+            </h3>
+            <p data-i18n="project.two.text">
+              Sistema de turnos, pagos y automatización para un salón de uñas.
+              Integra landing, reglas de disponibilidad, Clerk, Convex,
+              MercadoPago, pagos de seña, transferencia con OCR como apoyo, verificación de pagos, panel admin, SEO
+              técnico y sincronización con Google Calendar.
+            </p>
+            <p class="made-with" data-i18n="project.made">
+              Tecnologías usadas:
+            </p>
+            <div class="project-links" aria-label="Links de Mena Nails">
+              <a href="./mena-nails.html" data-i18n="project.link.case">Caso técnico</a>
+
+              <a
+                href="https://test-kimi.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="project.link.demo"
+                >Demo pública</a
+              >            </div>
+            <div
+              class="tech-list compact"
+              aria-label="Tecnologías usadas en sistema de turnos"
+            >
+              <span class="tech-chip">React</span
+              ><span class="tech-chip">TypeScript</span
+              ><span class="tech-chip">Convex</span
+              ><span class="tech-chip">Clerk</span
+              ><span class="tech-chip">MercadoPago</span
+              ><span class="tech-chip">Gemini OCR</span
+              ><span class="tech-chip">Google Calendar</span
+              ><span class="tech-chip" data-i18n="skill.seo">SEO técnico</span
+              ><span class="tech-chip">Git</span
+              ><span class="tech-chip">Debugging</span>
+            </div>
+          </div>
+        </article>
+        <article class="case-study text-appear">
+          <div class="case-index">03</div>
+          <div
+            class="project-preview inventory"
+            aria-label="Vista conceptual del bot de inventario"
+          >
+            <span class="browser-dot"></span><span class="browser-dot"></span
+            ><span class="browser-dot"></span>
+            <div class="mock-table">
+              <b data-i18n="mock.inventory.title">Bot de inventario</b
+              ><span data-i18n="mock.inventory.stock">stock por Telegram</span
+              ><span data-i18n="mock.inventory.metrics">métricas</span
+              ><span data-i18n="mock.inventory.rollback">rollback</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <p class="project-label" data-i18n="project.three.label">
+              Automatización operativa
+            </p>
+            <h3 data-i18n="project.three.title">
+              InventStock - bot de inventario por Telegram
+            </h3>
+            <p data-i18n="project.three.text">
+              Bot operativo para inventario de un salón de uñas, con comandos de
+              Telegram para consultar, agregar y descontar stock, deploy en
+              Railway, métricas runtime, rollback documentado y hardening guiado
+              por specs. Caso de backend/operación que muestra criterio para
+              separar funcionalidad usable de hardening opcional.
+            </p>
+            <p class="made-with" data-i18n="project.made">
+              Tecnologías usadas:
+            </p>
+            <div class="project-links" aria-label="Links de InventStock">
+              <a href="./invent-stock.html" data-i18n="project.link.case"
+                >Caso técnico</a
+              >
+            </div>
+            <div
+              class="tech-list compact"
+              aria-label="Tecnologías usadas en InventStock"
+            >
+              <span class="tech-chip">Node.js</span
+              ><span class="tech-chip">TypeScript</span
+              ><span class="tech-chip">Telegram Bot API</span
+              ><span class="tech-chip">PostgreSQL</span
+              ><span class="tech-chip">SQLite</span
+              ><span class="tech-chip">Railway</span
+              ><span class="tech-chip">Métricas</span
+              ><span class="tech-chip">Rollback</span
+              ><span class="tech-chip">GitHub PRs</span
+              ><span class="tech-chip">Docs técnicas</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section
+        class="section-shell proof reveal"
+        aria-label="Formación y evidencia"
+      >
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow text-appear" data-i18n="proof.eyebrow">
+              Formación
+            </p>
+            <h2 class="text-appear" data-i18n="proof.title">
+              Aprendizaje técnico con base operativa.
+            </h2>
+          </div>
+          <p class="text-appear" data-i18n="proof.utn">
+            Diplomatura en Professional Full-Stack Developer aprobada.
+          </p>
+        </div>
+        <div class="credential-rail" aria-label="Credenciales y habilidades">
+          <article class="text-appear">
+            <span>UTN FRBA</span
+            ><b>Diplomatura Professional Full-Stack Developer</b>
+            <p>187 horas, modalidad a distancia, nota Aprobado.</p>
+          </article>
+          <article class="text-appear">
+            <span data-i18n="proof.cert.label">Certificados</span
+            ><b>React JS · Angular · NodeJS</b>
+            <p data-i18n="proof.cert.text">
+              Curso de Desarrollo en React JS, Curso de Desarrollo con Angular y
+              Curso de Desarrollo con NodeJS. Nota: Excelente en NodeJS.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span data-i18n="proof.soft.label">Habilidades blandas</span
+            ><b>Comunicación, ownership y criterio</b>
+            <p data-i18n="proof.soft.text">
+              Atención al cliente, comunicación, orden, ownership, aprendizaje
+              rápido y resolución de problemas.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Carrefour</span><b>Base operativa real</b>
+            <p data-i18n="proof.background">
+              Carrefour: reposición, inventario, rotación, conteo y FIFO/FEFO.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section-shell contact reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear" data-i18n="contact.eyebrow">
+            Contacto
+          </p>
+          <h2 class="text-appear" data-i18n="contact.title">
+            Si buscás alguien con criterio, aprendizaje rápido y foco en
+            resolver problemas reales, hablemos.
+          </h2>
+        </div>
+        <div
+          class="contact-command text-appear"
+          aria-label="Acciones de contacto"
+        >
+          <span class="command-prompt">mateo@portfolio:~$</span
+          ><a href="mailto:castiglionemateo1@gmail.com"
+            ><span data-i18n="contact.email.label">Enviar una oportunidad</span
+            ><b data-i18n="contact.email.cta">Correo</b></a
+          ><a
+            href="https://www.linkedin.com/in/vazquezmateo"
+            target="_blank"
+            rel="noreferrer"
+            ><span data-i18n="contact.linkedin.label"
+              >Conectar profesionalmente</span
+            ><b>LinkedIn</b></a
+          ><a
+            href="../CV_IT_Mateo_Vazquez_ATS_v2.pdf"
+            target="_blank"
+            rel="noreferrer"
+            ><span data-i18n="contact.resume.label"
+              >Ver experiencia y formación</span
+            ><b data-i18n="contact.resume.cta">CV</b></a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Mateo Vazquez</span
+      ><span data-i18n="footer.role"
+        >Desarrollador Web Full-stack · IA aplicada al desarrollo</span
+      >
+    </footer>
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>
