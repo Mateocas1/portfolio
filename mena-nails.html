@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="section-shell" style="padding-top: 96px; max-width: 980px">
+    <main class="section-shell case-study-page" style="padding-top: 96px">
       <a class="button ghost" href="./index.html#projects">Volver al portfolio</a>
       <section class="hero-copy reveal is-visible" style="margin-top: 42px">
         <p class="eyebrow">Case study</p>
@@ -21,19 +21,66 @@
         </div>
       </section>
 
-      <section class="proof reveal is-visible" style="margin-top: 46px">
-        <div class="section-heading split"><div><p class="eyebrow">Problema</p><h2>Reservas, señas y comprobantes dependían de trabajo manual.</h2></div><p>El negocio necesitaba ordenar disponibilidad, pagos, confirmaciones y agenda sin multiplicar mensajes repetidos.</p></div>
-        <div class="credential-rail">
-          <article><span>Solución</span><b>Reserva + pago + admin + calendario</b><p>Landing orientada a conversión, wizard de reserva, MercadoPago, transferencia con comprobante, revisión administrativa y Google Calendar.</p></article>
-          <article><span>Tradeoffs</span><b>OCR como apoyo, no autoridad final</b><p>Gemini OCR ayuda a revisar comprobantes, pero el sistema conserva revisión humana para evitar automatizar decisiones sensibles de pago.</p></article>
-          <article><span>Resultado</span><b>Flujo operativo más claro</b><p>El caso muestra producto aplicado: estados, auth, integraciones, reglas de disponibilidad, panel interno y documentación operativa.</p></article>
-          <article><span>Límites honestos</span><b>Claim defendible</b><p>No afirmo operación cerrada sin evidencia pública de monitoreo, secretos, webhooks live y runbook final. El foco es funcionalidad probada y criterio técnico.</p></article>
+      <section class="case-breakdown reveal is-visible" style="margin-top: 64px">
+        <div class="case-breakdown__intro">
+          <p class="eyebrow">Problema</p>
+          <h2>Turnos y señas sin perseguir comprobantes.</h2>
+          <p>El negocio necesitaba ordenar disponibilidad, pagos, confirmaciones y agenda sin depender de mensajes repetidos ni validaciones dispersas.</p>
+        </div>
+        <div class="case-breakdown__grid" aria-label="Decisiones técnicas de Mena Nails">
+          <article>
+            <span>Solución</span>
+            <b>Reserva + pago + admin + calendario</b>
+            <p>Landing orientada a conversión, wizard de reserva, MercadoPago, transferencia con comprobante, revisión administrativa y sincronización con Google Calendar.</p>
+          </article>
+          <article>
+            <span>Tradeoffs</span>
+            <b>OCR como apoyo, no autoridad final</b>
+            <p>Gemini OCR ayuda a leer comprobantes, pero el sistema conserva revisión humana para evitar automatizar decisiones sensibles de pago.</p>
+          </article>
+          <article>
+            <span>Resultado</span>
+            <b>Flujo operativo más claro</b>
+            <p>El caso muestra producto aplicado: estados, autenticación, integraciones, reglas de disponibilidad, panel interno y documentación operativa.</p>
+          </article>
+          <article>
+            <span>Alcance verificado</span>
+            <b>Flujo completo probado</b>
+            <p>Proyecto funcional y testeado end-to-end con reserva, pago, comprobante, panel y calendario. El pendiente externo es dominio propio y operación pública sostenida.</p>
+          </article>
         </div>
       </section>
 
-      <section class="section-shell" style="padding-left: 0; padding-right: 0">
-        <div class="section-heading split"><div><p class="eyebrow">Stack</p><h2>Tecnologías usadas</h2></div></div>
-        <div class="tech-list compact"><span class="tech-chip">Next.js</span><span class="tech-chip">React</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Tailwind CSS</span><span class="tech-chip">Convex</span><span class="tech-chip">Clerk</span><span class="tech-chip">MercadoPago</span><span class="tech-chip">Gemini OCR</span><span class="tech-chip">Google Calendar API</span><span class="tech-chip">SEO técnico</span><span class="tech-chip">Vitest</span><span class="tech-chip">Playwright</span></div>
+      <section class="case-stack reveal is-visible">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Stack</p>
+            <h2>Tecnologías usadas</h2>
+          </div>
+          <p>No lo presento como lista de logos: cada tecnología aparece conectada a una responsabilidad concreta del producto.</p>
+        </div>
+        <div class="stack-showcase" aria-label="Stack técnico de Mena Nails">
+          <article class="stack-group">
+            <span class="stack-group__title">Frontend</span>
+            <p>Interfaz de reserva, conversión, responsive UI y SEO técnico.</p>
+            <div class="stack-group__chips"><span>Next.js</span><span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>SEO técnico</span></div>
+          </article>
+          <article class="stack-group">
+            <span class="stack-group__title">Backend y datos</span>
+            <p>Estados de reserva, reglas de disponibilidad, autenticación y panel admin.</p>
+            <div class="stack-group__chips"><span>Convex</span><span>Clerk</span><span>Estados operativos</span><span>Reglas de disponibilidad</span></div>
+          </article>
+          <article class="stack-group">
+            <span class="stack-group__title">Pagos y automatización</span>
+            <p>Señas, comprobantes, revisión asistida y agenda sincronizada.</p>
+            <div class="stack-group__chips"><span>MercadoPago</span><span>Gemini OCR</span><span>Google Calendar API</span><span>Transferencia</span></div>
+          </article>
+          <article class="stack-group">
+            <span class="stack-group__title">Calidad</span>
+            <p>Validación de flujos principales y documentación para defender decisiones.</p>
+            <div class="stack-group__chips"><span>Vitest</span><span>Playwright</span><span>Flujos E2E</span><span>Documentación operativa</span></div>
+          </article>
+        </div>
       </section>
     </main>
   </body>
