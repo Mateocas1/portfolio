@@ -223,6 +223,8 @@ button {
 .project-label,
 .step-label,
 .credential-rail span,
+.case-breakdown__grid span,
+.stack-group__title,
 .stack-number,
 .case-index,
 .command-prompt {
@@ -606,6 +608,10 @@ h3 {
 .compact {
   margin-top: 16px;
 }
+.case-study-page {
+  width: min(1360px, calc(100% - 40px));
+  max-width: 1360px;
+}
 .credential-rail {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -624,6 +630,107 @@ h3 {
 }
 .credential-rail p {
   margin: 8px 0 0;
+}
+.case-breakdown {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(620px, 1.05fr);
+  gap: clamp(34px, 5vw, 78px);
+  align-items: start;
+  padding: clamp(58px, 8vw, 102px) 0;
+  border-top: 1px solid var(--line);
+}
+.case-breakdown__intro {
+  min-width: 0;
+}
+.case-breakdown__intro h2 {
+  max-width: 11.5ch;
+  font-size: clamp(3.2rem, 5vw, 5.6rem);
+  line-height: 0.94;
+}
+.case-breakdown__intro p:not(.eyebrow) {
+  max-width: 38ch;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+.case-breakdown__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.case-breakdown__grid article {
+  min-width: 0;
+  min-height: 248px;
+  padding: clamp(22px, 3vw, 34px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.case-breakdown__grid article:nth-child(2n) {
+  border-right: 0;
+}
+.case-breakdown__grid article:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+.case-breakdown__grid b {
+  display: block;
+  max-width: 18ch;
+  margin-top: 10px;
+  color: var(--text);
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+}
+.case-breakdown__grid p {
+  margin: 16px 0 0;
+  color: var(--muted);
+}
+.case-stack {
+  padding: clamp(34px, 7vw, 88px) 0 clamp(80px, 10vw, 124px);
+  border-top: 1px solid var(--line);
+}
+.stack-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: var(--line);
+}
+.stack-group {
+  min-width: 0;
+  padding: clamp(22px, 3vw, 30px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 82%),
+    var(--bg);
+}
+.stack-group p {
+  min-height: 76px;
+  margin: 14px 0 18px;
+  color: var(--muted);
+}
+.stack-group__title {
+  display: inline-block;
+}
+.stack-group__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.stack-group__chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 31px;
+  padding: 6px 10px;
+  border: 1px solid rgba(217, 74, 125, 0.26);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(217, 74, 125, 0.07);
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 .contact {
   border-top: 1px solid var(--line);
@@ -751,6 +858,24 @@ button:focus-visible {
   .credential-rail {
     grid-template-columns: 1fr;
   }
+  .case-study-page {
+    max-width: min(var(--max), calc(100% - 32px));
+  }
+  .case-breakdown {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .case-breakdown__intro h2 {
+    max-width: 12ch;
+    font-size: clamp(3rem, 11vw, 5.4rem);
+  }
+  .case-breakdown__grid,
+  .stack-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stack-group p {
+    min-height: auto;
+  }
   .stack-cluster:nth-child(2),
   .stack-cluster:nth-child(3) {
     margin-top: 0;
@@ -808,6 +933,23 @@ button:focus-visible {
   }
   .project-preview {
     min-height: 250px;
+  }
+  .case-breakdown__grid,
+  .stack-showcase {
+    grid-template-columns: 1fr;
+  }
+  .case-breakdown__grid article,
+  .case-breakdown__grid article:nth-child(2n),
+  .case-breakdown__grid article:nth-last-child(-n + 2) {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .case-breakdown__grid article:last-child {
+    border-bottom: 0;
+  }
+  .case-breakdown__grid b {
+    max-width: none;
   }
   .contact-command {
     display: grid;
