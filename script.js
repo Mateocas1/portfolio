@@ -52,7 +52,7 @@ const translations = {
     "skills.frontend.text":
       "Interfaces responsivas, accesibles y orientadas a conversión.",
     "skills.backend.text":
-      "APIs, persistencia, reglas de negocio y datos multi-tenant.",
+      "APIs, persistencia, reglas de negocio y datos operativos.",
     "skills.tools.title": "Integraciones y herramientas",
     "skills.tools.text":
       "Automatización, validación, testing y entrega con criterio.",
@@ -149,7 +149,7 @@ const translations = {
     "skills.frontend.text":
       "Responsive, accessible interfaces focused on conversion.",
     "skills.backend.text":
-      "APIs, persistence, business rules, and multi-tenant data.",
+      "APIs, persistence, business rules, and operational data.",
     "skills.tools.title": "Integrations and tools",
     "skills.tools.text":
       "Automation, validation, testing, and delivery with judgment.",
