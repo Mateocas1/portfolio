@@ -44,6 +44,54 @@
       </section>
 
       <section class="section-shell" style="padding-left: 0; padding-right: 0">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Flujo de datos</p>
+            <h2>De fuente externa a búsqueda defendible.</h2>
+          </div>
+          <p>
+            El valor técnico está en tratar cada precio como dato con contexto:
+            origen, validación, deduplicación, freshness y límites visibles.
+          </p>
+        </div>
+        <div class="data-flow" aria-label="Flujo de datos de ofertasSUPER">
+          <article class="flow-step">
+            <span>01</span>
+            <b>Fuente externa</b>
+            <p>Datos de productos/ofertas llegan desde fuentes de supermercado.</p>
+          </article>
+          <i aria-hidden="true">→</i>
+          <article class="flow-step">
+            <span>02</span>
+            <b>Staging</b>
+            <p>La ingesta trabaja en modo controlado antes de promover datos.</p>
+          </article>
+          <i aria-hidden="true">→</i>
+          <article class="flow-step">
+            <span>03</span>
+            <b>Validación</b>
+            <p>Normalización y deduplicación; métricas y control de calidad.</p>
+          </article>
+          <i aria-hidden="true">→</i>
+          <article class="flow-step">
+            <span>04</span>
+            <b>Catálogo</b>
+            <p>Prisma/Supabase sostienen productos, precios e historial.</p>
+          </article>
+          <i aria-hidden="true">→</i>
+          <article class="flow-step">
+            <span>05</span>
+            <b>Búsqueda y APIs</b>
+            <p>UI, endpoints públicos y canasta local consumen datos con límites.</p>
+          </article>
+        </div>
+        <p class="flow-note">
+          Límite visible: no afirmo precios siempre vigentes ni ingesta productiva
+          activa sin smoke público reciente.
+        </p>
+      </section>
+
+      <section class="section-shell" style="padding-left: 0; padding-right: 0">
         <div class="section-heading split"><div><p class="eyebrow">Links</p><h2>Evidencia pública</h2></div></div>
         <div class="project-links"><a href="https://ofertas-super.vercel.app" target="_blank" rel="noreferrer">Demo pública</a><a href="https://github.com/Mateocas1/ofertaSUPER" target="_blank" rel="noreferrer">Repositorio</a></div>
       </section>
