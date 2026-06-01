@@ -615,7 +615,7 @@ h3 {
 }
 .credential-rail {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong);
 }
 .credential-rail article {
@@ -632,6 +632,12 @@ h3 {
 .credential-rail p {
   margin: 8px 0 0;
 }
+.credential-rail article,
+.credential-rail b {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .data-flow {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
