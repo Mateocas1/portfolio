@@ -560,6 +560,20 @@ button:focus-visible,
   max-width: 70ch;
 }
 
+.project-parts {
+  max-width: 70ch;
+}
+
+.project-part h4 {
+  margin: var(--space-4) 0 var(--space-1);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.project-part p {
+  margin: 0;
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -632,6 +646,11 @@ button:focus-visible,
   border-right: 0;
 }
 
+.credential-rail b {
+  display: block;
+  margin-top: var(--space-1);
+}
+
 .credential-rail p {
   margin: var(--space-2) 0 0;
 }
@@ -669,10 +688,7 @@ button:focus-visible,
   overflow-wrap: anywhere;
 }
 
-/* Arrow markup between flow steps is retired (T3 removes it) */
-.data-flow i {
-  display: none;
-}
+/* Arrow markup between flow steps was removed with the redesign */
 
 .flow-note {
   max-width: 760px;
@@ -958,7 +974,8 @@ button:focus-visible,
     border-top: 0;
   }
 
-  .header-actions .toggle-button {
+  .header-actions .toggle-button,
+  .header-actions .menu-toggle {
     min-height: 32px;
     padding: 0 var(--space-2);
     font-size: 0.9rem;
