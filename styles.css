@@ -274,6 +274,9 @@ button:focus-visible,
 
 .toggle-button,
 .menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
   min-height: 36px;
   padding: 0 var(--space-3);
   border: 1px solid var(--border);
@@ -623,6 +626,11 @@ button:focus-visible,
 .case-study-page {
   width: min(1180px, calc(100% - var(--space-6)));
   max-width: 1180px;
+}
+
+/* Keep the case hero clear of the sticky nav on every viewport */
+.case-study-page .hero-copy {
+  padding-top: var(--space-6);
 }
 
 .credential-rail {
