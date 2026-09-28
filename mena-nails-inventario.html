@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Caso técnico del producto Turnos y señas de Mena Nails: Mercado Pago con webhooks, OCR de comprobantes y sincronización con Google Calendar, verificado en producción."
+      content="Caso técnico del producto Inventario de Mena Nails: API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI, login por sesión y PWA en SvelteKit, con tests de integración en CI."
     />
-    <title>Mena Nails | Caso técnico — Mateo Vazquez</title>
+    <title>Mena Nails · Inventario | Caso técnico — Mateo Vazquez</title>
     <script>
       (() => {
         try {
@@ -30,15 +30,18 @@
         }
       })();
     </script>
-    <meta property="og:title" content="Mena Nails | Caso técnico — Mateo Vazquez" />
+    <meta
+      property="og:title"
+      content="Mena Nails · Inventario | Caso técnico — Mateo Vazquez"
+    />
     <meta
       property="og:description"
-      content="Turnos y señas con Mercado Pago, OCR de comprobantes y Google Calendar, verificado en producción."
+      content="API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI, login por sesión y PWA en SvelteKit, con tests de integración en CI."
     />
     <meta property="og:type" content="article" />
     <meta
       property="og:url"
-      content="https://mateocas1.github.io/portfolio/mena-nails.html"
+      content="https://mateocas1.github.io/portfolio/mena-nails-inventario.html"
     />
     <meta
       property="og:image"
@@ -47,7 +50,7 @@
     <meta name="twitter:card" content="summary" />
     <link
       rel="canonical"
-      href="https://mateocas1.github.io/portfolio/mena-nails.html"
+      href="https://mateocas1.github.io/portfolio/mena-nails-inventario.html"
     />
     <link
       rel="icon"
@@ -106,75 +109,74 @@
 
     <main id="main" class="section-shell case-study-page">
       <section class="hero-copy reveal">
-        <p class="eyebrow text-appear">Caso técnico · Freelance</p>
-        <h1 class="text-appear">Mena Nails</h1>
+        <p class="eyebrow text-appear">Caso técnico · Producto 2 · sep 2026</p>
+        <h1 class="text-appear">Inventario</h1>
         <p class="role-line text-appear">
-          <span>Sistema de turnos, pagos y automatización</span>
+          <span>Backend de inventario para el estudio Mena Nails</span>
         </p>
         <p class="hero-lead text-appear">
-          Sistema de turnos con señas para un estudio de uñas real, validado
-          en producción con un turno y un pago reales.
+          Producto terminado para el mismo cliente que Turnos y señas: una API
+          de inventario en Go con contrato OpenAPI y su frontend PWA.
         </p>
         <div class="hero-actions text-appear">
           <a class="button ghost" href="./index.html#proyectos"
             >Volver al portfolio</a
           >
-          <a class="button primary" href="./mena-nails-inventario.html"
-            >Producto 2: Inventario</a
+          <a
+            class="button primary"
+            href="https://github.com/Mateocas1/mena-nails"
+            target="_blank"
+            rel="noreferrer"
+            >Repositorio</a
           >
         </div>
       </section>
 
       <section class="case-breakdown reveal">
         <div class="case-breakdown__intro">
-          <p class="eyebrow text-appear">Caso técnico · Producto 1</p>
-          <h2 class="text-appear">Reservas y señas sin perseguir comprobantes.</h2>
+          <p class="eyebrow text-appear">Inventario</p>
+          <h2 class="text-appear">Un contrato OpenAPI como fuente de verdad.</h2>
           <p class="text-appear">
-            Desarrollado entre mayo y junio de 2026 con Next.js, Convex y Clerk:
-            Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia
-            leídos con OCR (Gemini) con revisión manual y turnos confirmados
-            sincronizados a Google Calendar.
+            API en Go 1.24 sobre PostgreSQL (pgx, sqlc) con login por sesión
+            (bcrypt), y un frontend PWA en SvelteKit para operar el inventario
+            del estudio.
           </p>
           <p class="text-appear">
-            El flujo quedó verificado de extremo a extremo en producción con un
-            turno y un pago reales: webhook recibido, cambio de estado y evento
-            de calendario.
+            El cliente generado a partir del contrato OpenAPI se verifica en CI:
+            si se desvía del contrato, la verificación falla.
           </p>
         </div>
-        <div class="case-breakdown__grid" aria-label="Decisiones técnicas de Mena Nails">
+        <div class="case-breakdown__grid" aria-label="Decisiones técnicas del backend de inventario">
           <article class="text-appear">
             <span>Solución</span>
-            <b>Reserva, pago y agenda integrados</b>
+            <b>API en Go 1.24 con PostgreSQL</b>
             <p>
-              Señas por Mercado Pago Checkout Pro con webhooks; transferencias
-              como flujo alternativo con comprobante leído por OCR (Gemini) y
-              revisión manual; turnos confirmados sincronizados a Google
-              Calendar.
+              Consultas tipadas con pgx y sqlc, y login por sesión con
+              contraseñas hasheadas con bcrypt.
             </p>
           </article>
           <article class="text-appear">
             <span>Tradeoffs</span>
-            <b>OCR como apoyo, no autoridad final</b>
+            <b>El contrato manda</b>
             <p>
-              El OCR ayuda a leer comprobantes de transferencia, pero el sistema
-              conserva revisión humana antes de confirmar: no se automatiza una
-              decisión sensible de pago.
+              OpenAPI define la interfaz: el cliente se genera desde el contrato
+              y una verificación en CI falla ante cualquier desvío.
             </p>
           </article>
           <article class="text-appear">
-            <span>Resultado</span>
-            <b>Verificado en producción</b>
+            <span>Calidad</span>
+            <b>Tests de integración en CI</b>
             <p>
-              Un turno y un pago reales completaron el ciclo completo en
-              producción: webhook, cambio de estado y evento de calendario.
+              Tests de Go —incluidos tests de integración— junto con
+              Vitest/Playwright para el frontend.
             </p>
           </article>
           <article class="text-appear">
-            <span>Producto 2</span>
-            <b><a class="inline-link" href="./mena-nails-inventario.html">Inventario</a></b>
+            <span>Producto 1</span>
+            <b><a class="inline-link" href="./mena-nails.html">Turnos y señas</a></b>
             <p>
-              El mismo cliente tiene un segundo producto: su backend de
-              inventario en Go, con caso técnico propio.
+              El mismo cliente usa el sistema de turnos con pagos por Mercado
+              Pago, con caso técnico propio.
             </p>
           </article>
         </div>
@@ -187,23 +189,13 @@
         </div>
         <div class="stack-groups">
           <section class="stack-group text-appear">
-            <h3 class="stack-group__title">Aplicación</h3>
-            <p>Next.js, Convex, Clerk</p>
+            <h3 class="stack-group__title">API</h3>
+            <p>Go 1.24, PostgreSQL (pgx, sqlc), login por sesión (bcrypt)</p>
           </section>
           <section class="stack-group text-appear">
-            <h3 class="stack-group__title">Pagos</h3>
-            <p>Mercado Pago Checkout Pro con webhooks</p>
+            <h3 class="stack-group__title">Contrato</h3>
+            <p>OpenAPI como fuente de verdad del cliente generado</p>
           </section>
-          <section class="stack-group text-appear">
-            <h3 class="stack-group__title">Comprobantes</h3>
-            <p>OCR con Gemini y revisión manual</p>
-          </section>
-          <section class="stack-group text-appear">
-            <h3 class="stack-group__title">Agenda</h3>
-            <p>Sincronización con Google Calendar</p>
-          </section>
-        </div>
-      </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Frontend</h3>
             <p>PWA en SvelteKit</p>

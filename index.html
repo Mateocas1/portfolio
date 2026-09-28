@@ -271,56 +271,65 @@
           </h2>
         </div>
 
-        <article class="project-card text-appear">
-          <div class="project-copy">
-            <p class="project-label" data-i18n="project.mena.label">
-              Freelance · may 2026 – actualidad
-            </p>
+        <article class="project-card project-umbrella text-appear">
+          <div class="umbrella-header">
             <h3>Mena Nails</h3>
-            <div class="project-parts">
-              <div class="project-part">
-                <h4 data-i18n="project.mena.part1">Turnos y señas</h4>
-                <p data-i18n="project.mena.text1">
-                  Sistema de turnos con señas para un estudio de uñas real:
-                  Mercado Pago Checkout Pro con webhooks, comprobantes de
-                  transferencia leídos con OCR (Gemini) con revisión manual y
-                  turnos confirmados sincronizados a Google Calendar. Verificado
-                  de extremo a extremo en producción con un turno y un pago
-                  reales (webhook, cambio de estado y evento de calendario).
-                </p>
+            <p class="umbrella-meta">
+              <span data-i18n="project.mena.client">cliente freelance</span>
+              ·
+              <span data-i18n="project.mena.range">may 2026 – sep 2026</span>
+            </p>
+          </div>
+          <div class="product-grid">
+            <div class="product-subcard">
+              <p class="product-tag" data-i18n="project.mena.product1">Producto 1</p>
+              <h4 data-i18n="project.mena.part1">Turnos y señas</h4>
+              <p class="product-dates">may – jun 2026</p>
+              <p data-i18n="project.mena.text1">
+                Sistema de turnos con señas para un estudio de uñas real:
+                Mercado Pago Checkout Pro con webhooks, comprobantes de
+                transferencia leídos con OCR (Gemini) con revisión manual y
+                turnos confirmados sincronizados a Google Calendar. Verificado
+                de extremo a extremo en producción con un turno y un pago
+                reales (webhook, cambio de estado y evento de calendario).
+              </p>
+              <div class="tech-chips">
+                <span class="tech-chip t-nextdotjs" style="--icon: url('./assets/icons/nextdotjs.svg')"><i class="chip-icon" aria-hidden="true"></i>Next.js</span>
+                <span class="tech-chip t-convex" style="--icon: url('./assets/icons/convex.svg')"><i class="chip-icon" aria-hidden="true"></i>Convex</span>
+                <span class="tech-chip t-clerk" style="--icon: url('./assets/icons/clerk.svg')"><i class="chip-icon" aria-hidden="true"></i>Clerk</span>
+                <span class="tech-chip t-mercadopago" style="--icon: url('./assets/icons/mercadopago.svg')"><i class="chip-icon" aria-hidden="true"></i>Mercado Pago</span>
+                <span class="tech-chip t-googlegemini" style="--icon: url('./assets/icons/googlegemini.svg')"><i class="chip-icon" aria-hidden="true"></i>Gemini</span>
+                <span class="tech-chip t-googlecalendar" style="--icon: url('./assets/icons/googlecalendar.svg')"><i class="chip-icon" aria-hidden="true"></i>Google Calendar</span>
               </div>
-              <div class="project-part">
-                <h4 data-i18n="project.mena.part2">Inventario</h4>
-                <p data-i18n="project.mena.text2">
-                  API en Go 1.24 con PostgreSQL (pgx, sqlc), contrato OpenAPI y
-                  login por sesión (bcrypt), frontend PWA en SvelteKit, y CI con
-                  tests de Go —incluidos tests de integración—,
-                  Vitest/Playwright y una verificación que falla si el cliente
-                  generado se desvía del contrato OpenAPI.
-                </p>
+              <div class="project-links">
+                <a href="./mena-nails.html" data-i18n="project.link.case">Caso técnico</a>
               </div>
             </div>
-            <div class="tech-chips">
-              <span class="tech-chip t-nextdotjs" style="--icon: url('./assets/icons/nextdotjs.svg')"><i class="chip-icon" aria-hidden="true"></i>Next.js</span>
-              <span class="tech-chip t-convex" style="--icon: url('./assets/icons/convex.svg')"><i class="chip-icon" aria-hidden="true"></i>Convex</span>
-              <span class="tech-chip t-clerk" style="--icon: url('./assets/icons/clerk.svg')"><i class="chip-icon" aria-hidden="true"></i>Clerk</span>
-              <span class="tech-chip t-mercadopago" style="--icon: url('./assets/icons/mercadopago.svg')"><i class="chip-icon" aria-hidden="true"></i>Mercado Pago</span>
-              <span class="tech-chip t-googlegemini" style="--icon: url('./assets/icons/googlegemini.svg')"><i class="chip-icon" aria-hidden="true"></i>Gemini</span>
-              <span class="tech-chip t-googlecalendar" style="--icon: url('./assets/icons/googlecalendar.svg')"><i class="chip-icon" aria-hidden="true"></i>Google Calendar</span>
-              <span class="tech-chip t-go" style="--icon: url('./assets/icons/go.svg')"><i class="chip-icon" aria-hidden="true"></i>Go</span>
-              <span class="tech-chip t-postgresql" style="--icon: url('./assets/icons/postgresql.svg')"><i class="chip-icon" aria-hidden="true"></i>PostgreSQL</span>
-            </div>
-            <div class="project-links">
-              <a href="./mena-nails.html" data-i18n="project.link.case"
-                >Caso técnico</a
-              >
-              <a
-                href="https://github.com/Mateocas1/mena-nails"
-                target="_blank"
-                rel="noreferrer"
-                data-i18n="project.link.repo"
-                >Repositorio</a
-              >
+            <div class="product-subcard">
+              <p class="product-tag" data-i18n="project.mena.product2">Producto 2</p>
+              <h4 data-i18n="project.mena.part2">Inventario</h4>
+              <p class="product-dates">sep 2026</p>
+              <p data-i18n="project.mena.text2">
+                API en Go 1.24 con PostgreSQL (pgx, sqlc), contrato OpenAPI y
+                login por sesión (bcrypt), frontend PWA en SvelteKit, y CI con
+                tests de Go —incluidos tests de integración—,
+                Vitest/Playwright y una verificación que falla si el cliente
+                generado se desvía del contrato OpenAPI.
+              </p>
+              <div class="tech-chips">
+                <span class="tech-chip t-go" style="--icon: url('./assets/icons/go.svg')"><i class="chip-icon" aria-hidden="true"></i>Go</span>
+                <span class="tech-chip t-postgresql" style="--icon: url('./assets/icons/postgresql.svg')"><i class="chip-icon" aria-hidden="true"></i>PostgreSQL</span>
+                <span class="tech-chip"><i class="chip-icon chip-icon--mono" aria-hidden="true">SC</i>sqlc</span>
+                <span class="tech-chip t-openapiinitiative" style="--icon: url('./assets/icons/openapiinitiative.svg')"><i class="chip-icon" aria-hidden="true"></i>OpenAPI</span>
+                <span class="tech-chip t-svelte" style="--icon: url('./assets/icons/svelte.svg')"><i class="chip-icon" aria-hidden="true"></i>SvelteKit</span>
+                <span class="tech-chip t-vitest" style="--icon: url('./assets/icons/vitest.svg')"><i class="chip-icon" aria-hidden="true"></i>Vitest</span>
+                <span class="tech-chip t-playwright" style="--icon: url('./assets/icons/playwright.svg')"><i class="chip-icon" aria-hidden="true"></i>Playwright</span>
+                <span class="tech-chip t-githubactions" style="--icon: url('./assets/icons/githubactions.svg')"><i class="chip-icon" aria-hidden="true"></i>GitHub Actions</span>
+              </div>
+              <div class="project-links">
+                <a href="./mena-nails-inventario.html" data-i18n="project.link.case">Caso técnico</a>
+                <a href="https://github.com/Mateocas1/mena-nails" target="_blank" rel="noreferrer" data-i18n="project.link.repo">Repositorio</a>
+              </div>
             </div>
           </div>
         </article>

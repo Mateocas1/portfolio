@@ -677,6 +677,94 @@ button:focus-visible,
   margin-bottom: var(--space-3);
 }
 
+/* Umbrella card: one client, two products */
+.umbrella-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.umbrella-meta {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.product-subcard {
+  min-width: 0;
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-solid);
+}
+
+.product-tag {
+  margin: 0 0 var(--space-2);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-subcard h4 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.product-dates {
+  margin: var(--space-1) 0 var(--space-3);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.product-subcard > p:not(.product-tag):not(.product-dates) {
+  max-width: 60ch;
+  margin: 0 0 var(--space-3);
+  color: var(--muted);
+}
+
+.product-subcard .tech-chips {
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.product-subcard .project-links {
+  margin: var(--space-2) 0 0;
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Inline text link inside case cards */
+.inline-link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.inline-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
 .project-text {
   max-width: 70ch;
 }
