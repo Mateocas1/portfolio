@@ -51,7 +51,7 @@
   --border: rgba(0, 0, 0, 0.06);
   --text: #17181a;
   --muted: #5e5c57;
-  --accent: #a86a12;
+  --accent: #9a5f0e;
   --accent-contrast: #ffffff;
   --bg-glow: rgba(255, 255, 255, 0.65);
 }
@@ -65,7 +65,7 @@
     --border: rgba(0, 0, 0, 0.06);
     --text: #17181a;
     --muted: #5e5c57;
-    --accent: #a86a12;
+    --accent: #9a5f0e;
     --accent-contrast: #ffffff;
     --bg-glow: rgba(255, 255, 255, 0.65);
   }
@@ -298,7 +298,6 @@ button:focus-visible,
 }
 
 .hero {
-  min-height: calc(100dvh - 64px);
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.72fr);
   align-items: center;
@@ -787,6 +786,17 @@ button:focus-visible,
 
   .psr-label {
     flex-basis: 72px;
+  }
+}
+
+@media (max-width: 390px) {
+  .psr-row {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .psr-label {
+    flex-basis: auto;
   }
 }
 
