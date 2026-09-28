@@ -38,44 +38,28 @@ const translations = {
     "skills.eyebrow": "Stack",
     "skills.title": "Stack técnico por área de trabajo.",
     "stack.languages": "Lenguajes",
-    "stack.languages.items": "TypeScript, JavaScript, Go, SQL",
     "stack.backend": "Backend",
-    "stack.backend.items":
-      "Node.js, Fastify, Next.js route handlers, REST APIs, OpenAPI, webhooks, Prisma, sqlc",
     "stack.data": "Datos",
-    "stack.data.items": "PostgreSQL, Supabase, Redis, Convex",
     "stack.frontend": "Frontend",
-    "stack.frontend.items": "React, Next.js, SvelteKit, Tailwind",
     "stack.integrations": "Integraciones",
-    "stack.integrations.items":
-      "Mercado Pago, Google Calendar API, Gemini (OCR), Clerk, VTEX API",
     "stack.testing": "Testing y CI/CD",
-    "stack.testing.items": "Vitest, Playwright, Go test, GitHub Actions, Docker",
     "stack.cloud": "Cloud",
-    "stack.cloud.items": "Vercel, Cloudflare (R2, Workers)",
     "stack.ai": "Desarrollo asistido por IA",
-    "stack.ai.items":
-      "Claude Code, Codex, agent workflows, MCP, human review of generated code",
     "projects.eyebrow": "Proyectos",
     "projects.title": "Proyectos seleccionados.",
     "project.mena.label": "Freelance · may 2026 – actualidad",
     "project.mena.part1": "Turnos y señas",
     "project.mena.text1":
       "Sistema de turnos con señas para un estudio de uñas real: Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia leídos con OCR (Gemini) con revisión manual y turnos confirmados sincronizados a Google Calendar. Verificado de extremo a extremo en producción con un turno y un pago reales (webhook, cambio de estado y evento de calendario).",
-    "project.mena.part2": "Inventario (en desarrollo)",
+    "project.mena.part2": "Inventario",
     "project.mena.text2":
       "API en Go 1.24 con PostgreSQL (pgx, sqlc), contrato OpenAPI y login por sesión (bcrypt), frontend PWA en SvelteKit, y CI con tests de Go —incluidos tests de integración—, Vitest/Playwright y una verificación que falla si el cliente generado se desvía del contrato OpenAPI.",
-    "project.mena.stack":
-      "Next.js · Convex · Clerk · Mercado Pago · Gemini · Google Calendar · Go · PostgreSQL · SvelteKit",
     "project.super.label": "mar 2026 – actualidad",
     "project.super.text":
       "Comparador de precios de supermercados argentinos: carga datos de 6 supermercados (Carrefour, DIA, Disco, Jumbo, Vea y Más) desde la API de VTEX y empareja productos por código EAN. Construido con Next.js y TypeScript, PostgreSQL (Supabase, Prisma) y Redis para caché y rate limiting; 13 endpoints REST y panel de administración con Clerk. GitHub Actions ejecuta lint, typecheck, tests, build y Lighthouse en cada push, con alrededor de 750 pruebas automatizadas; la ingesta corre como jobs de Docker y los backups cifrados se guardan en Cloudflare R2.",
-    "project.super.stack":
-      "Next.js · TypeScript · PostgreSQL · Supabase · Prisma · Redis",
     "project.shelfops.label": "jul – ago 2026",
     "project.shelfops.text":
       "API para registrar incidentes operativos: Fastify y PostgreSQL con roles y permisos (RBAC), login OIDC, contrato OpenAPI, tests de integración en CI y un entorno Docker reproducible.",
-    "project.shelfops.stack": "Fastify · PostgreSQL · OIDC · OpenAPI · Docker",
     "project.link.demo": "Demo pública",
     "project.link.repo": "Repositorio",
     "project.link.case": "Caso técnico",
@@ -114,44 +98,28 @@ const translations = {
     "skills.eyebrow": "Stack",
     "skills.title": "Technical stack by area of work.",
     "stack.languages": "Languages",
-    "stack.languages.items": "TypeScript, JavaScript, Go, SQL",
     "stack.backend": "Backend",
-    "stack.backend.items":
-      "Node.js, Fastify, Next.js route handlers, REST APIs, OpenAPI, webhooks, Prisma, sqlc",
     "stack.data": "Data",
-    "stack.data.items": "PostgreSQL, Supabase, Redis, Convex",
     "stack.frontend": "Frontend",
-    "stack.frontend.items": "React, Next.js, SvelteKit, Tailwind",
     "stack.integrations": "Integrations",
-    "stack.integrations.items":
-      "Mercado Pago, Google Calendar API, Gemini (OCR), Clerk, VTEX API",
     "stack.testing": "Testing & CI/CD",
-    "stack.testing.items": "Vitest, Playwright, Go test, GitHub Actions, Docker",
     "stack.cloud": "Cloud",
-    "stack.cloud.items": "Vercel, Cloudflare (R2, Workers)",
     "stack.ai": "AI-assisted development",
-    "stack.ai.items":
-      "Claude Code, Codex, agent workflows, MCP, human review of generated code",
     "projects.eyebrow": "Projects",
     "projects.title": "Selected projects.",
     "project.mena.label": "Freelance · may 2026 – present",
     "project.mena.part1": "Bookings and deposits",
     "project.mena.text1":
       "Booking and deposit system for a real nail studio: Mercado Pago Checkout Pro with webhooks, transfer receipts read with OCR (Gemini) plus manual review, and confirmed bookings synced to Google Calendar. Verified end to end in production with a real booking and a real payment (webhook, status change and calendar event).",
-    "project.mena.part2": "Inventory (in development)",
+    "project.mena.part2": "Inventory",
     "project.mena.text2":
       "A Go 1.24 API with PostgreSQL (pgx, sqlc), an OpenAPI contract and session-based login (bcrypt), a SvelteKit PWA frontend, and CI with Go tests —including integration tests—, Vitest/Playwright, and a check that fails when the generated client drifts from the OpenAPI contract.",
-    "project.mena.stack":
-      "Next.js · Convex · Clerk · Mercado Pago · Gemini · Google Calendar · Go · PostgreSQL · SvelteKit",
     "project.super.label": "mar 2026 – present",
     "project.super.text":
       "Price comparison for Argentine supermarkets: it loads data from 6 supermarkets (Carrefour, DIA, Disco, Jumbo, Vea and Más) from the VTEX API and matches products by EAN code. Built with Next.js and TypeScript, PostgreSQL (Supabase, Prisma) and Redis for caching and rate limiting; 13 REST endpoints and an admin panel with Clerk. GitHub Actions runs lint, typecheck, tests, build and Lighthouse on every push, with about 750 automated tests; data ingestion runs as Docker jobs and encrypted backups are stored on Cloudflare R2.",
-    "project.super.stack":
-      "Next.js · TypeScript · PostgreSQL · Supabase · Prisma · Redis",
     "project.shelfops.label": "jul – aug 2026",
     "project.shelfops.text":
       "API for logging operational incidents: Fastify and PostgreSQL with roles and permissions (RBAC), OIDC login, OpenAPI contract, integration tests in CI and a reproducible Docker setup.",
-    "project.shelfops.stack": "Fastify · PostgreSQL · OIDC · OpenAPI · Docker",
     "project.link.demo": "Live demo",
     "project.link.repo": "Repository",
     "project.link.case": "Case study",

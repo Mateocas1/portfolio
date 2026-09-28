@@ -146,11 +146,10 @@ h3 {
   font-weight: 600;
 }
 
-/* Small mono labels: dates, eyebrows, stack lines, metadata */
+/* Small mono labels: dates, eyebrows, metadata */
 .eyebrow,
 .project-label,
 .stack-group__title,
-.project-stack,
 .edu-meta,
 .case-breakdown__grid span,
 .credential-rail span,
@@ -161,13 +160,6 @@ h3 {
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-/* Project stack lines are metadata, but stay muted, not accent */
-.project-stack {
-  color: var(--muted);
-  letter-spacing: 0.02em;
-  text-transform: none;
 }
 
 /* ---------- Skip link ---------- */
@@ -227,7 +219,6 @@ button:focus-visible,
 .site-nav,
 .header-actions,
 .hero-actions,
-.tech-list,
 .contact-command {
   display: flex;
   align-items: center;
@@ -498,19 +489,97 @@ button:focus-visible,
   font-size: 0.95rem;
 }
 
-.tech-list {
+/* ---------- Technology tiles (stack grid) ---------- */
+
+.stack-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: var(--space-2);
-  flex-wrap: wrap;
-  align-items: flex-start;
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
-/* Single shared chip style (case pages still use chips until T3) */
-.tech-chip,
-.stack-group__chips span {
+.stack-tile {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
+  gap: var(--space-2);
+  min-height: 42px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.stack-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.tile-icon,
+.chip-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  -webkit-mask-image: var(--icon);
+  mask-image: var(--icon);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.stack-tile .tile-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+  transition: color 160ms ease;
+}
+
+.stack-tile:hover .tile-icon {
+  color: var(--brand, var(--text));
+}
+
+/* Neutral monogram for technologies without a Simple Icons logo */
+.tile-icon--mono,
+.chip-icon--mono {
+  -webkit-mask-image: none;
+  mask-image: none;
+  background: none;
+  width: auto;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: color 160ms ease;
+}
+
+.stack-tile:hover .tile-icon--mono,
+.tech-chip:hover .chip-icon--mono {
+  color: var(--accent);
+}
+
+/* ---------- Technology chips (project tech lines) ---------- */
+
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 var(--space-2);
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 30px;
   padding: var(--space-1) var(--space-3);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -518,6 +587,62 @@ button:focus-visible,
   background: transparent;
   font-size: 0.84rem;
   font-weight: 400;
+  transition: border-color 160ms ease;
+}
+
+.tech-chip:hover {
+  border-color: var(--accent);
+}
+
+.tech-chip .chip-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  transition: color 160ms ease;
+}
+
+.tech-chip:hover .chip-icon {
+  color: var(--brand, var(--text));
+}
+
+/* Brand colours (Simple Icons, CC0). Fallbacks keep contrast:
+   very dark brands use --text in dark mode, very light ones use
+   --text in light mode; black logos use --text everywhere. */
+.t-typescript { --brand: #3178c6; }
+.t-javascript { --brand: #f7df1e; }
+.t-go { --brand: #00add8; }
+.t-nodedotjs { --brand: #5fa04e; }
+.t-fastify { --brand: var(--text); }
+.t-nextdotjs { --brand: var(--text); }
+.t-vercel { --brand: var(--text); }
+.t-openapiinitiative { --brand: #6ba539; }
+.t-prisma { --brand: #2d3748; }
+.t-postgresql { --brand: #4169e1; }
+.t-supabase { --brand: #3fcf8e; }
+.t-redis { --brand: #ff4438; }
+.t-react { --brand: #61dafb; }
+.t-tailwindcss { --brand: #06b6d4; }
+.t-mercadopago { --brand: #00b1ea; }
+.t-googlecalendar { --brand: #4285f4; }
+.t-googlegemini { --brand: #8e75b2; }
+.t-clerk { --brand: #6c47ff; }
+.t-vtex { --brand: #ed125f; }
+.t-vitest { --brand: #6e9f18; }
+.t-playwright { --brand: #2ead33; }
+.t-githubactions { --brand: #2088ff; }
+.t-docker { --brand: #2496ed; }
+.t-cloudflare { --brand: #f38020; }
+.t-claude { --brand: #d97757; }
+.t-openai { --brand: #412991; }
+
+[data-theme="dark"] .t-prisma,
+[data-theme="dark"] .t-openai {
+  --brand: var(--text);
+}
+
+[data-theme="light"] .t-javascript,
+[data-theme="light"] .t-react {
+  --brand: var(--text);
 }
 
 /* ---------- Projects: glass cards ---------- */
@@ -789,12 +914,6 @@ button:focus-visible,
 
 .stack-group__title {
   display: inline-block;
-}
-
-.stack-group__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
 }
 
 /* ---------- Contact ---------- */
