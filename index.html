@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="es" data-lang="es" data-theme="dark">
+<html lang="es" data-lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,14 +21,13 @@
               ? storedTheme
               : prefersDark
                 ? "dark"
-                : "dark";
+                : "light";
           const storedLang = localStorage.getItem("portfolio:lang");
           const lang = storedLang === "en" ? "en" : "es";
           root.dataset.theme = theme;
           root.dataset.lang = lang;
           root.lang = lang;
         } catch {
-          document.documentElement.dataset.theme = "dark";
           document.documentElement.dataset.lang = "es";
         }
       })();
@@ -351,7 +350,7 @@
             <p class="made-with" data-i18n="project.made">
               Tecnologías usadas:
             </p>
-            
+            
               <a
                 href="https://ofertas-super.vercel.app"
                 target="_blank"
@@ -367,7 +366,7 @@
                 data-i18n="project.link.repo"
                 >Repositorio</a
               >
-            
+            
             <div
               class="tech-list compact"
               aria-label="Tecnologías usadas en comparador de ofertas"
