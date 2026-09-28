@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Caso técnico del producto Inventario de Mena Nails: API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI, login por sesión y PWA en SvelteKit, con tests de integración en CI."
+    />
+    <title>Mena Nails · Inventario | Caso técnico — Mateo Vazquez</title>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const storedTheme = localStorage.getItem("portfolio:theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : prefersDark
+                ? "dark"
+                : "light";
+          root.dataset.theme = theme;
+          root.dataset.lang = "es";
+        } catch {
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.lang = "es";
+        }
+      })();
+    </script>
+    <meta
+      property="og:title"
+      content="Mena Nails · Inventario | Caso técnico — Mateo Vazquez"
+    />
+    <meta
+      property="og:description"
+      content="API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI, login por sesión y PWA en SvelteKit, con tests de integración en CI."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://mateocas1.github.io/portfolio/mena-nails-inventario.html"
+    />
+    <meta
+      property="og:image"
+      content="https://mateocas1.github.io/portfolio/assets/profile.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="canonical"
+      href="https://mateocas1.github.io/portfolio/mena-nails-inventario.html"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230E0F11%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./index.html" aria-label="Volver al portfolio">
+          <span class="brand-mark" aria-hidden="true">MV</span>
+          <span>Mateo</span>
+        </a>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="./index.html">Inicio</a>
+          <a href="./index.html#proyectos">Proyectos</a>
+          <a href="./index.html#contacto">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
+        <div class="header-actions">
+          <button
+            class="toggle-button"
+            type="button"
+            data-theme-toggle
+            aria-label="Cambiar tema"
+            aria-pressed="false"
+          >
+            <span>Claro</span>
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span>Menú</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="section-shell case-study-page">
+      <section class="hero-copy reveal">
+        <p class="eyebrow text-appear">Caso técnico · Producto 2 · sep 2026</p>
+        <h1 class="text-appear">Inventario</h1>
+        <p class="role-line text-appear">
+          <span>Backend de inventario para el estudio Mena Nails</span>
+        </p>
+        <p class="hero-lead text-appear">
+          Producto terminado para el mismo cliente que Turnos y señas: una API
+          de inventario en Go con contrato OpenAPI y su frontend PWA.
+        </p>
+        <div class="hero-actions text-appear">
+          <a class="button ghost" href="./index.html#proyectos"
+            >Volver al portfolio</a
+          >
+          <a
+            class="button primary"
+            href="https://github.com/Mateocas1/mena-nails"
+            target="_blank"
+            rel="noreferrer"
+            >Repositorio</a
+          >
+        </div>
+      </section>
+
+      <section class="case-breakdown reveal">
+        <div class="case-breakdown__intro">
+          <p class="eyebrow text-appear">Inventario</p>
+          <h2 class="text-appear">Un contrato OpenAPI como fuente de verdad.</h2>
+          <p class="text-appear">
+            API en Go 1.24 sobre PostgreSQL (pgx, sqlc) con login por sesión
+            (bcrypt), y un frontend PWA en SvelteKit para operar el inventario
+            del estudio.
+          </p>
+          <p class="text-appear">
+            El cliente generado a partir del contrato OpenAPI se verifica en CI:
+            si se desvía del contrato, la verificación falla.
+          </p>
+        </div>
+        <div class="case-breakdown__grid" aria-label="Decisiones técnicas del backend de inventario">
+          <article class="text-appear">
+            <span>Solución</span>
+            <b>API en Go 1.24 con PostgreSQL</b>
+            <p>
+              Consultas tipadas con pgx y sqlc, y login por sesión con
+              contraseñas hasheadas con bcrypt.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Tradeoffs</span>
+            <b>El contrato manda</b>
+            <p>
+              OpenAPI define la interfaz: el cliente se genera desde el contrato
+              y una verificación en CI falla ante cualquier desvío.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Calidad</span>
+            <b>Tests de integración en CI</b>
+            <p>
+              Tests de Go —incluidos tests de integración— junto con
+              Vitest/Playwright para el frontend.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Producto 1</span>
+            <b><a class="inline-link" href="./mena-nails.html">Turnos y señas</a></b>
+            <p>
+              El mismo cliente usa el sistema de turnos con pagos por Mercado
+              Pago, con caso técnico propio.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-stack reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear">Stack</p>
+          <h2 class="text-appear">Tecnologías del producto.</h2>
+        </div>
+        <div class="stack-groups">
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">API</h3>
+            <p>Go 1.24, PostgreSQL (pgx, sqlc), login por sesión (bcrypt)</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Contrato</h3>
+            <p>OpenAPI como fuente de verdad del cliente generado</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Frontend</h3>
+            <p>PWA en SvelteKit</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">CI</h3>
+            <p>
+              Tests de Go —incluidos tests de integración—, Vitest/Playwright y
+              una verificación que falla si el cliente generado se desvía del
+              contrato OpenAPI
+            </p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Mateo Vazquez</span>
+      <span>Desarrollador Backend Junior · APIs e Integraciones</span>
+      <div class="footer-social">
+        <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/vazquezmateo"
+          target="_blank"
+          rel="noreferrer"
+          >LinkedIn</a
+        >
+        <a href="mailto:castiglionemateo1@gmail.com">Correo</a>
+      </div>
+    </footer>
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>

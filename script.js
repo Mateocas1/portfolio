@@ -47,7 +47,10 @@ const translations = {
     "stack.ai": "Desarrollo asistido por IA",
     "projects.eyebrow": "Proyectos",
     "projects.title": "Proyectos seleccionados.",
-    "project.mena.label": "Freelance · may 2026 – actualidad",
+    "project.mena.client": "cliente freelance",
+    "project.mena.range": "may 2026 – sep 2026",
+    "project.mena.product1": "Producto 1",
+    "project.mena.product2": "Producto 2",
     "project.mena.part1": "Turnos y señas",
     "project.mena.text1":
       "Sistema de turnos con señas para un estudio de uñas real: Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia leídos con OCR (Gemini) con revisión manual y turnos confirmados sincronizados a Google Calendar. Verificado de extremo a extremo en producción con un turno y un pago reales (webhook, cambio de estado y evento de calendario).",
@@ -107,7 +110,10 @@ const translations = {
     "stack.ai": "AI-assisted development",
     "projects.eyebrow": "Projects",
     "projects.title": "Selected projects.",
-    "project.mena.label": "Freelance · may 2026 – present",
+    "project.mena.client": "freelance client",
+    "project.mena.range": "may 2026 – sep 2026",
+    "project.mena.product1": "Product 1",
+    "project.mena.product2": "Product 2",
     "project.mena.part1": "Bookings and deposits",
     "project.mena.text1":
       "Booking and deposit system for a real nail studio: Mercado Pago Checkout Pro with webhooks, transfer receipts read with OCR (Gemini) plus manual review, and confirmed bookings synced to Google Calendar. Verified end to end in production with a real booking and a real payment (webhook, status change and calendar event).",
