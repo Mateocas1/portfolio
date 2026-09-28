@@ -1,87 +1,235 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Mena Nails, case study de Mateo Vazquez sobre turnos, pagos, OCR, Convex, Clerk y Google Calendar para un negocio local." />
-    <title>Mena Nails | Caso técnico</title>
+    <meta
+      name="description"
+      content="Caso técnico de Mena Nails: sistema de turnos y señas con Mercado Pago, OCR de comprobantes y sincronización con Google Calendar; backend de inventario en Go en desarrollo."
+    />
+    <title>Mena Nails | Caso técnico — Mateo Vazquez</title>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const storedTheme = localStorage.getItem("portfolio:theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : prefersDark
+                ? "dark"
+                : "light";
+          root.dataset.theme = theme;
+          root.dataset.lang = "es";
+        } catch {
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.lang = "es";
+        }
+      })();
+    </script>
+    <meta property="og:title" content="Mena Nails | Caso técnico — Mateo Vazquez" />
+    <meta
+      property="og:description"
+      content="Sistema de turnos y señas con Mercado Pago, OCR de comprobantes y Google Calendar; backend de inventario en Go en desarrollo."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://mateocas1.github.io/portfolio/mena-nails.html"
+    />
+    <meta
+      property="og:image"
+      content="https://mateocas1.github.io/portfolio/assets/profile.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="canonical"
+      href="https://mateocas1.github.io/portfolio/mena-nails.html"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230E0F11%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="section-shell case-study-page" style="padding-top: 96px">
-      <a class="button ghost" href="./index.html#projects">Volver al portfolio</a>
-      <section class="hero-copy reveal is-visible" style="margin-top: 42px">
-        <p class="eyebrow">Case study</p>
-        <h1>Mena Nails</h1>
-        <p class="role-line"><span>Sistema de turnos, pagos y automatización</span><span aria-hidden="true" class="role-dot"></span><span>Producto real e integraciones</span></p>
-        <p class="hero-lead">Aplicación full-stack para digitalizar reservas, pagos de seña y gestión administrativa de un salón de uñas. Integra autenticación, panel admin, MercadoPago, flujo alternativo por transferencia, OCR como apoyo a revisión, reglas de disponibilidad y sincronización con Google Calendar.</p>
-        <div class="hero-actions" aria-label="Evidencia pública de Mena Nails">
-          <a class="button primary" href="https://test-kimi.vercel.app/" target="_blank" rel="noreferrer">Demo vigente</a>
-          <a class="button ghost" href="https://landing-rose-theta.vercel.app/" target="_blank" rel="noreferrer">Versión anterior funcional</a>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./index.html" aria-label="Volver al portfolio">
+          <span class="brand-mark" aria-hidden="true">MV</span>
+          <span>Mateo</span>
+        </a>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="./index.html">Inicio</a>
+          <a href="./index.html#proyectos">Proyectos</a>
+          <a href="./index.html#contacto">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
+        <div class="header-actions">
+          <button
+            class="toggle-button"
+            type="button"
+            data-theme-toggle
+            aria-label="Cambiar tema"
+            aria-pressed="false"
+          >
+            <span>Claro</span>
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span>Menú</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="section-shell case-study-page">
+      <section class="hero-copy reveal">
+        <p class="eyebrow text-appear">Caso técnico · Freelance</p>
+        <h1 class="text-appear">Mena Nails</h1>
+        <p class="role-line text-appear">
+          <span>Sistema de turnos, pagos y automatización</span>
+        </p>
+        <p class="hero-lead text-appear">
+          Sistema de turnos con señas para un estudio de uñas real, en
+          producción. Su backend de inventario está en desarrollo.
+        </p>
+        <div class="hero-actions text-appear">
+          <a class="button ghost" href="./index.html#proyectos"
+            >Volver al portfolio</a
+          >
+          <a
+            class="button primary"
+            href="https://github.com/Mateocas1/mena-nails"
+            target="_blank"
+            rel="noreferrer"
+            >Repositorio</a
+          >
         </div>
       </section>
 
-      <section class="case-breakdown reveal is-visible" style="margin-top: 64px">
+      <section class="case-breakdown reveal">
         <div class="case-breakdown__intro">
-          <p class="eyebrow">Problema</p>
-          <h2>Turnos y señas sin perseguir comprobantes.</h2>
-          <p>El negocio necesitaba ordenar disponibilidad, pagos, confirmaciones y agenda sin depender de mensajes repetidos ni validaciones dispersas.</p>
+          <p class="eyebrow text-appear">Turnos y señas</p>
+          <h2 class="text-appear">Reservas y señas sin perseguir comprobantes.</h2>
+          <p class="text-appear">
+            Desarrollado entre mayo y junio de 2026 con Next.js, Convex y Clerk:
+            Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia
+            leídos con OCR (Gemini) con revisión manual y turnos confirmados
+            sincronizados a Google Calendar.
+          </p>
+          <p class="text-appear">
+            El flujo quedó verificado de extremo a extremo en producción con un
+            turno y un pago reales: webhook recibido, cambio de estado y evento
+            de calendario.
+          </p>
         </div>
         <div class="case-breakdown__grid" aria-label="Decisiones técnicas de Mena Nails">
-          <article>
+          <article class="text-appear">
             <span>Solución</span>
-            <b>Reserva + pago + admin + calendario</b>
-            <p>Landing orientada a conversión, wizard de reserva, MercadoPago, transferencia con comprobante, revisión administrativa y sincronización con Google Calendar.</p>
+            <b>Reserva, pago y agenda integrados</b>
+            <p>
+              Señas por Mercado Pago Checkout Pro con webhooks; transferencias
+              como flujo alternativo con comprobante leído por OCR (Gemini) y
+              revisión manual; turnos confirmados sincronizados a Google
+              Calendar.
+            </p>
           </article>
-          <article>
+          <article class="text-appear">
             <span>Tradeoffs</span>
             <b>OCR como apoyo, no autoridad final</b>
-            <p>Gemini OCR ayuda a leer comprobantes, pero el sistema conserva revisión humana para evitar automatizar decisiones sensibles de pago.</p>
+            <p>
+              El OCR ayuda a leer comprobantes de transferencia, pero el sistema
+              conserva revisión humana antes de confirmar: no se automatiza una
+              decisión sensible de pago.
+            </p>
           </article>
-          <article>
+          <article class="text-appear">
             <span>Resultado</span>
-            <b>Flujo operativo más claro</b>
-            <p>El caso muestra producto aplicado: estados, autenticación, integraciones, reglas de disponibilidad, panel interno y documentación operativa.</p>
+            <b>Verificado en producción</b>
+            <p>
+              Un turno y un pago reales completaron el ciclo completo en
+              producción: webhook, cambio de estado y evento de calendario.
+            </p>
           </article>
-          <article>
-            <span>Alcance verificado</span>
-            <b>Flujo completo probado</b>
-            <p>Proyecto funcional y testeado end-to-end con reserva, pago, comprobante, panel y calendario. El pendiente externo es dominio propio y operación pública sostenida.</p>
+          <article class="text-appear">
+            <span>Estado actual</span>
+            <b>Inventario en desarrollo</b>
+            <p>
+              Desde septiembre de 2026 se construye el backend de inventario del
+              mismo negocio, con contrato OpenAPI y pruebas en CI.
+            </p>
           </article>
         </div>
       </section>
 
-      <section class="case-stack reveal is-visible">
-        <div class="section-heading split">
-          <div>
-            <p class="eyebrow">Stack</p>
-            <h2>Tecnologías usadas</h2>
-          </div>
-          <p>No lo presento como lista de logos: cada tecnología aparece conectada a una responsabilidad concreta del producto.</p>
+      <section class="case-stack reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear">Inventario (en desarrollo)</p>
+          <h2 class="text-appear">Backend de inventario en Go.</h2>
         </div>
-        <div class="stack-showcase" aria-label="Stack técnico de Mena Nails">
-          <article class="stack-group">
-            <span class="stack-group__title">Frontend</span>
-            <p>Interfaz de reserva, conversión, responsive UI y SEO técnico.</p>
-            <div class="stack-group__chips"><span>Next.js</span><span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>SEO técnico</span></div>
-          </article>
-          <article class="stack-group">
-            <span class="stack-group__title">Backend y datos</span>
-            <p>Estados de reserva, reglas de disponibilidad, autenticación y panel admin.</p>
-            <div class="stack-group__chips"><span>Convex</span><span>Clerk</span><span>Estados operativos</span><span>Reglas de disponibilidad</span></div>
-          </article>
-          <article class="stack-group">
-            <span class="stack-group__title">Pagos y automatización</span>
-            <p>Señas, comprobantes, revisión asistida y agenda sincronizada.</p>
-            <div class="stack-group__chips"><span>MercadoPago</span><span>Gemini OCR</span><span>Google Calendar API</span><span>Transferencia</span></div>
-          </article>
-          <article class="stack-group">
-            <span class="stack-group__title">Calidad</span>
-            <p>Validación de flujos principales y documentación para defender decisiones.</p>
-            <div class="stack-group__chips"><span>Vitest</span><span>Playwright</span><span>Flujos E2E</span><span>Documentación operativa</span></div>
-          </article>
+        <div class="stack-groups">
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">API</h3>
+            <p>Go 1.24, PostgreSQL (pgx, sqlc), login por sesión (bcrypt)</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Contrato</h3>
+            <p>OpenAPI como fuente de verdad del cliente generado</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Frontend</h3>
+            <p>PWA en SvelteKit</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">CI</h3>
+            <p>
+              Tests de Go —incluidos tests de integración—, Vitest/Playwright y
+              una verificación que falla si el cliente generado se desvía del
+              contrato OpenAPI
+            </p>
+          </section>
         </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <span>Mateo Vazquez</span>
+      <span>Desarrollador Backend Junior · APIs e Integraciones</span>
+      <div class="footer-social">
+        <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/vazquezmateo"
+          target="_blank"
+          rel="noreferrer"
+          >LinkedIn</a
+        >
+        <a href="mailto:castiglionemateo1@gmail.com">Correo</a>
+      </div>
+    </footer>
+    <script src="./script.js" type="module"></script>
   </body>
 </html>

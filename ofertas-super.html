@@ -1,105 +1,276 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="ofertasSUPER, case study de Mateo Vazquez sobre datos, APIs, ingesta, normalización/deduplicación, cache y límites honestos." />
-    <title>ofertasSUPER | Caso técnico</title>
+    <meta
+      name="description"
+      content="Caso técnico de ofertaSUPER: comparador de precios de supermercados argentinos con datos de la API de VTEX, emparejamiento por EAN, PostgreSQL y Redis, con CI en cada push."
+    />
+    <title>ofertaSUPER | Caso técnico — Mateo Vazquez</title>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const storedTheme = localStorage.getItem("portfolio:theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : prefersDark
+                ? "dark"
+                : "light";
+          root.dataset.theme = theme;
+          root.dataset.lang = "es";
+        } catch {
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.lang = "es";
+        }
+      })();
+    </script>
+    <meta
+      property="og:title"
+      content="ofertaSUPER | Caso técnico — Mateo Vazquez"
+    />
+    <meta
+      property="og:description"
+      content="Comparador de precios de supermercados argentinos: API de VTEX, emparejamiento por EAN, PostgreSQL y Redis, con CI en cada push."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://mateocas1.github.io/portfolio/ofertas-super.html"
+    />
+    <meta
+      property="og:image"
+      content="https://mateocas1.github.io/portfolio/assets/profile.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="canonical"
+      href="https://mateocas1.github.io/portfolio/ofertas-super.html"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230E0F11%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="section-shell" style="padding-top: 96px; max-width: 980px">
-      <a class="button ghost" href="./index.html#projects">Volver al portfolio</a>
-      <section class="hero-copy reveal is-visible" style="margin-top: 42px">
-        <p class="eyebrow">Case study</p>
-        <h1>ofertasSUPER</h1>
-        <p class="role-line"><span>Comparador de ofertas y precios</span><span aria-hidden="true" class="role-dot"></span><span>Backend, datos y operación</span></p>
-        <p class="hero-lead">Aplicación full-stack para buscar productos, comparar precios y armar una canasta local con foco en confianza del dato. Incluye APIs públicas, modelo de catálogo con Prisma/Supabase, ingesta, normalización/deduplicación, control de calidad de datos, cache/rate limiting y documentación de límites.</p>
-      </section>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
 
-      <section class="proof reveal is-visible" style="margin-top: 46px">
-        <div class="section-heading split"><div><p class="eyebrow">Problema</p><h2>Comparar precios exige confianza del dato, no solo UI.</h2></div><p>Un precio sin fuente, fecha, deduplicación ni límite visible puede confundir al usuario y debilitar el producto.</p></div>
-        <div class="credential-rail">
-          <article>
-            <span>Solución</span>
-            <b>Búsqueda, catálogo, APIs y canasta</b>
-            <p>Flujo público con búsqueda, detalle de producto, ofertas, canasta local y modelo de datos para sostener historial y categorías.</p>
-          </article>
-          <article>
-            <span>Tradeoffs</span>
-            <b>Freshness explícito</b>
-            <p>El proyecto prioriza límites claros: no afirmar precios siempre vigentes ni ingesta activa sin evidencia fresca.</p>
-          </article>
-          <article>
-            <span>Resultado</span>
-            <b>Prueba full-stack defendible</b>
-            <p>Muestra backend, datos, cache, rate limiting, admin protegido, documentación y criterio para no sobreprometer.</p>
-          </article>
-          <article>
-            <span>Límites honestos</span>
-            <b>Demo y evidencia controlada</b>
-            <p>No afirmo producto cerrado, precios siempre vigentes, admin positivo productivo ni ingesta productiva activa sin smoke público reciente.</p>
-          </article>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./index.html" aria-label="Volver al portfolio">
+          <span class="brand-mark" aria-hidden="true">MV</span>
+          <span>Mateo</span>
+        </a>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="./index.html">Inicio</a>
+          <a href="./index.html#proyectos">Proyectos</a>
+          <a href="./index.html#contacto">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
+        <div class="header-actions">
+          <button
+            class="toggle-button"
+            type="button"
+            data-theme-toggle
+            aria-label="Cambiar tema"
+            aria-pressed="false"
+          >
+            <span>Claro</span>
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span>Menú</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="section-shell case-study-page">
+      <section class="hero-copy reveal">
+        <p class="eyebrow text-appear">Caso técnico · mar 2026 – actualidad</p>
+        <h1 class="text-appear">ofertaSUPER</h1>
+        <p class="role-line text-appear">
+          <span>Comparador de precios de supermercados argentinos</span>
+        </p>
+        <p class="hero-lead text-appear">
+          El MVP está completo y desplegado como demo pública: compara precios
+          de 6 supermercados, empareja productos por código EAN y permite armar
+          una canasta para comparar entre tiendas.
+        </p>
+        <div class="hero-actions text-appear">
+          <a class="button ghost" href="./index.html#proyectos"
+            >Volver al portfolio</a
+          >
+          <a
+            class="button primary"
+            href="https://ofertas-super.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            >Demo pública</a
+          >
+          <a
+            class="button ghost"
+            href="https://github.com/Mateocas1/ofertaSUPER"
+            target="_blank"
+            rel="noreferrer"
+            >Repositorio</a
+          >
         </div>
       </section>
 
-      <section class="section-shell" style="padding-left: 0; padding-right: 0">
+      <section class="proof reveal">
         <div class="section-heading split">
           <div>
-            <p class="eyebrow">Flujo de datos</p>
-            <h2>De fuente externa a búsqueda defendible.</h2>
+            <p class="eyebrow text-appear">El problema</p>
+            <h2 class="text-appear">
+              Comparar precios exige confianza del dato, no solo interfaz.
+            </h2>
           </div>
-          <p>
-            El valor técnico está en tratar cada precio como dato con contexto:
-            origen, validación, deduplicación, freshness y límites visibles.
+          <p class="text-appear">
+            Un precio comparado solo sirve si el producto es el mismo y el dato
+            es consistente: la base del proyecto es la ingesta desde la API de
+            VTEX y el emparejamiento por EAN.
           </p>
         </div>
-        <div class="data-flow" aria-label="Flujo de datos de ofertasSUPER">
-          <article class="flow-step">
-            <span>01</span>
-            <b>Fuente externa</b>
-            <p>Datos de productos/ofertas llegan desde fuentes de supermercado.</p>
+        <div class="credential-rail">
+          <article class="text-appear">
+            <span>Datos</span>
+            <b>6 supermercados vía API de VTEX</b>
+            <p>
+              Carrefour, DIA, Disco, Jumbo, Vea y Más: los datos se cargan desde
+              la API de VTEX y los productos se emparejan por código EAN.
+            </p>
           </article>
-          <i aria-hidden="true">→</i>
-          <article class="flow-step">
-            <span>02</span>
-            <b>Staging</b>
-            <p>La ingesta trabaja en modo controlado antes de promover datos.</p>
+          <article class="text-appear">
+            <span>Construcción</span>
+            <b>Next.js, PostgreSQL y Redis</b>
+            <p>
+              Next.js y TypeScript, PostgreSQL (Supabase, Prisma) y Redis para
+              caché y rate limiting; 13 endpoints REST y panel de administración
+              con Clerk.
+            </p>
           </article>
-          <i aria-hidden="true">→</i>
-          <article class="flow-step">
-            <span>03</span>
-            <b>Validación</b>
-            <p>Normalización y deduplicación; métricas y control de calidad.</p>
+          <article class="text-appear">
+            <span>Calidad</span>
+            <b>CI en cada push</b>
+            <p>
+              GitHub Actions ejecuta lint, typecheck, tests, build y Lighthouse,
+              con alrededor de 750 pruebas automatizadas.
+            </p>
           </article>
-          <i aria-hidden="true">→</i>
-          <article class="flow-step">
-            <span>04</span>
-            <b>Catálogo</b>
-            <p>Prisma/Supabase sostienen productos, precios e historial.</p>
-          </article>
-          <i aria-hidden="true">→</i>
-          <article class="flow-step">
-            <span>05</span>
-            <b>Búsqueda y APIs</b>
-            <p>UI, endpoints públicos y canasta local consumen datos con límites.</p>
+          <article class="text-appear">
+            <span>Operación</span>
+            <b>Ingesta y backups</b>
+            <p>
+              La ingesta corre como jobs de Docker y los backups cifrados se
+              guardan en Cloudflare R2.
+            </p>
           </article>
         </div>
-        <p class="flow-note">
-          Límite visible: no afirmo precios siempre vigentes ni ingesta productiva
-          activa sin smoke público reciente.
-        </p>
       </section>
 
-      <section class="section-shell" style="padding-left: 0; padding-right: 0">
-        <div class="section-heading split"><div><p class="eyebrow">Links</p><h2>Evidencia pública</h2></div></div>
-        <div class="project-links"><a href="https://ofertas-super.vercel.app" target="_blank" rel="noreferrer">Demo pública</a><a href="https://github.com/Mateocas1/ofertaSUPER" target="_blank" rel="noreferrer">Repositorio</a></div>
+      <section class="case-stack reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear">Flujo de datos</p>
+          <h2 class="text-appear">De la API de VTEX a la comparación.</h2>
+        </div>
+        <div class="data-flow" aria-label="Flujo de datos de ofertaSUPER">
+          <article class="flow-step text-appear">
+            <span>Fuente</span>
+            <b>API de VTEX</b>
+            <p>Datos de productos y ofertas de 6 supermercados.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>Ingesta</span>
+            <b>Jobs de Docker</b>
+            <p>La carga de datos corre como jobs programados.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>Emparejamiento</span>
+            <b>Código EAN</b>
+            <p>Los productos se emparejan entre tiendas por EAN.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>Catálogo</span>
+            <b>PostgreSQL</b>
+            <p>Supabase y Prisma sostienen productos, precios e historial.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>Consumo</span>
+            <b>13 endpoints REST</b>
+            <p>Búsqueda, comparación y canasta, con Redis para caché y rate
+            limiting.</p>
+          </article>
+        </div>
       </section>
 
-      <section class="section-shell" style="padding-left: 0; padding-right: 0">
-        <div class="section-heading split"><div><p class="eyebrow">Stack</p><h2>Tecnologías usadas</h2></div></div>
-        <div class="tech-list compact"><span class="tech-chip">Next.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Prisma</span><span class="tech-chip">Supabase</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">RLS</span><span class="tech-chip">Pipelines de datos</span><span class="tech-chip">Deduplicación</span><span class="tech-chip">Upstash Redis</span><span class="tech-chip">GitHub Actions</span><span class="tech-chip">Vercel</span></div>
+      <section class="case-stack reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear">Stack</p>
+          <h2 class="text-appear">Tecnologías usadas.</h2>
+        </div>
+        <div class="stack-groups">
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Aplicación</h3>
+            <p>Next.js, TypeScript</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Datos</h3>
+            <p>PostgreSQL, Supabase, Prisma, Redis</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">APIs y panel</h3>
+            <p>13 endpoints REST, panel de administración con Clerk</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">CI y operación</h3>
+            <p>
+              GitHub Actions (lint, typecheck, tests, build, Lighthouse), jobs
+              de Docker para ingesta, backups cifrados en Cloudflare R2
+            </p>
+          </section>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <span>Mateo Vazquez</span>
+      <span>Desarrollador Backend Junior · APIs e Integraciones</span>
+      <div class="footer-social">
+        <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/vazquezmateo"
+          target="_blank"
+          rel="noreferrer"
+          >LinkedIn</a
+        >
+        <a href="mailto:castiglionemateo1@gmail.com">Correo</a>
+      </div>
+    </footer>
+    <script src="./script.js" type="module"></script>
   </body>
 </html>

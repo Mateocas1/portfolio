@@ -59,8 +59,12 @@ const translations = {
     "projects.eyebrow": "Proyectos",
     "projects.title": "Proyectos seleccionados.",
     "project.mena.label": "Freelance · may 2026 – actualidad",
-    "project.mena.text":
-      "Sistema de turnos con señas para un estudio de uñas real: Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia leídos con OCR (Gemini) con revisión manual y turnos confirmados sincronizados a Google Calendar. Verificado de extremo a extremo en producción con un turno y un pago reales (webhook, cambio de estado y evento de calendario). Su backend de inventario está en desarrollo: API en Go 1.24 con PostgreSQL (pgx, sqlc), contrato OpenAPI y login por sesión (bcrypt), frontend PWA en SvelteKit, y CI con tests de Go —incluidos tests de integración—, Vitest/Playwright y una verificación que falla si el cliente generado se desvía del contrato OpenAPI.",
+    "project.mena.part1": "Turnos y señas",
+    "project.mena.text1":
+      "Sistema de turnos con señas para un estudio de uñas real: Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia leídos con OCR (Gemini) con revisión manual y turnos confirmados sincronizados a Google Calendar. Verificado de extremo a extremo en producción con un turno y un pago reales (webhook, cambio de estado y evento de calendario).",
+    "project.mena.part2": "Inventario (en desarrollo)",
+    "project.mena.text2":
+      "API en Go 1.24 con PostgreSQL (pgx, sqlc), contrato OpenAPI y login por sesión (bcrypt), frontend PWA en SvelteKit, y CI con tests de Go —incluidos tests de integración—, Vitest/Playwright y una verificación que falla si el cliente generado se desvía del contrato OpenAPI.",
     "project.mena.stack":
       "Next.js · Convex · Clerk · Mercado Pago · Gemini · Google Calendar · Go · PostgreSQL · SvelteKit",
     "project.super.label": "mar 2026 – actualidad",
@@ -131,8 +135,12 @@ const translations = {
     "projects.eyebrow": "Projects",
     "projects.title": "Selected projects.",
     "project.mena.label": "Freelance · may 2026 – present",
-    "project.mena.text":
-      "Booking and deposit system for a real nail studio: Mercado Pago Checkout Pro with webhooks, transfer receipts read with OCR (Gemini) plus manual review, and confirmed bookings synced to Google Calendar. Verified end to end in production with a real booking and a real payment (webhook, status change and calendar event). Its inventory backend is in development: a Go 1.24 API with PostgreSQL (pgx, sqlc), an OpenAPI contract and session-based login (bcrypt), a SvelteKit PWA frontend, and CI with Go tests —including integration tests—, Vitest/Playwright, and a check that fails when the generated client drifts from the OpenAPI contract.",
+    "project.mena.part1": "Bookings and deposits",
+    "project.mena.text1":
+      "Booking and deposit system for a real nail studio: Mercado Pago Checkout Pro with webhooks, transfer receipts read with OCR (Gemini) plus manual review, and confirmed bookings synced to Google Calendar. Verified end to end in production with a real booking and a real payment (webhook, status change and calendar event).",
+    "project.mena.part2": "Inventory (in development)",
+    "project.mena.text2":
+      "A Go 1.24 API with PostgreSQL (pgx, sqlc), an OpenAPI contract and session-based login (bcrypt), a SvelteKit PWA frontend, and CI with Go tests —including integration tests—, Vitest/Playwright, and a check that fails when the generated client drifts from the OpenAPI contract.",
     "project.mena.stack":
       "Next.js · Convex · Clerk · Mercado Pago · Gemini · Google Calendar · Go · PostgreSQL · SvelteKit",
     "project.super.label": "mar 2026 – present",
