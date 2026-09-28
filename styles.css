@@ -149,10 +149,9 @@ h3 {
 /* Small mono labels: dates, eyebrows, stack lines, metadata */
 .eyebrow,
 .project-label,
-.step-label,
-.stack-number,
-.case-index,
 .stack-group__title,
+.project-stack,
+.edu-meta,
 .case-breakdown__grid span,
 .credential-rail span,
 .flow-step span {
@@ -162,6 +161,31 @@ h3 {
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* Project stack lines are metadata, but stay muted, not accent */
+.project-stack {
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* ---------- Skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  top: -64px;
+  left: var(--space-4);
+  z-index: 30;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+.skip-link:focus-visible {
+  top: var(--space-2);
 }
 
 /* ---------- Focus ---------- */
@@ -200,7 +224,7 @@ button:focus-visible,
 }
 
 .brand,
-.nav,
+.site-nav,
 .header-actions,
 .hero-actions,
 .tech-list,
@@ -227,7 +251,7 @@ button:focus-visible,
   font-size: 0.8rem;
 }
 
-.nav {
+.site-nav {
   justify-content: center;
   gap: clamp(var(--space-4), 3vw, var(--space-6));
   color: var(--muted);
@@ -235,11 +259,11 @@ button:focus-visible,
   font-size: 0.95rem;
 }
 
-.nav a {
+.site-nav a {
   transition: color 160ms ease;
 }
 
-.nav a:hover {
+.site-nav a:hover {
   color: var(--accent);
 }
 
@@ -248,7 +272,8 @@ button:focus-visible,
   gap: var(--space-2);
 }
 
-.toggle-button {
+.toggle-button,
+.menu-toggle {
   min-height: 36px;
   padding: 0 var(--space-3);
   border: 1px solid var(--border);
@@ -260,13 +285,14 @@ button:focus-visible,
   transition: border-color 160ms ease, color 160ms ease;
 }
 
-.toggle-button:hover {
+.toggle-button:hover,
+.menu-toggle:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-/* Social rail is retired; links move to footer/contact (T2 removes markup) */
-.social-rail {
+/* Disclosure menu button: only visible on small screens */
+.menu-toggle {
   display: none;
 }
 
@@ -297,12 +323,20 @@ button:focus-visible,
   font-weight: 500;
 }
 
-/* Flat accent dot: no glow */
+/* Flat accent dot: no glow (case pages still use it) */
 .role-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+.hero-location {
+  margin: calc(-1 * var(--space-3)) 0 var(--space-5);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
 }
 
 .hero-lead {
@@ -357,8 +391,9 @@ button:focus-visible,
 /* ---------- Hero photo: flat, no rotation, no double border ---------- */
 
 .hero-visual {
-  position: relative;
-  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-photo-frame {
@@ -375,11 +410,10 @@ button:focus-visible,
   object-fit: cover;
 }
 
+/* Sits under the photo, left edge aligned with the photo's left edge */
 .status-note {
-  position: absolute;
-  right: 0;
-  bottom: -56px;
-  max-width: 270px;
+  width: min(360px, 76vw);
+  margin: var(--space-3) 0 0;
   padding: var(--space-3) 0 0;
   border-top: 1px solid var(--border);
   color: var(--muted);
@@ -398,15 +432,15 @@ button:focus-visible,
 
 /* ---------- Sections ---------- */
 
-.about,
 .skills,
+.stack,
 .projects,
 .proof,
+.education,
 .contact {
   padding: clamp(var(--space-8), 9vw, 110px) 0;
 }
 
-.about,
 .proof {
   display: grid;
   grid-template-columns: 0.52fr 1.48fr;
@@ -429,73 +463,36 @@ button:focus-visible,
 
 .section-heading p,
 .section-kicker p,
-.journey-step p,
-.stack-cluster p,
+.stack-group p,
 .project-copy p,
 .credential-rail p {
   color: var(--muted);
 }
 
-/* ---------- Journey timeline ---------- */
-
-.journey-timeline {
-  display: grid;
+.stack .section-heading,
+.projects .section-heading,
+.education .section-heading,
+.contact .section-heading {
+  margin-bottom: var(--space-6);
 }
 
-.journey-step {
+/* ---------- Stack groups (plain-text lists) ---------- */
+
+.stack-groups {
   display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: var(--space-5);
-  padding: 0 0 var(--space-6);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-5);
+}
+
+.stack-groups .stack-group {
+  min-width: 0;
+  padding: var(--space-4) 0 0;
   border-top: 1px solid var(--border);
 }
 
-.journey-step:first-child {
-  border-top: 0;
-}
-
-.journey-step:last-child {
-  padding-bottom: 0;
-}
-
-.step-index {
-  display: grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-}
-
-.journey-step.is-current .step-index {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* ---------- Stack clusters ---------- */
-
-.skills {
-  border-top: 1px solid var(--border);
-}
-
-.stack-atlas {
-  display: grid;
-  grid-template-columns: 1.15fr 0.9fr 1fr;
-  gap: clamp(var(--space-5), 4vw, var(--space-7));
-  align-items: start;
-}
-
-.stack-cluster {
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--border);
-}
-
-.stack-number {
-  display: inline-block;
-  margin-bottom: var(--space-4);
+.stack-groups .stack-group p {
+  margin: var(--space-2) 0 0;
+  font-size: 0.95rem;
 }
 
 .tech-list {
@@ -505,8 +502,7 @@ button:focus-visible,
   margin-top: var(--space-4);
 }
 
-/* Single shared chip style (was duplicated for .tech-chip and
-   .stack-group__chips span). Neutral: accent stays out of the chips. */
+/* Single shared chip style (case pages still use chips until T3) */
 .tech-chip,
 .stack-group__chips span {
   display: inline-flex;
@@ -527,31 +523,9 @@ button:focus-visible,
   border-top: 1px solid var(--border);
 }
 
-.case-study {
-  display: grid;
-  grid-template-columns: 64px 0.92fr 1.08fr;
-  gap: clamp(var(--space-5), 4vw, var(--space-7));
-  align-items: center;
-  padding: clamp(var(--space-6), 5vw, var(--space-8)) 0;
-  border-top: 1px solid var(--border);
-}
-
-.case-study.reversed {
-  grid-template-columns: 64px 1.08fr 0.92fr;
-}
-
-.case-study.reversed .project-preview {
-  order: 3;
-}
-
-.case-index {
-  align-self: start;
-  padding-top: var(--space-3);
-}
-
-.project-preview {
-  min-height: 280px;
-  padding: var(--space-6) var(--space-5);
+.project-card {
+  margin-top: var(--space-5);
+  padding: clamp(var(--space-5), 4vw, var(--space-6));
   background: var(--surface);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   backdrop-filter: blur(16px) saturate(140%);
@@ -559,38 +533,31 @@ button:focus-visible,
   border-radius: var(--radius-md);
 }
 
-/* Solid fallback when backdrop-filter is not supported */
-@supports not (backdrop-filter: blur(1px)) {
-  .site-header,
-  .project-preview {
-    background: var(--surface-solid);
-  }
+.project-card:first-of-type {
+  margin-top: 0;
 }
 
-.mock-calendar,
-.mock-table {
+.project-card.has-media {
   display: grid;
-  gap: var(--space-3);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
 }
 
-.mock-calendar b,
-.mock-table b {
-  font-size: 1.2rem;
-}
-
-.mock-calendar span,
-.mock-table span {
-  padding: var(--space-3);
+.project-media img {
+  width: 100%;
+  height: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  color: var(--muted);
-  font-size: 0.95rem;
 }
 
-.made-with {
-  margin: var(--space-5) 0 0;
-  color: var(--muted) !important;
-  font-weight: 500;
+.project-label {
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.project-text {
+  max-width: 70ch;
 }
 
 .project-links {
@@ -617,6 +584,24 @@ button:focus-visible,
 
 .compact {
   margin-top: var(--space-4);
+}
+
+/* ---------- Education ---------- */
+
+.edu-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.edu-item {
+  min-width: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.edu-meta {
+  margin: var(--space-2) 0 0;
 }
 
 /* ---------- Case pages ---------- */
@@ -768,12 +753,12 @@ button:focus-visible,
   overflow: hidden;
 }
 
-.stack-group {
+.stack-showcase .stack-group {
   min-width: 0;
   padding: clamp(var(--space-5), 3vw, var(--space-6));
 }
 
-.stack-group p {
+.stack-showcase .stack-group p {
   margin: var(--space-3) 0 var(--space-4);
   color: var(--muted);
 }
@@ -799,11 +784,6 @@ button:focus-visible,
   flex-wrap: wrap;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-}
-
-/* Terminal prompt is retired; T2 removes the markup */
-.command-prompt {
-  display: none;
 }
 
 .contact-command a {
@@ -837,10 +817,27 @@ button:focus-visible,
   margin: 0 auto;
   padding: var(--space-5) 0 var(--space-6);
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
   color: var(--muted);
   border-top: 1px solid var(--border);
+}
+
+.footer-social {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer-social a,
+.site-footer a {
+  transition: color 160ms ease;
+}
+
+.footer-social a:hover,
+.site-footer a:hover {
+  color: var(--accent);
 }
 
 /* ---------- Motion: one subtle fade/translate reveal ---------- */
@@ -869,37 +866,18 @@ button:focus-visible,
 /* ---------- Responsive ---------- */
 
 @media (max-width: 980px) {
-  .header-inner {
-    grid-template-columns: 1fr;
-    justify-items: stretch;
-    padding: var(--space-3) 0;
-  }
-
-  .nav {
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-
-  .header-actions {
-    justify-content: flex-start;
-  }
-
   .hero,
-  .about,
   .section-heading.split,
-  .proof,
-  .case-study,
-  .case-study.reversed {
+  .proof {
     grid-template-columns: 1fr;
   }
 
-  .case-study.reversed .project-preview {
-    order: 0;
+  .project-card.has-media {
+    grid-template-columns: 1fr;
   }
 
-  .stack-atlas,
-  .credential-rail {
-    grid-template-columns: 1fr;
+  .stack-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .case-study-page {
@@ -917,6 +895,10 @@ button:focus-visible,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .credential-rail {
+    grid-template-columns: 1fr;
+  }
+
   .credential-rail article {
     padding: var(--space-4) 0;
     border-right: 0;
@@ -930,11 +912,6 @@ button:focus-visible,
   .credential-rail article:last-child {
     border-bottom: 0;
   }
-
-  .status-note {
-    position: static;
-    margin-top: var(--space-5);
-  }
 }
 
 @media (max-width: 768px) {
@@ -942,13 +919,48 @@ button:focus-visible,
     padding: 0 var(--space-3);
   }
 
+  /* One row: brand + actions; nav becomes a disclosure menu */
   .header-inner {
-    min-height: auto;
+    grid-template-columns: auto 1fr;
+    min-height: 56px;
     gap: var(--space-3);
   }
 
-  .nav {
-    gap: var(--space-4);
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 19;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-solid);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .site-nav a:first-child {
+    border-top: 0;
+  }
+
+  .header-actions .toggle-button {
+    min-height: 32px;
+    padding: 0 var(--space-2);
     font-size: 0.9rem;
   }
 
@@ -957,14 +969,9 @@ button:focus-visible,
     padding-top: var(--space-6);
   }
 
-  .journey-step {
-    grid-template-columns: 48px 1fr;
-    gap: var(--space-4);
-  }
-
-  .step-index {
-    width: 48px;
-    height: 48px;
+  .stack-groups,
+  .edu-list {
+    grid-template-columns: 1fr;
   }
 
   .case-breakdown__grid,
@@ -995,6 +1002,7 @@ button:focus-visible,
 
   .site-footer {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 

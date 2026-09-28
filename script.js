@@ -17,201 +17,156 @@ const storage = {
 
 const translations = {
   es: {
-    "rail.email": "Correo",
-    "nav.about": "Sobre mí",
-    "nav.skills": "Stack",
+    "a11y.skip": "Saltar al contenido",
+    "nav.stack": "Stack",
     "nav.projects": "Proyectos",
+    "nav.education": "Formación",
     "nav.contact": "Contacto",
     "nav.resume": "CV",
     "toggle.lang": "EN",
     "toggle.theme": "Claro",
+    "menu.toggle": "Menú",
     "hero.eyebrow": "Hola, soy",
-    "hero.role.primary": "Full-stack Developer",
-    "hero.role.secondary": "Producto, integraciones, datos e IA",
+    "hero.headline":
+      "Desarrollador Backend Junior · APIs e Integraciones · TypeScript, Node.js y Go",
+    "hero.location": "Buenos Aires, Argentina",
     "hero.lead":
-      "Desarrollador web orientado a producto, con Diplomatura en Professional Full-Stack Developer aprobada en UTN FRBA. Construyo interfaces, flujos e integraciones con criterio práctico: pagos, OCR, calendarios, dashboards, SEO técnico y automatización apoyada en IA.",
-    "hero.status": "Disponible para equipos web, startups y producto digital",
+      "Desarrollador backend junior formado en UTN FRBA. Desarrollé para un estudio de uñas un sistema de turnos con pagos reales por Mercado Pago y hoy construyo su backend de inventario en Go. Trabajo con TypeScript, Node.js, PostgreSQL y APIs REST, con pruebas automatizadas y CI/CD en cada cambio.",
+    "hero.status": "Disponible para posiciones backend junior",
     "cta.resume": "Descargar CV",
     "cta.projects": "Ver proyectos",
-    "about.eyebrow": "Sobre mí",
-    "about.title": "Criterio operativo llevado a desarrollo web.",
-    "about.past.label": "Antes",
-    "about.past.title": "Procesos reales y usuarios reales",
-    "about.past.text":
-      "Mi base viene de Carrefour y tareas operativas: atención al cliente, reposición, inventario, rotación, conteo y criterios FIFO/FEFO. Esa experiencia me entrenó para entender flujos, prioridades y problemas de negocio.",
-    "about.present.label": "Ahora",
-    "about.present.title": "Formación full-stack y proyectos aplicados",
-    "about.present.text":
-      "Diplomatura en Professional Full-Stack Developer aprobada en UTN FRBA: 187 horas, modalidad a distancia, nota Aprobado. También aprobé el Curso de Desarrollo con NodeJS con nota Excelente. Trabajo con Git, debugging e IA como herramienta de desarrollo.",
-    "about.future.label": "Próximo paso",
-    "about.future.title": "Entrar a un equipo de producto",
-    "about.future.text":
-      "Busco aportar en una startup, equipo de producto digital o compañía que valore criterio, aprendizaje rápido, comunicación clara y capacidad para convertir necesidades reales en software útil.",
     "skills.eyebrow": "Stack",
-    "skills.title": "Stack técnico aplicado a productos web reales.",
-    "skills.frontend.text":
-      "Interfaces responsivas, accesibles y orientadas a conversión.",
-    "skills.backend.text":
-      "APIs, persistencia, reglas de negocio y datos operativos.",
-    "skills.tools.title": "Integraciones y herramientas",
-    "skills.tools.text":
-      "Automatización, validación, testing y entrega con criterio.",
-    "skill.seo": "SEO técnico",
-    "skill.accessibility": "Accesibilidad",
-    "skill.ai": "IA aplicada",
+    "skills.title": "Stack técnico por área de trabajo.",
+    "stack.languages": "Lenguajes",
+    "stack.languages.items": "TypeScript, JavaScript, Go, SQL",
+    "stack.backend": "Backend",
+    "stack.backend.items":
+      "Node.js, Fastify, Next.js route handlers, REST APIs, OpenAPI, webhooks, Prisma, sqlc",
+    "stack.data": "Datos",
+    "stack.data.items": "PostgreSQL, Supabase, Redis, Convex",
+    "stack.frontend": "Frontend",
+    "stack.frontend.items": "React, Next.js, SvelteKit, Tailwind",
+    "stack.integrations": "Integraciones",
+    "stack.integrations.items":
+      "Mercado Pago, Google Calendar API, Gemini (OCR), Clerk, VTEX API",
+    "stack.testing": "Testing y CI/CD",
+    "stack.testing.items": "Vitest, Playwright, Go test, GitHub Actions, Docker",
+    "stack.cloud": "Cloud",
+    "stack.cloud.items": "Vercel, Cloudflare (R2, Workers)",
+    "stack.ai": "Desarrollo asistido por IA",
+    "stack.ai.items":
+      "Claude Code, Codex, agent workflows, MCP, human review of generated code",
     "projects.eyebrow": "Proyectos",
-    "projects.title": "Proyectos pensados para resolver procesos reales.",
-    "projects.intro":
-      "Cada caso muestra una parte distinta del trabajo: integraciones, reglas de negocio, datos, automatización y experiencia de usuario.",
-    "project.made": "Tecnologías usadas:",
+    "projects.title": "Proyectos seleccionados.",
+    "project.mena.label": "Freelance · may 2026 – actualidad",
+    "project.mena.text":
+      "Sistema de turnos con señas para un estudio de uñas real: Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia leídos con OCR (Gemini) con revisión manual y turnos confirmados sincronizados a Google Calendar. Verificado de extremo a extremo en producción con un turno y un pago reales (webhook, cambio de estado y evento de calendario). Su backend de inventario está en desarrollo: API en Go 1.24 con PostgreSQL (pgx, sqlc), contrato OpenAPI y login por sesión (bcrypt), frontend PWA en SvelteKit, y CI con tests de Go —incluidos tests de integración—, Vitest/Playwright y una verificación que falla si el cliente generado se desvía del contrato OpenAPI.",
+    "project.mena.stack":
+      "Next.js · Convex · Clerk · Mercado Pago · Gemini · Google Calendar · Go · PostgreSQL · SvelteKit",
+    "project.super.label": "mar 2026 – actualidad",
+    "project.super.text":
+      "Comparador de precios de supermercados argentinos: carga datos de 6 supermercados (Carrefour, DIA, Disco, Jumbo, Vea y Más) desde la API de VTEX y empareja productos por código EAN. Construido con Next.js y TypeScript, PostgreSQL (Supabase, Prisma) y Redis para caché y rate limiting; 13 endpoints REST y panel de administración con Clerk. GitHub Actions ejecuta lint, typecheck, tests, build y Lighthouse en cada push, con alrededor de 750 pruebas automatizadas; la ingesta corre como jobs de Docker y los backups cifrados se guardan en Cloudflare R2.",
+    "project.super.stack":
+      "Next.js · TypeScript · PostgreSQL · Supabase · Prisma · Redis",
+    "project.shelfops.label": "jul – ago 2026",
+    "project.shelfops.text":
+      "API para registrar incidentes operativos: Fastify y PostgreSQL con roles y permisos (RBAC), login OIDC, contrato OpenAPI, tests de integración en CI y un entorno Docker reproducible.",
+    "project.shelfops.stack": "Fastify · PostgreSQL · OIDC · OpenAPI · Docker",
     "project.link.demo": "Demo pública",
     "project.link.repo": "Repositorio",
     "project.link.case": "Caso técnico",
-    "project.one.label": "Backend, datos y operación",
-    "project.one.title": "ofertasSUPER",
-    "project.one.text":
-      "Buscador de productos y ofertas de supermercados argentinos con demo pública verificada, APIs públicas, pipeline de ingesta y normalización/deduplicación de datos, historial de precios, canasta local, cache/rate limiting, Supabase/RLS y panel admin protegido. Caso real para mostrar backend, datos y operación sin venderlo como producción cerrada.",
-    "project.two.label": "Producto real e integraciones",
-    "project.two.title": "Mena Nails",
-    "project.two.text":
-      "Landing y flujo de reservas con seña, MercadoPago, verificación de comprobantes mediante Gemini OCR y sincronización con Google Calendar. Pensado para reducir trabajo manual y ordenar agenda real.",
-    "project.three.label": "Automatización operativa",
-    "project.three.title": "InventStock - bot de inventario por Telegram",
-    "project.three.text":
-      "Bot operativo para inventario de un salón de uñas, con comandos de Telegram para consultar, agregar y descontar stock, deploy en Railway, métricas runtime, rollback documentado y hardening guiado por specs. Caso de backend/operación que muestra criterio para separar funcionalidad usable de hardening opcional.",
-    "mock.booking.title": "Turno confirmado",
-    "mock.booking.pay": "Pago verificado",
-    "mock.booking.calendar": "Calendario sincronizado",
-    "mock.offer.title": "Comparador de ofertas",
-    "mock.offer.basket": "canasta",
-    "mock.offer.metrics": "métricas",
-    "mock.inventory.title": "Bot de inventario",
-    "mock.inventory.stock": "stock por Telegram",
-    "mock.inventory.metrics": "métricas",
-    "mock.inventory.rollback": "rollback",
-    "proof.eyebrow": "Formación",
-    "proof.title": "Aprendizaje técnico con base operativa.",
-    "proof.utn": "Diplomatura en Professional Full-Stack Developer aprobada.",
-    "proof.cert.label": "Certificados",
-    "proof.cert.text":
-      "Curso de Desarrollo en React JS, Curso de Desarrollo con Angular y Curso de Desarrollo con NodeJS. Nota: Excelente en NodeJS.",
-    "proof.soft.label": "Habilidades blandas",
-    "proof.soft.text":
-      "Atención al cliente, comunicación, orden, ownership, aprendizaje rápido y resolución de problemas.",
-    "proof.background":
-      "Carrefour: reposición, inventario, rotación, conteo y FIFO/FEFO.",
+    "education.eyebrow": "Formación",
+    "education.title": "Formación académica.",
+    "edu.utn.title": "Diplomatura Professional Full-Stack Developer",
+    "edu.utn.meta": "UTN FRBA · 187 h · nov 2025 – may 2026",
+    "edu.cbc.title": "CBC Ingeniería en Informática",
+    "edu.cbc.meta": "UBA XXI · virtual · ago 2026 – en curso",
     "contact.eyebrow": "Contacto",
-    "contact.title":
-      "Si buscás alguien con criterio, aprendizaje rápido y foco en resolver problemas reales, hablemos.",
-    "contact.email.label": "Enviar una oportunidad",
-    "contact.email.cta": "Correo",
-    "contact.linkedin.label": "Conectar profesionalmente",
-    "contact.resume.label": "Ver experiencia y formación",
-    "contact.resume.cta": "CV",
-    "footer.role": "Desarrollador Web Full-stack · IA aplicada al desarrollo",
+    "contact.title": "Escríbeme y hablemos.",
+    "contact.email.label": "Correo",
+    "contact.linkedin.label": "LinkedIn",
+    "contact.github.label": "GitHub",
+    "footer.role": "Desarrollador Backend Junior · APIs e Integraciones",
   },
   en: {
-    "rail.email": "Email",
-    "nav.about": "About",
-    "nav.skills": "Skills",
+    "a11y.skip": "Skip to content",
+    "nav.stack": "Stack",
     "nav.projects": "Projects",
+    "nav.education": "Education",
     "nav.contact": "Contact",
     "nav.resume": "Resume",
     "toggle.lang": "ES",
     "toggle.theme": "Light",
-    "hero.eyebrow": "Hello, I'm",
-    "hero.role.primary": "Full-stack Developer",
-    "hero.role.secondary": "Product, integrations, data, and AI",
+    "menu.toggle": "Menu",
+    "hero.eyebrow": "Hi, I'm",
+    "hero.headline":
+      "Junior Backend Developer · APIs & Integrations · TypeScript, Node.js & Go",
+    "hero.location": "Buenos Aires, Argentina",
     "hero.lead":
-      "Full-stack Developer focused on product, integrations, data, and AI. I build interfaces, flows, and integrations with practical judgment: payments, OCR, calendars, APIs, data, technical SEO, and AI-assisted automation.",
-    "hero.status":
-      "Available for web teams, startups, and digital product work",
+      "Junior backend developer trained at UTN FRBA. I built a booking system with real Mercado Pago payments for a nail studio and I am now building its inventory backend in Go. I work with TypeScript, Node.js, PostgreSQL and REST APIs, with automated tests and CI/CD on every change.",
+    "hero.status": "Open to junior backend roles",
     "cta.resume": "Download resume",
     "cta.projects": "View projects",
-    "about.eyebrow": "About",
-    "about.title": "Operational judgment applied to web development.",
-    "about.past.label": "Past",
-    "about.past.title": "Real processes and real users",
-    "about.past.text":
-      "My foundation comes from Carrefour and operational work: customer service, replenishment, inventory, rotation, counting, and FIFO/FEFO criteria. That experience trained me to understand workflows, priorities, and business problems.",
-    "about.present.label": "Present",
-    "about.present.title": "Full-stack training and applied projects",
-    "about.present.text":
-      "I completed the Professional Full-Stack Developer Diploma at UTN FRBA: 187 hours, distance modality, approved. I also completed the NodeJS Development course with an Excellent grade. I work with Git, debugging, and AI as a development tool.",
-    "about.future.label": "Next step",
-    "about.future.title": "Join a product team",
-    "about.future.text":
-      "I aim to contribute to a startup, digital product team, or company that values judgment, fast learning, clear communication, and the ability to turn real needs into useful software.",
-    "skills.eyebrow": "Skills",
-    "skills.title": "Technical stack applied to real web products.",
-    "skills.intro":
-      "Technologies organized by real use: interface, data, integrations, and delivery.",
-    "skills.frontend.text":
-      "Responsive, accessible interfaces focused on conversion.",
-    "skills.backend.text":
-      "APIs, persistence, business rules, and operational data.",
-    "skills.tools.title": "Integrations and tools",
-    "skills.tools.text":
-      "Automation, validation, testing, and delivery with judgment.",
-    "skill.seo": "Technical SEO",
-    "skill.accessibility": "Accessibility",
-    "skill.ai": "Applied AI",
+    "skills.eyebrow": "Stack",
+    "skills.title": "Technical stack by area of work.",
+    "stack.languages": "Languages",
+    "stack.languages.items": "TypeScript, JavaScript, Go, SQL",
+    "stack.backend": "Backend",
+    "stack.backend.items":
+      "Node.js, Fastify, Next.js route handlers, REST APIs, OpenAPI, webhooks, Prisma, sqlc",
+    "stack.data": "Data",
+    "stack.data.items": "PostgreSQL, Supabase, Redis, Convex",
+    "stack.frontend": "Frontend",
+    "stack.frontend.items": "React, Next.js, SvelteKit, Tailwind",
+    "stack.integrations": "Integrations",
+    "stack.integrations.items":
+      "Mercado Pago, Google Calendar API, Gemini (OCR), Clerk, VTEX API",
+    "stack.testing": "Testing & CI/CD",
+    "stack.testing.items": "Vitest, Playwright, Go test, GitHub Actions, Docker",
+    "stack.cloud": "Cloud",
+    "stack.cloud.items": "Vercel, Cloudflare (R2, Workers)",
+    "stack.ai": "AI-assisted development",
+    "stack.ai.items":
+      "Claude Code, Codex, agent workflows, MCP, human review of generated code",
     "projects.eyebrow": "Projects",
-    "projects.title": "Projects designed to solve real processes.",
-    "projects.intro":
-      "Each case shows a different part of the work: integrations, business rules, data, automation, and user experience.",
-    "project.made": "Built with:",
-    "project.link.demo": "Public demo",
+    "projects.title": "Selected projects.",
+    "project.mena.label": "Freelance · may 2026 – present",
+    "project.mena.text":
+      "Booking and deposit system for a real nail studio: Mercado Pago Checkout Pro with webhooks, transfer receipts read with OCR (Gemini) plus manual review, and confirmed bookings synced to Google Calendar. Verified end to end in production with a real booking and a real payment (webhook, status change and calendar event). Its inventory backend is in development: a Go 1.24 API with PostgreSQL (pgx, sqlc), an OpenAPI contract and session-based login (bcrypt), a SvelteKit PWA frontend, and CI with Go tests —including integration tests—, Vitest/Playwright, and a check that fails when the generated client drifts from the OpenAPI contract.",
+    "project.mena.stack":
+      "Next.js · Convex · Clerk · Mercado Pago · Gemini · Google Calendar · Go · PostgreSQL · SvelteKit",
+    "project.super.label": "mar 2026 – present",
+    "project.super.text":
+      "Price comparison for Argentine supermarkets: it loads data from 6 supermarkets (Carrefour, DIA, Disco, Jumbo, Vea and Más) from the VTEX API and matches products by EAN code. Built with Next.js and TypeScript, PostgreSQL (Supabase, Prisma) and Redis for caching and rate limiting; 13 REST endpoints and an admin panel with Clerk. GitHub Actions runs lint, typecheck, tests, build and Lighthouse on every push, with about 750 automated tests; data ingestion runs as Docker jobs and encrypted backups are stored on Cloudflare R2.",
+    "project.super.stack":
+      "Next.js · TypeScript · PostgreSQL · Supabase · Prisma · Redis",
+    "project.shelfops.label": "jul – aug 2026",
+    "project.shelfops.text":
+      "API for logging operational incidents: Fastify and PostgreSQL with roles and permissions (RBAC), OIDC login, OpenAPI contract, integration tests in CI and a reproducible Docker setup.",
+    "project.shelfops.stack": "Fastify · PostgreSQL · OIDC · OpenAPI · Docker",
+    "project.link.demo": "Live demo",
     "project.link.repo": "Repository",
-    "project.link.case": "Technical case",
-    "project.one.label": "Backend, data, and operations",
-    "project.one.title": "ofertasSUPER",
-    "project.one.text":
-      "Deals and price comparison platform for Argentine supermarkets with public demo, search, local basket, public APIs, ingestion, data normalization/deduplication, quality controls, cache/rate limiting, and documented operational limits.",
-    "project.two.label": "Real product and integrations",
-    "project.two.title": "Mena Nails",
-    "project.two.text":
-      "Booking, payments, and automation system for a nail salon. It combines landing page, availability rules, Clerk, Convex, MercadoPago, transfer receipts with OCR as review support, admin panel, technical SEO, and Google Calendar synchronization.",
-    "project.three.label": "Operations automation",
-    "project.three.title": "InventStock - Telegram inventory bot",
-    "project.three.text":
-      "Operational inventory bot for a nail salon with Telegram commands for stock checks, stock additions and stock deductions, Railway deployment, runtime metrics, documented rollback and spec-driven hardening. A backend/operations case showing judgment around functional readiness versus optional hardening.",
-    "mock.booking.title": "Confirmed booking",
-    "mock.booking.pay": "Payment verified",
-    "mock.booking.calendar": "Calendar synced",
-    "mock.offer.title": "Deals comparison",
-    "mock.offer.basket": "Basket",
-    "mock.offer.metrics": "Metrics",
-    "mock.inventory.title": "Inventory bot",
-    "mock.inventory.stock": "Telegram stock",
-    "mock.inventory.metrics": "Metrics",
-    "mock.inventory.rollback": "Rollback",
-    "proof.eyebrow": "Education",
-    "proof.title": "Technical learning with an operational foundation.",
-    "proof.utn": "Completed Professional Full-Stack Developer Diploma.",
-    "proof.cert.label": "Certificates",
-    "proof.cert.text":
-      "React JS, Angular, and NodeJS Development courses. NodeJS grade: Excellent.",
-    "proof.soft.label": "Soft skills",
-    "proof.soft.text":
-      "Customer service, communication, organization, ownership, fast learning, and problem solving.",
-    "proof.background":
-      "Carrefour: replenishment, inventory, rotation, counting, and FIFO/FEFO.",
+    "project.link.case": "Case study",
+    "education.eyebrow": "Education",
+    "education.title": "Academic background.",
+    "edu.utn.title": "Diplomatura Professional Full-Stack Developer",
+    "edu.utn.meta": "UTN FRBA · 187 h · nov 2025 – may 2026",
+    "edu.cbc.title": "CBC Ingeniería en Informática",
+    "edu.cbc.meta": "UBA XXI · virtual · aug 2026 – in progress",
     "contact.eyebrow": "Contact",
-    "contact.title":
-      "If you need someone with judgment, fast learning, and focus on solving real problems, let's talk.",
-    "contact.email.label": "Send an opportunity",
-    "contact.email.cta": "Email",
-    "contact.linkedin.label": "Connect professionally",
-    "contact.resume.label": "View experience and training",
-    "contact.resume.cta": "Resume",
-    "footer.role": "Full-stack Web Developer · AI-assisted workflows",
+    "contact.title": "Write to me and let's talk.",
+    "contact.email.label": "Email",
+    "contact.linkedin.label": "LinkedIn",
+    "contact.github.label": "GitHub",
+    "footer.role": "Junior Backend Developer · APIs & Integrations",
   },
 };
 
 const root = document.documentElement;
 const languageToggle = document.querySelector("[data-language-toggle]");
 const themeToggle = document.querySelector("[data-theme-toggle]");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const siteNav = document.querySelector("#site-nav");
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
@@ -255,12 +210,13 @@ function applyLanguage(lang) {
   updateThemeLabel();
   storage.set("portfolio:lang", lang);
 }
-function applyTheme(theme) {
+function applyTheme(theme, { persist = false } = {}) {
   root.dataset.theme = theme;
   if (themeToggle)
     themeToggle.setAttribute("aria-pressed", String(theme === "light"));
   updateThemeLabel();
-  storage.set("portfolio:theme", theme);
+  // Persist only on an explicit toggle so the OS preference keeps working.
+  if (persist) storage.set("portfolio:theme", theme);
 }
 
 applyTheme(getInitialTheme());
@@ -269,8 +225,31 @@ languageToggle?.addEventListener("click", () =>
   applyLanguage(root.dataset.lang === "en" ? "es" : "en"),
 );
 themeToggle?.addEventListener("click", () =>
-  applyTheme(root.dataset.theme === "light" ? "dark" : "light"),
+  applyTheme(root.dataset.theme === "light" ? "dark" : "light", {
+    persist: true,
+  }),
 );
+
+function setMenuOpen(open) {
+  if (!siteNav || !menuToggle) return;
+  siteNav.classList.toggle("is-open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
+}
+menuToggle?.addEventListener("click", () =>
+  setMenuOpen(!siteNav.classList.contains("is-open")),
+);
+siteNav?.addEventListener("click", (event) => {
+  if (event.target.closest("a")) setMenuOpen(false);
+});
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    siteNav?.classList.contains("is-open")
+  ) {
+    setMenuOpen(false);
+    menuToggle?.focus();
+  }
+});
 
 const revealItems = document.querySelectorAll(".reveal");
 const appearItems = document.querySelectorAll(".text-appear");
