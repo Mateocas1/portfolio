@@ -183,9 +183,10 @@ function updateThemeLabel() {
   const lang = root.dataset.lang === "en" ? "en" : "es";
   themeToggle.querySelector("span").textContent =
     lang === "es" ? (isLight ? "Oscuro" : "Claro") : isLight ? "Dark" : "Light";
+  const themeToken = themeToggle.querySelector("span").textContent;
   themeToggle.setAttribute(
     "aria-label",
-    lang === "es" ? "Cambiar tema" : "Change theme",
+    (lang === "es" ? "Cambiar tema: " : "Change theme: ") + themeToken,
   );
 }
 function applyLanguage(lang) {
@@ -200,7 +201,8 @@ function applyLanguage(lang) {
     languageToggle.setAttribute("aria-pressed", String(lang === "en"));
     languageToggle.setAttribute(
       "aria-label",
-      lang === "es" ? "Cambiar idioma" : "Change language",
+      (lang === "es" ? "Cambiar idioma: " : "Change language: ") +
+        languageToggle.querySelector("span").textContent,
     );
   }
   updateThemeLabel();
