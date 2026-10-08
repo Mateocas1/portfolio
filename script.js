@@ -17,201 +17,152 @@ const storage = {
 
 const translations = {
   es: {
-    "rail.email": "Correo",
-    "nav.about": "Sobre mí",
-    "nav.skills": "Stack",
+    "a11y.skip": "Saltar al contenido",
+    "nav.stack": "Stack",
     "nav.projects": "Proyectos",
+    "nav.education": "Formación",
     "nav.contact": "Contacto",
     "nav.resume": "CV",
     "toggle.lang": "EN",
     "toggle.theme": "Claro",
+    "menu.toggle": "Menú",
     "hero.eyebrow": "Hola, soy",
-    "hero.role.primary": "Full-stack Developer",
-    "hero.role.secondary": "Producto, integraciones, datos e IA",
+    "hero.headline":
+      "Desarrollador Backend Junior · APIs e Integraciones · TypeScript, Node.js y Go",
+    "hero.location": "Buenos Aires, Argentina",
     "hero.lead":
-      "Desarrollador web orientado a producto, con Diplomatura en Professional Full-Stack Developer aprobada en UTN FRBA. Construyo interfaces, flujos e integraciones con criterio práctico: pagos, OCR, calendarios, dashboards, SEO técnico y automatización apoyada en IA.",
-    "hero.status": "Disponible para equipos web, startups y producto digital",
+      "Desarrollador backend junior formado en UTN FRBA. Desarrollé para un estudio de uñas un sistema de turnos con pagos reales por Mercado Pago y hoy construyo su backend de inventario en Go. Trabajo con TypeScript, Node.js, PostgreSQL y APIs REST, con pruebas automatizadas y CI/CD en cada cambio.",
+    "hero.status": "Disponible para posiciones backend junior",
     "cta.resume": "Descargar CV",
     "cta.projects": "Ver proyectos",
-    "about.eyebrow": "Sobre mí",
-    "about.title": "Criterio operativo llevado a desarrollo web.",
-    "about.past.label": "Antes",
-    "about.past.title": "Procesos reales y usuarios reales",
-    "about.past.text":
-      "Mi base viene de Carrefour y tareas operativas: atención al cliente, reposición, inventario, rotación, conteo y criterios FIFO/FEFO. Esa experiencia me entrenó para entender flujos, prioridades y problemas de negocio.",
-    "about.present.label": "Ahora",
-    "about.present.title": "Formación full-stack y proyectos aplicados",
-    "about.present.text":
-      "Diplomatura en Professional Full-Stack Developer aprobada en UTN FRBA: 187 horas, modalidad a distancia, nota Aprobado. También aprobé el Curso de Desarrollo con NodeJS con nota Excelente. Trabajo con Git, debugging e IA como herramienta de desarrollo.",
-    "about.future.label": "Próximo paso",
-    "about.future.title": "Entrar a un equipo de producto",
-    "about.future.text":
-      "Busco aportar en una startup, equipo de producto digital o compañía que valore criterio, aprendizaje rápido, comunicación clara y capacidad para convertir necesidades reales en software útil.",
     "skills.eyebrow": "Stack",
-    "skills.title": "Stack técnico aplicado a productos web reales.",
-    "skills.frontend.text":
-      "Interfaces responsivas, accesibles y orientadas a conversión.",
-    "skills.backend.text":
-      "APIs, persistencia, reglas de negocio y datos operativos.",
-    "skills.tools.title": "Integraciones y herramientas",
-    "skills.tools.text":
-      "Automatización, validación, testing y entrega con criterio.",
-    "skill.seo": "SEO técnico",
-    "skill.accessibility": "Accesibilidad",
-    "skill.ai": "IA aplicada",
+    "skills.title": "Stack técnico por área de trabajo.",
+    "stack.languages": "Lenguajes",
+    "stack.backend": "Backend",
+    "stack.data": "Datos",
+    "stack.frontend": "Frontend",
+    "stack.integrations": "Integraciones",
+    "stack.testing": "Testing y CI/CD",
+    "stack.cloud": "Cloud",
+    "stack.ai": "Desarrollo asistido por IA",
     "projects.eyebrow": "Proyectos",
-    "projects.title": "Proyectos pensados para resolver procesos reales.",
-    "projects.intro":
-      "Cada caso muestra una parte distinta del trabajo: integraciones, reglas de negocio, datos, automatización y experiencia de usuario.",
-    "project.made": "Tecnologías usadas:",
+    "projects.title": "Proyectos seleccionados.",
+    "project.mena.client": "cliente freelance",
+    "project.mena.range": "may 2026 – sep 2026",
+    "project.mena.product1": "Producto 1",
+    "project.mena.product2": "Producto 2",
+    "project.mena.part1": "Turnos y señas",
+    "project.mena.part2": "Inventario",
+    "project.super.label": "mar 2026 – actualidad",
+    "project.shelfops.label": "jul – ago 2026",
     "project.link.demo": "Demo pública",
     "project.link.repo": "Repositorio",
     "project.link.case": "Caso técnico",
-    "project.one.label": "Backend, datos y operación",
-    "project.one.title": "ofertasSUPER",
-    "project.one.text":
-      "Buscador de productos y ofertas de supermercados argentinos con demo pública verificada, APIs públicas, pipeline de ingesta y normalización/deduplicación de datos, historial de precios, canasta local, cache/rate limiting, Supabase/RLS y panel admin protegido. Caso real para mostrar backend, datos y operación sin venderlo como producción cerrada.",
-    "project.two.label": "Producto real e integraciones",
-    "project.two.title": "Mena Nails",
-    "project.two.text":
-      "Landing y flujo de reservas con seña, MercadoPago, verificación de comprobantes mediante Gemini OCR y sincronización con Google Calendar. Pensado para reducir trabajo manual y ordenar agenda real.",
-    "project.three.label": "Automatización operativa",
-    "project.three.title": "InventStock - bot de inventario por Telegram",
-    "project.three.text":
-      "Bot operativo para inventario de un salón de uñas, con comandos de Telegram para consultar, agregar y descontar stock, deploy en Railway, métricas runtime, rollback documentado y hardening guiado por specs. Caso de backend/operación que muestra criterio para separar funcionalidad usable de hardening opcional.",
-    "mock.booking.title": "Turno confirmado",
-    "mock.booking.pay": "Pago verificado",
-    "mock.booking.calendar": "Calendario sincronizado",
-    "mock.offer.title": "Comparador de ofertas",
-    "mock.offer.basket": "canasta",
-    "mock.offer.metrics": "métricas",
-    "mock.inventory.title": "Bot de inventario",
-    "mock.inventory.stock": "stock por Telegram",
-    "mock.inventory.metrics": "métricas",
-    "mock.inventory.rollback": "rollback",
-    "proof.eyebrow": "Formación",
-    "proof.title": "Aprendizaje técnico con base operativa.",
-    "proof.utn": "Diplomatura en Professional Full-Stack Developer aprobada.",
-    "proof.cert.label": "Certificados",
-    "proof.cert.text":
-      "Curso de Desarrollo en React JS, Curso de Desarrollo con Angular y Curso de Desarrollo con NodeJS. Nota: Excelente en NodeJS.",
-    "proof.soft.label": "Habilidades blandas",
-    "proof.soft.text":
-      "Atención al cliente, comunicación, orden, ownership, aprendizaje rápido y resolución de problemas.",
-    "proof.background":
-      "Carrefour: reposición, inventario, rotación, conteo y FIFO/FEFO.",
+    "education.eyebrow": "Formación",
+    "education.title": "Formación académica.",
+    "edu.utn.title": "Diplomatura Professional Full-Stack Developer",
+    "edu.utn.meta": "UTN FRBA · 187 h · nov 2025 – may 2026",
+    "edu.cbc.title": "CBC Ingeniería en Informática",
+    "edu.cbc.meta": "UBA XXI · virtual · ago 2026 – en curso",
     "contact.eyebrow": "Contacto",
-    "contact.title":
-      "Si buscás alguien con criterio, aprendizaje rápido y foco en resolver problemas reales, hablemos.",
-    "contact.email.label": "Enviar una oportunidad",
-    "contact.email.cta": "Correo",
-    "contact.linkedin.label": "Conectar profesionalmente",
-    "contact.resume.label": "Ver experiencia y formación",
-    "contact.resume.cta": "CV",
-    "footer.role": "Desarrollador Web Full-stack · IA aplicada al desarrollo",
+    "contact.title": "Escríbeme y hablemos.",
+    "contact.email.label": "Correo",
+    "contact.linkedin.label": "LinkedIn",
+    "contact.github.label": "GitHub",
+    "psr.problem": "Problema",
+    "psr.solution": "Solución",
+    "psr.result": "Resultado",
+    "project.mena.p1.problem": "La agenda manual generaba consultas por mensaje, señas difíciles de conciliar y riesgo de doble reserva.",
+    "project.mena.p1.solution": "Reserva autenticada con Mercado Pago, transferencias revisadas con apoyo de OCR y turnos confirmados en Google Calendar.",
+    "project.mena.p1.result": "Verificado de extremo a extremo en producción con un turno y un pago reales.",
+    "project.mena.p2.problem": "El stock inicial era provisional y de baja confianza; faltaban recuentos guiados y alertas accionables.",
+    "project.mena.p2.solution": "PWA de inventario y bitácora de servicios con recuentos guiados, recetas exactas, alertas y forecasts con confianza explícita.",
+    "project.mena.p2.result": "Producto terminado: API en Go con OpenAPI como contrato y CI que valida el cliente generado.",
+    "project.super.problem": "Comparar precios exige productos idénticos y datos consistentes: sin emparejamiento por EAN la comparación no es fiable.",
+    "project.super.solution": "Ingesta desde la API de VTEX, catálogo en PostgreSQL con Prisma y canasta comparativa con caché en Redis.",
+    "project.super.result": "MVP funcional completo, desplegado como demo pública, con alrededor de 750 pruebas automatizadas en CI.",
+    "project.shelfops.problem": "Un incidente de tienda necesita trazabilidad: quién actuó, qué sugirió el sistema y qué confirmó una persona.",
+    "project.shelfops.solution": "API en Fastify y PostgreSQL con RBAC, login OIDC y auditoría de decisiones por incidente.",
+    "project.shelfops.result": "MVP con demo reproducible en Docker y tests de integración en CI.",
+    "footer.role": "Desarrollador Backend Junior · APIs e Integraciones",
   },
   en: {
-    "rail.email": "Email",
-    "nav.about": "About",
-    "nav.skills": "Skills",
+    "a11y.skip": "Skip to content",
+    "nav.stack": "Stack",
     "nav.projects": "Projects",
+    "nav.education": "Education",
     "nav.contact": "Contact",
     "nav.resume": "Resume",
     "toggle.lang": "ES",
     "toggle.theme": "Light",
-    "hero.eyebrow": "Hello, I'm",
-    "hero.role.primary": "Full-stack Developer",
-    "hero.role.secondary": "Product, integrations, data, and AI",
+    "menu.toggle": "Menu",
+    "hero.eyebrow": "Hi, I'm",
+    "hero.headline":
+      "Junior Backend Developer · APIs & Integrations · TypeScript, Node.js & Go",
+    "hero.location": "Buenos Aires, Argentina",
     "hero.lead":
-      "Full-stack Developer focused on product, integrations, data, and AI. I build interfaces, flows, and integrations with practical judgment: payments, OCR, calendars, APIs, data, technical SEO, and AI-assisted automation.",
-    "hero.status":
-      "Available for web teams, startups, and digital product work",
+      "Junior backend developer trained at UTN FRBA. I built a booking system with real Mercado Pago payments for a nail studio and I am now building its inventory backend in Go. I work with TypeScript, Node.js, PostgreSQL and REST APIs, with automated tests and CI/CD on every change.",
+    "hero.status": "Open to junior backend roles",
     "cta.resume": "Download resume",
     "cta.projects": "View projects",
-    "about.eyebrow": "About",
-    "about.title": "Operational judgment applied to web development.",
-    "about.past.label": "Past",
-    "about.past.title": "Real processes and real users",
-    "about.past.text":
-      "My foundation comes from Carrefour and operational work: customer service, replenishment, inventory, rotation, counting, and FIFO/FEFO criteria. That experience trained me to understand workflows, priorities, and business problems.",
-    "about.present.label": "Present",
-    "about.present.title": "Full-stack training and applied projects",
-    "about.present.text":
-      "I completed the Professional Full-Stack Developer Diploma at UTN FRBA: 187 hours, distance modality, approved. I also completed the NodeJS Development course with an Excellent grade. I work with Git, debugging, and AI as a development tool.",
-    "about.future.label": "Next step",
-    "about.future.title": "Join a product team",
-    "about.future.text":
-      "I aim to contribute to a startup, digital product team, or company that values judgment, fast learning, clear communication, and the ability to turn real needs into useful software.",
-    "skills.eyebrow": "Skills",
-    "skills.title": "Technical stack applied to real web products.",
-    "skills.intro":
-      "Technologies organized by real use: interface, data, integrations, and delivery.",
-    "skills.frontend.text":
-      "Responsive, accessible interfaces focused on conversion.",
-    "skills.backend.text":
-      "APIs, persistence, business rules, and operational data.",
-    "skills.tools.title": "Integrations and tools",
-    "skills.tools.text":
-      "Automation, validation, testing, and delivery with judgment.",
-    "skill.seo": "Technical SEO",
-    "skill.accessibility": "Accessibility",
-    "skill.ai": "Applied AI",
+    "skills.eyebrow": "Stack",
+    "skills.title": "Technical stack by area of work.",
+    "stack.languages": "Languages",
+    "stack.backend": "Backend",
+    "stack.data": "Data",
+    "stack.frontend": "Frontend",
+    "stack.integrations": "Integrations",
+    "stack.testing": "Testing & CI/CD",
+    "stack.cloud": "Cloud",
+    "stack.ai": "AI-assisted development",
     "projects.eyebrow": "Projects",
-    "projects.title": "Projects designed to solve real processes.",
-    "projects.intro":
-      "Each case shows a different part of the work: integrations, business rules, data, automation, and user experience.",
-    "project.made": "Built with:",
-    "project.link.demo": "Public demo",
+    "projects.title": "Selected projects.",
+    "project.mena.client": "freelance client",
+    "project.mena.range": "may 2026 – sep 2026",
+    "project.mena.product1": "Product 1",
+    "project.mena.product2": "Product 2",
+    "project.mena.part1": "Bookings and deposits",
+    "project.mena.part2": "Inventory",
+    "project.super.label": "mar 2026 – present",
+    "project.shelfops.label": "jul – aug 2026",
+    "project.link.demo": "Live demo",
     "project.link.repo": "Repository",
-    "project.link.case": "Technical case",
-    "project.one.label": "Backend, data, and operations",
-    "project.one.title": "ofertasSUPER",
-    "project.one.text":
-      "Deals and price comparison platform for Argentine supermarkets with public demo, search, local basket, public APIs, ingestion, data normalization/deduplication, quality controls, cache/rate limiting, and documented operational limits.",
-    "project.two.label": "Real product and integrations",
-    "project.two.title": "Mena Nails",
-    "project.two.text":
-      "Booking, payments, and automation system for a nail salon. It combines landing page, availability rules, Clerk, Convex, MercadoPago, transfer receipts with OCR as review support, admin panel, technical SEO, and Google Calendar synchronization.",
-    "project.three.label": "Operations automation",
-    "project.three.title": "InventStock - Telegram inventory bot",
-    "project.three.text":
-      "Operational inventory bot for a nail salon with Telegram commands for stock checks, stock additions and stock deductions, Railway deployment, runtime metrics, documented rollback and spec-driven hardening. A backend/operations case showing judgment around functional readiness versus optional hardening.",
-    "mock.booking.title": "Confirmed booking",
-    "mock.booking.pay": "Payment verified",
-    "mock.booking.calendar": "Calendar synced",
-    "mock.offer.title": "Deals comparison",
-    "mock.offer.basket": "Basket",
-    "mock.offer.metrics": "Metrics",
-    "mock.inventory.title": "Inventory bot",
-    "mock.inventory.stock": "Telegram stock",
-    "mock.inventory.metrics": "Metrics",
-    "mock.inventory.rollback": "Rollback",
-    "proof.eyebrow": "Education",
-    "proof.title": "Technical learning with an operational foundation.",
-    "proof.utn": "Completed Professional Full-Stack Developer Diploma.",
-    "proof.cert.label": "Certificates",
-    "proof.cert.text":
-      "React JS, Angular, and NodeJS Development courses. NodeJS grade: Excellent.",
-    "proof.soft.label": "Soft skills",
-    "proof.soft.text":
-      "Customer service, communication, organization, ownership, fast learning, and problem solving.",
-    "proof.background":
-      "Carrefour: replenishment, inventory, rotation, counting, and FIFO/FEFO.",
+    "project.link.case": "Case study",
+    "education.eyebrow": "Education",
+    "education.title": "Academic background.",
+    "edu.utn.title": "Diplomatura Professional Full-Stack Developer",
+    "edu.utn.meta": "UTN FRBA · 187 h · nov 2025 – may 2026",
+    "edu.cbc.title": "CBC Ingeniería en Informática",
+    "edu.cbc.meta": "UBA XXI · virtual · aug 2026 – in progress",
     "contact.eyebrow": "Contact",
-    "contact.title":
-      "If you need someone with judgment, fast learning, and focus on solving real problems, let's talk.",
-    "contact.email.label": "Send an opportunity",
-    "contact.email.cta": "Email",
-    "contact.linkedin.label": "Connect professionally",
-    "contact.resume.label": "View experience and training",
-    "contact.resume.cta": "Resume",
-    "footer.role": "Full-stack Web Developer · AI-assisted workflows",
+    "contact.title": "Write to me and let's talk.",
+    "contact.email.label": "Email",
+    "contact.linkedin.label": "LinkedIn",
+    "contact.github.label": "GitHub",
+    "psr.problem": "Problem",
+    "psr.solution": "Solution",
+    "psr.result": "Result",
+    "project.mena.p1.problem": "Manual scheduling meant availability asked over messages, deposits hard to reconcile and double-booking risk.",
+    "project.mena.p1.solution": "Authenticated booking with Mercado Pago, transfer receipts reviewed with OCR support and confirmed bookings synced to Google Calendar.",
+    "project.mena.p1.result": "Validated end to end in production with a real booking and a real payment.",
+    "project.mena.p2.problem": "Initial stock was provisional and low confidence; the studio needed guided recounts and actionable alerts.",
+    "project.mena.p2.solution": "Inventory and service-log PWA with guided recounts, exact recipes, alerts and forecasts with explicit confidence.",
+    "project.mena.p2.result": "Finished product: a Go API with OpenAPI as the contract and CI validating the generated client.",
+    "project.super.problem": "Comparing prices requires identical products and consistent data; without EAN matching the comparison is not reliable.",
+    "project.super.solution": "Ingestion from the VTEX API, a PostgreSQL catalog with Prisma and a comparison basket cached in Redis.",
+    "project.super.result": "Complete functional MVP, deployed as a public demo, with about 750 automated tests in CI.",
+    "project.shelfops.problem": "A store incident needs traceability: who acted, what the system suggested and what a person confirmed.",
+    "project.shelfops.solution": "Fastify and PostgreSQL API with RBAC, OIDC login and per-incident decision auditing.",
+    "project.shelfops.result": "MVP with a Docker-reproducible demo and integration tests in CI.",
+    "footer.role": "Junior Backend Developer · APIs & Integrations",
   },
 };
 
 const root = document.documentElement;
 const languageToggle = document.querySelector("[data-language-toggle]");
 const themeToggle = document.querySelector("[data-theme-toggle]");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const siteNav = document.querySelector("#site-nav");
 const reduceMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
@@ -224,7 +175,7 @@ function getInitialTheme() {
   if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
   return window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
-    : "dark";
+    : "light";
 }
 function updateThemeLabel() {
   if (!themeToggle) return;
@@ -232,9 +183,10 @@ function updateThemeLabel() {
   const lang = root.dataset.lang === "en" ? "en" : "es";
   themeToggle.querySelector("span").textContent =
     lang === "es" ? (isLight ? "Oscuro" : "Claro") : isLight ? "Dark" : "Light";
+  const themeToken = themeToggle.querySelector("span").textContent;
   themeToggle.setAttribute(
     "aria-label",
-    lang === "es" ? "Cambiar tema" : "Change theme",
+    (lang === "es" ? "Cambiar tema: " : "Change theme: ") + themeToken,
   );
 }
 function applyLanguage(lang) {
@@ -249,18 +201,20 @@ function applyLanguage(lang) {
     languageToggle.setAttribute("aria-pressed", String(lang === "en"));
     languageToggle.setAttribute(
       "aria-label",
-      lang === "es" ? "Cambiar idioma" : "Change language",
+      (lang === "es" ? "Cambiar idioma: " : "Change language: ") +
+        languageToggle.querySelector("span").textContent,
     );
   }
   updateThemeLabel();
   storage.set("portfolio:lang", lang);
 }
-function applyTheme(theme) {
+function applyTheme(theme, { persist = false } = {}) {
   root.dataset.theme = theme;
   if (themeToggle)
     themeToggle.setAttribute("aria-pressed", String(theme === "light"));
   updateThemeLabel();
-  storage.set("portfolio:theme", theme);
+  // Persist only on an explicit toggle so the OS preference keeps working.
+  if (persist) storage.set("portfolio:theme", theme);
 }
 
 applyTheme(getInitialTheme());
@@ -269,8 +223,31 @@ languageToggle?.addEventListener("click", () =>
   applyLanguage(root.dataset.lang === "en" ? "es" : "en"),
 );
 themeToggle?.addEventListener("click", () =>
-  applyTheme(root.dataset.theme === "light" ? "dark" : "light"),
+  applyTheme(root.dataset.theme === "light" ? "dark" : "light", {
+    persist: true,
+  }),
 );
+
+function setMenuOpen(open) {
+  if (!siteNav || !menuToggle) return;
+  siteNav.classList.toggle("is-open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
+}
+menuToggle?.addEventListener("click", () =>
+  setMenuOpen(!siteNav.classList.contains("is-open")),
+);
+siteNav?.addEventListener("click", (event) => {
+  if (event.target.closest("a")) setMenuOpen(false);
+});
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    siteNav?.classList.contains("is-open")
+  ) {
+    setMenuOpen(false);
+    menuToggle?.focus();
+  }
+});
 
 const revealItems = document.querySelectorAll(".reveal");
 const appearItems = document.querySelectorAll(".text-appear");
