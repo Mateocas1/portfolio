@@ -1,0 +1,5 @@
+odd/
+# Local Pi runtime state
+.atl/
+# Playwright CLI session artifacts
+.playwright-cli/
