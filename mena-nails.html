@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Caso técnico del producto Turnos y señas de Mena Nails: Mercado Pago con webhooks, OCR de comprobantes y sincronización con Google Calendar, verificado en producción."
+      content="Caso técnico del producto Turnos y señas de Mena Nails: Mercado Pago con webhooks, verificación de comprobantes con LLMs y sincronización con Google Calendar, verificado en producción."
     />
     <title>Mena Nails | Caso técnico — Mateo Vazquez</title>
     <script>
@@ -33,7 +33,7 @@
     <meta property="og:title" content="Mena Nails | Caso técnico — Mateo Vazquez" />
     <meta
       property="og:description"
-      content="Turnos y señas con Mercado Pago, OCR de comprobantes y Google Calendar, verificado en producción."
+      content="Turnos y señas con Mercado Pago, verificación de comprobantes con LLMs y Google Calendar, verificado en producción."
     />
     <meta property="og:type" content="article" />
     <meta
@@ -132,8 +132,8 @@
           <p class="text-appear">
             Desarrollado entre mayo y junio de 2026 con Next.js, Convex y Clerk:
             Mercado Pago Checkout Pro con webhooks, comprobantes de transferencia
-            leídos con OCR (Gemini) con revisión manual y turnos confirmados
-            sincronizados a Google Calendar.
+            validados por un verificador con LLMs y revisión manual, y turnos
+            confirmados sincronizados a Google Calendar.
           </p>
           <p class="text-appear">
             El flujo quedó verificado de extremo a extremo en producción con un
@@ -147,18 +147,20 @@
             <b>Reserva, pago y agenda integrados</b>
             <p>
               Señas por Mercado Pago Checkout Pro con webhooks; transferencias
-              como flujo alternativo con comprobante leído por OCR (Gemini) y
-              revisión manual; turnos confirmados sincronizados a Google
-              Calendar.
+              como flujo alternativo, con el comprobante validado por un
+              microservicio en Python (FastAPI): deepseek-v4-flash, con
+              qwen3.8-flash y OCR local (Tesseract) como respaldo; turnos
+              confirmados sincronizados a Google Calendar.
             </p>
           </article>
           <article class="text-appear">
             <span>Tradeoffs</span>
-            <b>OCR como apoyo, no autoridad final</b>
+            <b>Los modelos ayudan, no deciden solos</b>
             <p>
-              El OCR ayuda a leer comprobantes de transferencia, pero el sistema
-              conserva revisión humana antes de confirmar: no se automatiza una
-              decisión sensible de pago.
+              Elegí los modelos con evals propias (6 LLMs, 150 comprobantes):
+              0 aprobaciones indebidas en 30 comprobantes adversariales (montos
+              editados, duplicados, prompt injection) y 99,7 % de exactitud por
+              campo. Si todo falla, decide una persona.
             </p>
           </article>
           <article class="text-appear">
@@ -196,25 +198,12 @@
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Comprobantes</h3>
-            <p>OCR con Gemini y revisión manual</p>
+            <p>Verificador en Python (FastAPI): deepseek-v4-flash, qwen3.8-flash,
+            Tesseract y revisión manual</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Agenda</h3>
             <p>Sincronización con Google Calendar</p>
-          </section>
-        </div>
-      </section>
-          <section class="stack-group text-appear">
-            <h3 class="stack-group__title">Frontend</h3>
-            <p>PWA en SvelteKit</p>
-          </section>
-          <section class="stack-group text-appear">
-            <h3 class="stack-group__title">CI</h3>
-            <p>
-              Tests de Go —incluidos tests de integración—, Vitest/Playwright y
-              una verificación que falla si el cliente generado se desvía del
-              contrato OpenAPI
-            </p>
           </section>
         </div>
       </section>
