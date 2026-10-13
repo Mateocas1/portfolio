@@ -125,9 +125,10 @@
             Buenos Aires, Argentina
           </p>
           <p class="hero-lead text-appear" data-i18n="hero.lead">
-            Desarrollador backend junior formado en UTN FRBA. Desarrollé para un
-            estudio de uñas un sistema de turnos con pagos reales por Mercado
-            Pago y hoy construyo su backend de inventario en Go. Trabajo con
+            Desarrollador backend junior formado en UTN FRBA. Para un estudio de
+            uñas desarrollé un sistema de turnos y señas con Mercado Pago,
+            validado con un pago real, un verificador de comprobantes con LLMs y
+            su backend de inventario en Go. Trabajo con
             TypeScript, Node.js, PostgreSQL y APIs REST, con pruebas
             automatizadas y CI/CD en cada cambio.
           </p>
@@ -222,7 +223,6 @@
             <div class="stack-tiles">
               <span class="stack-tile t-mercadopago" style="--icon: url('./assets/icons/mercadopago.svg')"><i class="tile-icon" aria-hidden="true"></i>Mercado Pago</span>
               <span class="stack-tile t-googlecalendar" style="--icon: url('./assets/icons/googlecalendar.svg')"><i class="tile-icon" aria-hidden="true"></i>Google Calendar</span>
-              <span class="stack-tile t-googlegemini" style="--icon: url('./assets/icons/googlegemini.svg')"><i class="tile-icon" aria-hidden="true"></i>Gemini</span>
               <span class="stack-tile t-clerk" style="--icon: url('./assets/icons/clerk.svg')"><i class="tile-icon" aria-hidden="true"></i>Clerk</span>
               <span class="stack-tile t-vtex" style="--icon: url('./assets/icons/vtex.svg')"><i class="tile-icon" aria-hidden="true"></i>VTEX</span>
             </div>
@@ -287,7 +287,7 @@
               <p class="product-dates">may – jun 2026</p>
               <div class="psr">
                 <p class="psr-row"><span class="psr-label" data-i18n="psr.problem">Problema</span><span data-i18n="project.mena.p1.problem">La agenda manual generaba consultas por mensaje, señas difíciles de conciliar y riesgo de doble reserva.</span></p>
-                <p class="psr-row"><span class="psr-label" data-i18n="psr.solution">Solución</span><span data-i18n="project.mena.p1.solution">Reserva autenticada con Mercado Pago, transferencias revisadas con apoyo de OCR y turnos confirmados en Google Calendar.</span></p>
+                <p class="psr-row"><span class="psr-label" data-i18n="psr.solution">Solución</span><span data-i18n="project.mena.p1.solution">Reserva autenticada con Mercado Pago, comprobantes de transferencia validados por un verificador con LLMs (0 aprobaciones indebidas en 30 casos adversariales) y turnos confirmados en Google Calendar.</span></p>
                 <p class="psr-row"><span class="psr-label" data-i18n="psr.result">Resultado</span><span data-i18n="project.mena.p1.result">Verificado de extremo a extremo en producción con un turno y un pago reales.</span></p>
               </div>
               <div class="tech-chips">
@@ -295,7 +295,6 @@
                 <span class="tech-chip t-convex" style="--icon: url('./assets/icons/convex.svg')"><i class="chip-icon" aria-hidden="true"></i>Convex</span>
                 <span class="tech-chip t-clerk" style="--icon: url('./assets/icons/clerk.svg')"><i class="chip-icon" aria-hidden="true"></i>Clerk</span>
                 <span class="tech-chip t-mercadopago" style="--icon: url('./assets/icons/mercadopago.svg')"><i class="chip-icon" aria-hidden="true"></i>Mercado Pago</span>
-                <span class="tech-chip t-googlegemini" style="--icon: url('./assets/icons/googlegemini.svg')"><i class="chip-icon" aria-hidden="true"></i>Gemini</span>
                 <span class="tech-chip t-googlecalendar" style="--icon: url('./assets/icons/googlecalendar.svg')"><i class="chip-icon" aria-hidden="true"></i>Google Calendar</span>
               </div>
               <div class="project-links">
@@ -346,8 +345,8 @@
             <h3>ofertaSUPER</h3>
             <div class="psr">
               <p class="psr-row"><span class="psr-label" data-i18n="psr.problem">Problema</span><span data-i18n="project.super.problem">Comparar precios exige productos idénticos y datos consistentes: sin emparejamiento por EAN la comparación no es fiable.</span></p>
-              <p class="psr-row"><span class="psr-label" data-i18n="psr.solution">Solución</span><span data-i18n="project.super.solution">Ingesta desde la API de VTEX, catálogo en PostgreSQL con Prisma y canasta comparativa con caché en Redis.</span></p>
-              <p class="psr-row"><span class="psr-label" data-i18n="psr.result">Resultado</span><span data-i18n="project.super.result">MVP funcional completo, desplegado como demo pública, con alrededor de 750 pruebas automatizadas en CI.</span></p>
+              <p class="psr-row"><span class="psr-label" data-i18n="psr.solution">Solución</span><span data-i18n="project.super.solution">Refresh diario de 5 supermercados (API de VTEX y búsqueda de Coto), catálogo en PostgreSQL con Prisma y APIs servidas desde un snapshot versionado con rate limiting en Redis.</span></p>
+              <p class="psr-row"><span class="psr-label" data-i18n="psr.result">Resultado</span><span data-i18n="project.super.result">En producción en ofertasuper.com: unos 23.000 productos y 40.000 ofertas, 304 PRs integrados y 685 tests en CI, con USD 0 de infraestructura.</span></p>
             </div>
             <div class="tech-chips">
               <span class="tech-chip t-nextdotjs" style="--icon: url('./assets/icons/nextdotjs.svg')"><i class="chip-icon" aria-hidden="true"></i>Next.js</span>
@@ -359,7 +358,7 @@
             </div>
             <div class="project-links">
               <a
-                href="https://ofertas-super.vercel.app"
+                href="https://ofertasuper.com"
                 target="_blank"
                 rel="noreferrer"
                 data-i18n="project.link.demo"

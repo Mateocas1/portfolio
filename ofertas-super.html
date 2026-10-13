@@ -115,9 +115,10 @@
           <span>Comparador de precios de supermercados argentinos</span>
         </p>
         <p class="hero-lead text-appear">
-          El MVP está completo y desplegado como demo pública: compara precios
-          de 6 supermercados, empareja productos por código EAN y permite armar
-          una canasta para comparar entre tiendas.
+          En producción en ofertasuper.com: compara precios de 5 supermercados
+          argentinos, unos 23.000 productos y 40.000 ofertas que se actualizan
+          a diario con USD 0 de infraestructura, empareja productos por código
+          EAN y permite armar una canasta para comparar entre tiendas.
         </p>
         <div class="hero-actions text-appear">
           <a class="button ghost" href="./index.html#proyectos"
@@ -125,10 +126,10 @@
           >
           <a
             class="button primary"
-            href="https://ofertas-super.vercel.app"
+            href="https://ofertasuper.com"
             target="_blank"
             rel="noreferrer"
-            >Demo pública</a
+            >Sitio en producción</a
           >
           <a
             class="button ghost"
@@ -150,42 +151,45 @@
           </div>
           <p class="text-appear">
             Un precio comparado solo sirve si el producto es el mismo y el dato
-            es consistente: la base del proyecto es la ingesta desde la API de
-            VTEX y el emparejamiento por EAN.
+            está al día: la base del proyecto es un refresh diario con controles
+            de calidad y el emparejamiento por EAN.
           </p>
         </div>
         <div class="credential-rail">
           <article class="text-appear">
             <span>Datos</span>
-            <b>6 supermercados vía API de VTEX</b>
+            <b>5 supermercados, refresh diario</b>
             <p>
-              Carrefour, DIA, Disco, Jumbo, Vea y Más: los datos se cargan desde
-              la API de VTEX y los productos se emparejan por código EAN.
+              Carrefour, Coto, Disco, Jumbo y Vea: los datos llegan desde la API
+              de VTEX y la búsqueda de Coto, y los productos se emparejan por
+              código EAN.
             </p>
           </article>
           <article class="text-appear">
             <span>Construcción</span>
             <b>Next.js, PostgreSQL y Redis</b>
             <p>
-              Next.js y TypeScript, PostgreSQL (Supabase, Prisma) y Redis para
-              caché y rate limiting; 13 endpoints REST y panel de administración
-              con Clerk.
+              Next.js y TypeScript; APIs REST públicas (búsqueda, productos,
+              historial de precios y lote) servidas desde un snapshot JSON
+              versionado, sin base de datos en el camino de lectura, con rate
+              limiting en Redis y panel de administración con Clerk.
             </p>
           </article>
           <article class="text-appear">
             <span>Calidad</span>
-            <b>CI en cada push</b>
+            <b>CI en cada cambio</b>
             <p>
-              GitHub Actions ejecuta lint, typecheck, tests, build y Lighthouse,
-              con alrededor de 750 pruebas automatizadas.
+              304 pull requests integrados con GitHub Actions: lint, typecheck,
+              685 tests, build y Lighthouse, con 100/100 en accesibilidad y SEO.
             </p>
           </article>
           <article class="text-appear">
             <span>Operación</span>
-            <b>Ingesta y backups</b>
+            <b>Refresh programado</b>
             <p>
-              La ingesta corre como jobs de Docker y los backups cifrados se
-              guardan en Cloudflare R2.
+              Un job de GitHub Actions restaura el estado de PostgreSQL, refresca
+              el catálogo con controles de frescura, publica el snapshot y manda
+              un resumen de bajas de precio por Telegram.
             </p>
           </article>
         </div>
@@ -200,12 +204,14 @@
           <article class="flow-step text-appear">
             <span>Fuente</span>
             <b>API de VTEX</b>
-            <p>Datos de productos y ofertas de 6 supermercados.</p>
+            <p>API de VTEX y búsqueda de Coto: productos y ofertas de 5
+            supermercados.</p>
           </article>
           <article class="flow-step text-appear">
             <span>Ingesta</span>
-            <b>Jobs de Docker</b>
-            <p>La carga de datos corre como jobs programados.</p>
+            <b>GitHub Actions</b>
+            <p>El refresh diario corre como job programado, con controles de
+            frescura antes de publicar.</p>
           </article>
           <article class="flow-step text-appear">
             <span>Emparejamiento</span>
@@ -215,13 +221,14 @@
           <article class="flow-step text-appear">
             <span>Catálogo</span>
             <b>PostgreSQL</b>
-            <p>Supabase y Prisma sostienen productos, precios e historial.</p>
+            <p>PostgreSQL y Prisma sostienen productos, precios e historial;
+            el estado se restaura y se vuelve a guardar en cada refresh.</p>
           </article>
           <article class="flow-step text-appear">
             <span>Consumo</span>
-            <b>13 endpoints REST</b>
-            <p>Búsqueda, comparación y canasta, con Redis para caché y rate
-            limiting.</p>
+            <b>APIs REST públicas</b>
+            <p>Búsqueda, productos, historial de precios y lote, desde un
+            snapshot versionado y con rate limiting en Redis.</p>
           </article>
         </div>
       </section>
@@ -238,17 +245,18 @@
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Datos</h3>
-            <p>PostgreSQL, Supabase, Prisma, Redis</p>
+            <p>PostgreSQL, Prisma, Redis; DuckDB y dbt para un índice de precios
+            de canasta fija comparado con el IPC del INDEC</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">APIs y panel</h3>
-            <p>13 endpoints REST, panel de administración con Clerk</p>
+            <p>APIs REST públicas, panel de administración con Clerk</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">CI y operación</h3>
             <p>
-              GitHub Actions (lint, typecheck, tests, build, Lighthouse), jobs
-              de Docker para ingesta, backups cifrados en Cloudflare R2
+              GitHub Actions (lint, typecheck, tests, build, Lighthouse) y
+              refresh diario programado, con USD 0 de infraestructura
             </p>
           </section>
         </div>
