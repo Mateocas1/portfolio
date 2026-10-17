@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Caso técnico de rindetuplata: comparador argentino de rendimientos por retorno real contra la inflación, en Java 21 y Spring Boot 4, con ingesta idempotente en Spring Batch, matemática financiera en BigDecimal y alertas por RabbitMQ."
+    />
+    <title>rindetuplata | Caso técnico — Mateo Vazquez</title>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const storedTheme = localStorage.getItem("portfolio:theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : prefersDark
+                ? "dark"
+                : "light";
+          root.dataset.theme = theme;
+          root.dataset.lang = "es";
+        } catch {
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.lang = "es";
+        }
+      })();
+    </script>
+    <meta
+      property="og:title"
+      content="rindetuplata | Caso técnico — Mateo Vazquez"
+    />
+    <meta
+      property="og:description"
+      content="¿Dónde rinde tu plata hoy? Plazos fijos, fondos y billeteras ordenados por los pesos que ganás y por retorno real, en Java 21 y Spring Boot 4."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://mateocas1.github.io/portfolio/rindetuplata.html"
+    />
+    <meta
+      property="og:image"
+      content="https://mateocas1.github.io/portfolio/assets/profile.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="canonical"
+      href="https://mateocas1.github.io/portfolio/rindetuplata.html"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230E0F11%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./index.html" aria-label="Volver al portfolio — MV Mateo">
+          <span class="brand-mark" aria-hidden="true">MV</span>
+          <span>Mateo</span>
+        </a>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="./index.html">Inicio</a>
+          <a href="./index.html#proyectos">Proyectos</a>
+          <a href="./index.html#contacto">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
+        <div class="header-actions">
+          <button
+            class="toggle-button"
+            type="button"
+            data-theme-toggle
+            aria-label="Cambiar tema: Claro"
+            aria-pressed="false"
+          >
+            <span>Claro</span>
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span>Menú</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="section-shell case-study-page">
+      <section class="hero-copy reveal">
+        <p class="eyebrow text-appear">Caso técnico · oct 2026</p>
+        <h1 class="text-appear">rindetuplata</h1>
+        <p class="role-line text-appear">
+          <span>¿Dónde rinde tu plata hoy? Comparador de rendimientos por retorno real</span>
+        </p>
+        <p class="hero-lead text-appear">
+          Ordena casi 400 opciones de ahorro argentinas (plazos fijos por banco,
+          fondos money market, billeteras remuneradas y cripto) por los pesos que
+          ganás con tu monto y tu plazo, y muestra cuánto de eso le gana a la
+          inflación esperada. Backend en Java 21 y Spring Boot 4, con la fuente y
+          la fecha de cada número.
+        </p>
+        <div class="hero-actions text-appear">
+          <a class="button ghost" href="./index.html#proyectos"
+            >Volver al portfolio</a
+          >
+          <a
+            class="button primary"
+            href="https://github.com/Mateocas1/rindetuplata"
+            target="_blank"
+            rel="noreferrer"
+            >Repositorio</a
+          >
+        </div>
+      </section>
+
+      <section class="proof reveal">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow text-appear">El problema</p>
+            <h2 class="text-appear">
+              Una tasa alta no dice si ganás plata.
+            </h2>
+          </div>
+          <p class="text-appear">
+            Con inflación importa cuánto le ganás a los precios en tu plazo, con
+            los topes y tramos de cada opción, y ninguna fuente guarda el
+            historial por banco o billetera.
+          </p>
+        </div>
+        <div class="credential-rail">
+          <article class="text-appear">
+            <span>Datos</span>
+            <b>9 fuentes, un adaptador cada una</b>
+            <p>
+              BCRA, ArgentinaDatos, dolarapi, scraping y curaduría manual. Cada
+              tasa lleva fuente, fecha y nivel de confianza.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Dominio</span>
+            <b>Matemática en BigDecimal</b>
+            <p>
+              TNA a TEA, topes, tramos e inflación REM llevada a tu plazo, en Java
+              puro y probada contra valores calculados a mano.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Ingesta</span>
+            <b>Spring Batch idempotente</b>
+            <p>
+              Un job por fecha: reprocesar un día no duplica datos y una fuente
+              caída no frena a las demás.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Alertas</span>
+            <b>Magic link y RabbitMQ</b>
+            <p>
+              Login sin contraseña con Spring Security y avisos por email vía
+              outbox transaccional, consumidor idempotente y dead-letter queue.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-stack reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear">Flujo de datos</p>
+          <h2 class="text-appear">De las fuentes oficiales al ranking.</h2>
+        </div>
+        <div class="data-flow" aria-label="Flujo de datos de rindetuplata">
+          <article class="flow-step text-appear">
+            <span>Fuentes</span>
+            <b>BCRA y agregadores</b>
+            <p>Un adaptador por fuente detrás de un puerto por tipo de dato,
+            probado con respuestas grabadas, nunca con HTTP en vivo.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>Ingesta</span>
+            <b>Spring Batch</b>
+            <p>Un paso por tipo de dato y una instancia por fecha; snapshots
+            diarios en PostgreSQL con migraciones Flyway.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>Simulación</span>
+            <b>Dominio en Java puro</b>
+            <p>Cada opción se simula para tu monto y tu plazo; las que no
+            aplican se listan con el motivo, nunca desaparecen.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>API</span>
+            <b>REST + OpenAPI</b>
+            <p>Ranking, historial y simulador, con errores ProblemDetail. Toda
+            la matemática vive en la API, ninguna en el navegador.</p>
+          </article>
+          <article class="flow-step text-appear">
+            <span>Sitio</span>
+            <b>Astro estático</b>
+            <p>Páginas por instrumento con historial en SVG, SEO y JSON-LD,
+            islas de React para el simulador y las cuentas; se reconstruye
+            después de cada ingesta.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-stack reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear">Resultado</p>
+          <h2 class="text-appear">Qué está probado y qué falta.</h2>
+        </div>
+        <div class="stack-groups">
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Tests</h3>
+            <p>450 tests de backend (JUnit 5 con Testcontainers: PostgreSQL y
+            RabbitMQ reales), 398 de frontend (Vitest) y un end-to-end con
+            Playwright sobre el stack completo en Docker Compose; CI en GitHub
+            Actions.</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">En funcionamiento</h3>
+            <p>Preview privada en mi máquina detrás de Tailscale Funnel (sin
+            indexar), con ingesta real, login por magic link y alertas por
+            email probados desde el celular.</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Límite honesto</h3>
+            <p>Todavía no tiene despliegue público. Es informativo, no es
+            asesoramiento financiero, y no modela impuestos.</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Cómo lo construí</h3>
+            <p>Con IA como herramienta bajo un flujo propio: specs, decisiones y
+            evidencia por tarea en el repositorio, test-first y revisión de cada
+            cambio antes del commit.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="case-stack reveal">
+        <div class="section-heading">
+          <p class="eyebrow text-appear">Stack</p>
+          <h2 class="text-appear">Tecnologías usadas.</h2>
+        </div>
+        <div class="stack-groups">
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Backend</h3>
+            <p>Java 21, Spring Boot 4.1, Spring Batch 6, Spring Security 7</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Datos y mensajería</h3>
+            <p>PostgreSQL 18, Flyway, RabbitMQ</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Frontend</h3>
+            <p>Astro, React, Tailwind</p>
+          </section>
+          <section class="stack-group text-appear">
+            <h3 class="stack-group__title">Testing e infraestructura</h3>
+            <p>JUnit 5, Testcontainers, Vitest, Playwright, Docker Compose,
+            Caddy, GitHub Actions</p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Mateo Vazquez</span>
+      <span>Desarrollador Backend Junior · APIs e Integraciones</span>
+      <div class="footer-social">
+        <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/vazquezmateo"
+          target="_blank"
+          rel="noreferrer"
+          >LinkedIn</a
+        >
+        <a href="mailto:castiglionemateo1@gmail.com">Correo</a>
+      </div>
+    </footer>
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>
