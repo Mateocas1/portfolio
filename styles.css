@@ -436,9 +436,15 @@ button:focus-visible,
 
 .proof {
   display: grid;
-  grid-template-columns: 0.52fr 1.48fr;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: clamp(var(--space-6), 6vw, var(--space-8));
   border-top: 1px solid var(--border);
+}
+
+/* Inside the narrow proof column the split heading stacks: title, then lead. */
+.proof .section-heading.split {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
 }
 
 .section-heading {
@@ -626,6 +632,10 @@ button:focus-visible,
 .t-claude { --brand: #d97757; }
 .t-openai { --brand: #412991; }
 .t-svelte { --brand: #ff3e00; }
+.t-openjdk { --brand: #ed8b00; }
+.t-springboot { --brand: #6db33f; }
+.t-rabbitmq { --brand: #ff6600; }
+.t-astro { --brand: #bc52ee; }
 
 [data-theme="dark"] .t-prisma,
 [data-theme="dark"] .t-openai {

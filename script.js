@@ -28,10 +28,10 @@ const translations = {
     "menu.toggle": "Menú",
     "hero.eyebrow": "Hola, soy",
     "hero.headline":
-      "Desarrollador Backend Junior · APIs e Integraciones · TypeScript, Node.js y Go",
+      "Desarrollador Backend Junior · APIs e Integraciones · Java, TypeScript y Go",
     "hero.location": "Buenos Aires, Argentina",
     "hero.lead":
-      "Desarrollador backend junior formado en UTN FRBA. Para un estudio de uñas desarrollé un sistema de turnos y señas con Mercado Pago, validado con un pago real, un verificador de comprobantes con LLMs y su backend de inventario en Go. Trabajo con TypeScript, Node.js, PostgreSQL y APIs REST, con pruebas automatizadas y CI/CD en cada cambio.",
+      "Desarrollador backend junior formado en UTN FRBA. Para un estudio de uñas desarrollé un sistema de turnos y señas con Mercado Pago, validado con un pago real, un verificador de comprobantes con LLMs y su backend de inventario en Go; con Java y Spring Boot construí rindetuplata, un comparador de rendimientos contra la inflación. Trabajo con TypeScript, Node.js, PostgreSQL y APIs REST, con pruebas automatizadas y CI/CD en cada cambio.",
     "hero.status": "Disponible para posiciones backend junior",
     "cta.resume": "Descargar CV",
     "cta.projects": "Ver proyectos",
@@ -55,6 +55,7 @@ const translations = {
     "project.mena.part2": "Inventario",
     "project.super.label": "mar 2026 – actualidad",
     "project.shelfops.label": "jul – ago 2026",
+    "project.rtp.label": "oct 2026",
     "project.link.demo": "Demo pública",
     "project.link.repo": "Repositorio",
     "project.link.case": "Caso técnico",
@@ -84,6 +85,9 @@ const translations = {
     "project.shelfops.problem": "Un incidente de tienda necesita trazabilidad: quién actuó, qué sugirió el sistema y qué confirmó una persona.",
     "project.shelfops.solution": "API en Fastify y PostgreSQL con RBAC, login OIDC y auditoría de decisiones por incidente.",
     "project.shelfops.result": "MVP con demo reproducible en Docker y tests de integración en CI.",
+    "project.rtp.problem": "Con inflación, una tasa alta no dice si ganás plata: cada opción tiene topes, tramos y plazos mínimos, y nadie guarda el historial por banco o billetera.",
+    "project.rtp.solution": "API en Java 21 y Spring Boot 4: ingesta idempotente en Spring Batch desde 9 fuentes (BCRA, ArgentinaDatos y otras), matemática financiera en BigDecimal, login por magic link y alertas con outbox a RabbitMQ.",
+    "project.rtp.result": "Ordena 398 opciones de ahorro por retorno real para cualquier monto y plazo, respaldado por 848 tests automatizados (450 de backend contra PostgreSQL y RabbitMQ reales) y una preview con login y alertas probados de punta a punta.",
     "footer.role": "Desarrollador Backend Junior · APIs e Integraciones",
   },
   en: {
@@ -98,10 +102,10 @@ const translations = {
     "menu.toggle": "Menu",
     "hero.eyebrow": "Hi, I'm",
     "hero.headline":
-      "Junior Backend Developer · APIs & Integrations · TypeScript, Node.js & Go",
+      "Junior Backend Developer · APIs & Integrations · Java, TypeScript & Go",
     "hero.location": "Buenos Aires, Argentina",
     "hero.lead":
-      "Junior backend developer trained at UTN FRBA. For a nail studio I built a booking and deposit system with Mercado Pago, validated with a real payment, an LLM-based receipt verifier and its inventory backend in Go. I work with TypeScript, Node.js, PostgreSQL and REST APIs, with automated tests and CI/CD on every change.",
+      "Junior backend developer trained at UTN FRBA. For a nail studio I built a booking and deposit system with Mercado Pago, validated with a real payment, an LLM-based receipt verifier and its inventory backend in Go; with Java and Spring Boot I built rindetuplata, a savings-yield comparator measured against inflation. I work with TypeScript, Node.js, PostgreSQL and REST APIs, with automated tests and CI/CD on every change.",
     "hero.status": "Open to junior backend roles",
     "cta.resume": "Download resume",
     "cta.projects": "View projects",
@@ -125,6 +129,7 @@ const translations = {
     "project.mena.part2": "Inventory",
     "project.super.label": "mar 2026 – present",
     "project.shelfops.label": "jul – aug 2026",
+    "project.rtp.label": "oct 2026",
     "project.link.demo": "Live demo",
     "project.link.repo": "Repository",
     "project.link.case": "Case study",
@@ -154,6 +159,9 @@ const translations = {
     "project.shelfops.problem": "A store incident needs traceability: who acted, what the system suggested and what a person confirmed.",
     "project.shelfops.solution": "Fastify and PostgreSQL API with RBAC, OIDC login and per-incident decision auditing.",
     "project.shelfops.result": "MVP with a Docker-reproducible demo and integration tests in CI.",
+    "project.rtp.problem": "With high inflation a headline rate does not tell you whether you earn money: every option has caps, tiers and minimum terms, and no source keeps per-bank or per-wallet history.",
+    "project.rtp.solution": "Java 21 and Spring Boot 4 API: idempotent Spring Batch ingestion from 9 sources (BCRA, ArgentinaDatos and others), BigDecimal financial math, magic-link login and alerts through a transactional outbox to RabbitMQ.",
+    "project.rtp.result": "Ranks 398 savings options by real return for any amount and term, backed by 848 automated tests (450 backend tests against real PostgreSQL and RabbitMQ) and a preview with login and alerts tested end to end.",
     "footer.role": "Junior Backend Developer · APIs & Integrations",
   },
 };

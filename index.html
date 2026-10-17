@@ -118,7 +118,7 @@
           <h1 class="text-appear">Mateo Vazquez</h1>
           <p class="role-line text-appear">
             <span data-i18n="hero.headline"
-              >Desarrollador Backend Junior · APIs e Integraciones · TypeScript, Node.js y Go</span
+              >Desarrollador Backend Junior · APIs e Integraciones · Java, TypeScript y Go</span
             >
           </p>
           <p class="hero-location text-appear" data-i18n="hero.location">
@@ -128,8 +128,9 @@
             Desarrollador backend junior formado en UTN FRBA. Para un estudio de
             uñas desarrollé un sistema de turnos y señas con Mercado Pago,
             validado con un pago real, un verificador de comprobantes con LLMs y
-            su backend de inventario en Go. Trabajo con
-            TypeScript, Node.js, PostgreSQL y APIs REST, con pruebas
+            su backend de inventario en Go; con Java y Spring Boot construí
+            rindetuplata, un comparador de rendimientos contra la inflación.
+            Trabajo con TypeScript, Node.js, PostgreSQL y APIs REST, con pruebas
             automatizadas y CI/CD en cada cambio.
           </p>
           <div class="hero-actions text-appear">
@@ -177,6 +178,7 @@
               Lenguajes
             </h3>
             <div class="stack-tiles">
+              <span class="stack-tile t-openjdk" style="--icon: url('./assets/icons/openjdk.svg')"><i class="tile-icon" aria-hidden="true"></i>Java</span>
               <span class="stack-tile t-typescript" style="--icon: url('./assets/icons/typescript.svg')"><i class="tile-icon" aria-hidden="true"></i>TypeScript</span>
               <span class="stack-tile t-javascript" style="--icon: url('./assets/icons/javascript.svg')"><i class="tile-icon" aria-hidden="true"></i>JavaScript</span>
               <span class="stack-tile t-go" style="--icon: url('./assets/icons/go.svg')"><i class="tile-icon" aria-hidden="true"></i>Go</span>
@@ -186,6 +188,7 @@
           <section class="stack-group text-appear">
             <h3 class="stack-group__title" data-i18n="stack.backend">Backend</h3>
             <div class="stack-tiles">
+              <span class="stack-tile t-springboot" style="--icon: url('./assets/icons/springboot.svg')"><i class="tile-icon" aria-hidden="true"></i>Spring Boot</span>
               <span class="stack-tile t-nodedotjs" style="--icon: url('./assets/icons/nodedotjs.svg')"><i class="tile-icon" aria-hidden="true"></i>Node.js</span>
               <span class="stack-tile t-fastify" style="--icon: url('./assets/icons/fastify.svg')"><i class="tile-icon" aria-hidden="true"></i>Fastify</span>
               <span class="stack-tile t-nextdotjs" style="--icon: url('./assets/icons/nextdotjs.svg')"><i class="tile-icon" aria-hidden="true"></i>Next.js</span>
@@ -202,6 +205,7 @@
               <span class="stack-tile t-postgresql" style="--icon: url('./assets/icons/postgresql.svg')"><i class="tile-icon" aria-hidden="true"></i>PostgreSQL</span>
               <span class="stack-tile t-supabase" style="--icon: url('./assets/icons/supabase.svg')"><i class="tile-icon" aria-hidden="true"></i>Supabase</span>
               <span class="stack-tile t-redis" style="--icon: url('./assets/icons/redis.svg')"><i class="tile-icon" aria-hidden="true"></i>Redis</span>
+              <span class="stack-tile t-rabbitmq" style="--icon: url('./assets/icons/rabbitmq.svg')"><i class="tile-icon" aria-hidden="true"></i>RabbitMQ</span>
               <span class="stack-tile t-convex" style="--icon: url('./assets/icons/convex.svg')"><i class="tile-icon" aria-hidden="true"></i>Convex</span>
             </div>
           </section>
@@ -213,6 +217,7 @@
               <span class="stack-tile t-react" style="--icon: url('./assets/icons/react.svg')"><i class="tile-icon" aria-hidden="true"></i>React</span>
               <span class="stack-tile t-nextdotjs" style="--icon: url('./assets/icons/nextdotjs.svg')"><i class="tile-icon" aria-hidden="true"></i>Next.js</span>
               <span class="stack-tile t-svelte" style="--icon: url('./assets/icons/svelte.svg')"><i class="tile-icon" aria-hidden="true"></i>SvelteKit</span>
+              <span class="stack-tile t-astro" style="--icon: url('./assets/icons/astro.svg')"><i class="tile-icon" aria-hidden="true"></i>Astro</span>
               <span class="stack-tile t-tailwindcss" style="--icon: url('./assets/icons/tailwindcss.svg')"><i class="tile-icon" aria-hidden="true"></i>Tailwind</span>
             </div>
           </section>
@@ -232,6 +237,8 @@
               Testing y CI/CD
             </h3>
             <div class="stack-tiles">
+              <span class="stack-tile"><i class="tile-icon tile-icon--mono" aria-hidden="true">J5</i>JUnit 5</span>
+              <span class="stack-tile"><i class="tile-icon tile-icon--mono" aria-hidden="true">TC</i>Testcontainers</span>
               <span class="stack-tile t-vitest" style="--icon: url('./assets/icons/vitest.svg')"><i class="tile-icon" aria-hidden="true"></i>Vitest</span>
               <span class="stack-tile t-playwright" style="--icon: url('./assets/icons/playwright.svg')"><i class="tile-icon" aria-hidden="true"></i>Playwright</span>
               <span class="stack-tile t-go" style="--icon: url('./assets/icons/go.svg')"><i class="tile-icon" aria-hidden="true"></i>Go test</span>
@@ -324,6 +331,49 @@
                 <a href="./mena-nails-inventario.html" data-i18n="project.link.case">Caso técnico</a>
                 <a href="https://github.com/Mateocas1/mena-nails" target="_blank" rel="noreferrer" data-i18n="project.link.repo">Repositorio</a>
               </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card has-media text-appear">
+          <div class="project-media">
+            <img
+              src="./assets/rindetuplata.webp"
+              alt="Captura de la página de inicio de rindetuplata con la mejor opción del día y el ranking por pesos ganados"
+              width="1440"
+              height="900"
+              loading="lazy"
+            />
+          </div>
+          <div class="project-copy">
+            <p class="project-label" data-i18n="project.rtp.label">
+              oct 2026
+            </p>
+            <h3>rindetuplata</h3>
+            <div class="psr">
+              <p class="psr-row"><span class="psr-label" data-i18n="psr.problem">Problema</span><span data-i18n="project.rtp.problem">Con inflación, una tasa alta no dice si ganás plata: cada opción tiene topes, tramos y plazos mínimos, y nadie guarda el historial por banco o billetera.</span></p>
+              <p class="psr-row"><span class="psr-label" data-i18n="psr.solution">Solución</span><span data-i18n="project.rtp.solution">API en Java 21 y Spring Boot 4: ingesta idempotente en Spring Batch desde 9 fuentes (BCRA, ArgentinaDatos y otras), matemática financiera en BigDecimal, login por magic link y alertas con outbox a RabbitMQ.</span></p>
+              <p class="psr-row"><span class="psr-label" data-i18n="psr.result">Resultado</span><span data-i18n="project.rtp.result">Ordena 398 opciones de ahorro por retorno real para cualquier monto y plazo, respaldado por 848 tests automatizados (450 de backend contra PostgreSQL y RabbitMQ reales) y una preview con login y alertas probados de punta a punta.</span></p>
+            </div>
+            <div class="tech-chips">
+              <span class="tech-chip t-openjdk" style="--icon: url('./assets/icons/openjdk.svg')"><i class="chip-icon" aria-hidden="true"></i>Java 21</span>
+              <span class="tech-chip t-springboot" style="--icon: url('./assets/icons/springboot.svg')"><i class="chip-icon" aria-hidden="true"></i>Spring Boot</span>
+              <span class="tech-chip t-postgresql" style="--icon: url('./assets/icons/postgresql.svg')"><i class="chip-icon" aria-hidden="true"></i>PostgreSQL</span>
+              <span class="tech-chip t-rabbitmq" style="--icon: url('./assets/icons/rabbitmq.svg')"><i class="chip-icon" aria-hidden="true"></i>RabbitMQ</span>
+              <span class="tech-chip t-astro" style="--icon: url('./assets/icons/astro.svg')"><i class="chip-icon" aria-hidden="true"></i>Astro</span>
+              <span class="tech-chip t-docker" style="--icon: url('./assets/icons/docker.svg')"><i class="chip-icon" aria-hidden="true"></i>Docker</span>
+            </div>
+            <div class="project-links">
+              <a href="./rindetuplata.html" data-i18n="project.link.case"
+                >Caso técnico</a
+              >
+              <a
+                href="https://github.com/Mateocas1/rindetuplata"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="project.link.repo"
+                >Repositorio</a
+              >
             </div>
           </div>
         </article>
