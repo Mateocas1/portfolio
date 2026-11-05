@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ofertasSUPER se quedó sin CPU: el problema era el algoritmo — Mateo Vazquez</title>
+    <meta
+      name="description"
+      content="Postmortem de ofertasSUPER: Vercel pausó el sitio 30 días por pasar la CPU del plan gratuito. Cómo lo diagnostiqué sin métricas por ruta, la cuenta de productos por ofertas y el índice por EAN que bajó el costo de segundos a milisegundos."
+    />
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const storedTheme = localStorage.getItem("portfolio:theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : prefersDark
+                ? "dark"
+                : "light";
+          root.dataset.theme = theme;
+          root.dataset.lang = "es";
+        } catch {
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.lang = "es";
+        }
+      })();
+    </script>
+    <meta
+      property="og:title"
+      content="ofertasSUPER se quedó sin CPU: el problema era el algoritmo"
+    />
+    <meta
+      property="og:description"
+      content="Vercel pausó el sitio 30 días. Sin métricas por ruta, lo diagnostiqué leyendo el código y midiendo una réplica: 1.200 millones de comparaciones por request, y un índice que las bajó a milisegundos."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="es_AR" />
+    <meta
+      property="og:url"
+      content="https://mateocas1.github.io/portfolio/escritos/ofertassuper-postmortem-cpu.html"
+    />
+    <meta
+      property="og:image"
+      content="https://mateocas1.github.io/portfolio/assets/profile-og.jpg"
+    />
+    <meta property="article:published_time" content="2026-10-28" />
+    <meta property="article:author" content="Mateo Vazquez" />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="canonical"
+      href="https://mateocas1.github.io/portfolio/escritos/ofertassuper-postmortem-cpu.html"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "ofertasSUPER se quedó sin CPU: el problema era el algoritmo",
+        "datePublished": "2026-10-28",
+        "inLanguage": "es-AR",
+        "author": {
+          "@type": "Person",
+          "name": "Mateo Vazquez",
+          "url": "https://mateocas1.github.io/portfolio/"
+        },
+        "mainEntityOfPage": "https://mateocas1.github.io/portfolio/escritos/ofertassuper-postmortem-cpu.html",
+        "image": "https://mateocas1.github.io/portfolio/assets/profile-og.jpg"
+      }
+    </script>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230F0F0E%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../css/article.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html">Mateo Vazquez</a>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="../index.html">Inicio</a>
+          <a href="../index.html#proyectos">Proyectos</a>
+          <a href="../index.html#escritos" aria-current="page">Escritos</a>
+          <a href="../index.html#contacto">Contacto</a>
+          <a
+            href="../CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
+        <div class="header-actions">
+          <button
+            class="toggle-button"
+            type="button"
+            data-theme-toggle
+            aria-label="Cambiar tema: Claro"
+            aria-pressed="false"
+          >
+            <span>Claro</span>
+          </button>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span>Menú</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="article-page">
+      <article class="article">
+        <header class="article-header">
+          <p class="eyebrow">Postmortem · ofertasSUPER</p>
+          <h1>ofertasSUPER se quedó sin CPU: el problema era el algoritmo</h1>
+          <p class="article-dek">
+            Vercel pausó el sitio durante 30 días. Sin métricas por ruta, lo
+            diagnostiqué leyendo el código y midiendo una réplica local: cada
+            request recorría 1.200 millones de comparaciones.
+          </p>
+          <p class="article-meta">
+            <span>Mateo Vazquez</span>
+            <time datetime="2026-10-28">28 oct 2026</time>
+            <span>8 min de lectura</span>
+          </p>
+        </header>
+
+        <div class="article-body">
+          <p>
+            El 15/10/2026 Vercel pausó el proyecto <code>ofertas-super</code>
+            con el motivo <code>FAIR_USE_LIMITS_EXCEEDED</code>
+            (<code>fluidCpuDuration</code>): el equipo había gastado más de las
+            4 horas mensuales de CPU activa que incluye el plan Hobby. Hobby no
+            tiene ciclo de facturación, así que la pausa dura 30 días. Todas
+            las rutas respondieron HTTP 402 hasta el 14/11.
+          </p>
+          <p>
+            La causa estaba en el camino de lectura. <code>/sitemap.xml</code>,
+            <code>/ofertas</code>, <code>/categoria/[slug]</code> y las
+            búsquedas amplias en <code>/buscar</code> armaban resultados para
+            todo el catálogo en cada request, y cada producto recorría todas
+            las ofertas. Una pasada costaba productos × ofertas
+            (24.547 × 48.419, unos 1.200 millones de comparaciones) y entre
+            10,5 y 16,5 s de CPU. Nada estaba cacheado, así que cada visita de
+            un crawler volvía a pagar el costo completo.
+          </p>
+
+          <aside class="article-summary glass" aria-labelledby="resumen">
+            <h2 id="resumen">Resumen</h2>
+            <ul>
+              <li>
+                <strong>Qué pasó:</strong> sitio y API pública caídos del 15/10
+                al 14/11 (30 días). Los otros dos proyectos del mismo equipo en
+                Vercel también quedaron pausados.
+              </li>
+              <li>
+                <strong>Causa:</strong> un camino caliente que escalaba como
+                productos × ofertas, sin caché.
+              </li>
+              <li>
+                <strong>Arreglo:</strong> índice por EAN, sitemap en el build y
+                caché del CDN. De 10,5-16,5 s a entre 18 y 173 ms de CPU por
+                request en las páginas pesadas.
+              </li>
+              <li>
+                <strong>Datos:</strong> no se perdió ninguno. El refresh diario
+                siguió corriendo en GitHub Actions y commiteando snapshots; no
+                se desplegó ninguno durante la pausa.
+              </li>
+            </ul>
+          </aside>
+
+          <p>
+            Todas las horas están en horario de Argentina (ART). El estado
+            actual: el arreglo está integrado (#581 y #582) y producción vuelve
+            cuando Vercel levante la pausa, el 14/11/2026 a las 02:45.
+          </p>
+
+          <h2 id="cronologia">Cronología</h2>
+          <figure class="table-figure glass">
+            <div class="table-scroll" tabindex="0" role="region" aria-labelledby="cap-cronologia">
+              <table>
+                <caption id="cap-cronologia">Cronología del incidente</caption>
+                <thead>
+                  <tr><th scope="col">Fecha</th><th scope="col">Qué pasó</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" class="num" data-label="Fecha">27/09</th>
+                    <td data-label="Qué pasó">Las páginas públicas pasan de la base de datos al snapshot commiteado (<code>9678fbb</code>, <code>ff00040</code>). El recorrido de ofertas por producto sale junto con ese cambio.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="num" data-label="Fecha">05/10 → 27/10</th>
+                    <td data-label="Qué pasó">El snapshot crece de 21,4 MB a 39,5 MB; productos × ofertas pasa de 6,4·10⁸ a 1,2·10⁹. El costo por pasada crece con él.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="num" data-label="Fecha">15/10 02:45</th>
+                    <td data-label="Qué pasó">Vercel pausa el equipo por <code>fluidCpuDuration</code>.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="num" data-label="Fecha">28/10</th>
+                    <td data-label="Qué pasó">Diagnóstico (abajo). Se integra el arreglo #581: índice por EAN, sitemap en el build, caché del CDN y reglas de robots para crawlers de IA.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="num" data-label="Fecha">28/10</th>
+                    <td data-label="Qué pasó">Se integra el seguimiento #582: cierre del optimizador de imágenes abierto, caché del CDN para la API pública y filtros facetados y búsqueda interna fuera del crawl.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="num" data-label="Fecha">14/11 02:45</th>
+                    <td data-label="Qué pasó">Fin previsto de la pausa. El primer deploy incluye los dos arreglos.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+
+          <h2 id="diagnostico">Cómo lo diagnostiqué sin métricas por ruta</h2>
+          <p>
+            En Hobby no están disponibles el uso por ruta, las consultas de
+            observabilidad ni los logs de runtime de más de una hora. No había
+            forma de medir qué ruta gastaba la CPU. El diagnóstico salió del
+            código y de una réplica local:
+          </p>
+          <ol class="steps">
+            <li>
+              El log de build del último deploy mostraba qué rutas se renderizan
+              bajo demanda (<code>ƒ</code>): <code>/sitemap.xml</code>
+              (<code>force-dynamic</code>), <code>/ofertas</code>,
+              <code>/categoria/[slug]</code> y <code>/buscar</code>. Las tres
+              últimas leen <code>searchParams</code>, así que su
+              <code>revalidate</code> no tenía ningún efecto.
+            </li>
+            <li>
+              Leer el camino de lectura (<code>src/lib/catalog-snapshot.ts</code>
+              y <code>src/lib/public-pages.ts</code>) mostró
+              <code>snapshot.offers.filter(o =&gt; o.ean === product.ean)</code>
+              una vez por producto, páginas de listado que calculaban todos los
+              productos antes de quedarse con 24, y
+              <code>resolveSnapshotCatalogPage</code> cargando sus datos dos
+              veces.
+            </li>
+            <li>
+              Una réplica local sobre el snapshot real midió entre 10,5 y
+              16,5 s de CPU por pasada completa, y entre 26 y 32 ms para la
+              misma pasada con un índice por EAN.
+            </li>
+            <li>
+              La cuenta mensual: 14.400 s de CPU ÷ 10,5-16 s ≈ 900-1.400
+              pasadas, unas 30-45 por día. Un solo crawler que lea el sitemap y
+              las páginas de categoría llega a eso.
+            </li>
+          </ol>
+          <p>
+            Qué parte vino de crawlers, de páginas de producto o de los otros
+            dos proyectos no se puede medir en Hobby. Lo que sí está confirmado
+            es el costo del camino de código de arriba, y la cronología
+            (el código el 27/09, el snapshot +56 % en diez días, la pausa el
+            15/10) encaja con él.
+          </p>
+
+          <h2 id="aritmetica">La aritmética de productos × ofertas</h2>
+          <p>
+            Cada producto buscaba sus ofertas filtrando la lista completa de
+            ofertas. Con 24.547 productos y 48.419 ofertas son unos 1.200
+            millones de comparaciones por pasada, y esa pasada se repetía en
+            cada request de las rutas que armaban el catálogo entero. El costo
+            no dependía de cuánto se mostraba (24 productos por página) sino
+            del tamaño total del catálogo, y el snapshot crecía: 56 % en diez días.
+            Con un índice por EAN la misma pasada en la réplica local costó
+            entre 26 y 32 ms: el índice se arma una vez y cada producto va
+            directo a sus ofertas.
+          </p>
+
+          <h2 id="resolucion">El arreglo</h2>
+          <h3 id="pr-581">#581: el camino de lectura</h3>
+          <ul>
+            <li>
+              Un índice por EAN armado una sola vez por snapshot y por proceso:
+              ofertas por EAN, producto por GTIN, cantidad de ofertas con
+              precio y campos de búsqueda normalizados. Cada producto se
+              rankea una vez en lugar de en cada comparación.
+            </li>
+            <li>
+              Las páginas de listado se cortan a la página pedida antes de
+              armar las ofertas, salvo que un filtro de precio, "solo ofertas"
+              o un orden necesite todos los resúmenes. Los datos de la página se
+              cargan una sola vez.
+            </li>
+            <li>
+              <code>/sitemap.xml</code> se genera en el build y el snapshot
+              viaja con el deploy.
+            </li>
+            <li>
+              <code>Vercel-CDN-Cache-Control: s-maxage=3600,
+              stale-while-revalidate=86400</code> en las páginas del catálogo,
+              así cada URL se renderiza como mucho una vez por hora.
+            </li>
+            <li>
+              <code>robots.txt</code> deja afuera a los crawlers masivos de IA;
+              Googlebot y <code>*</code> no cambian.
+            </li>
+          </ul>
+          <h3 id="pr-582">#582: las fugas de cuota que quedaban</h3>
+          <ul>
+            <li>
+              <code>images.unoptimized: true</code>: <code>/_next/image</code>
+              respondía para cualquier host https y podía gastar la cuota de
+              transformación de imágenes; ahora devuelve 404.
+            </li>
+            <li>
+              El mismo header de CDN, solo en las respuestas GET exitosas de la
+              API pública. Un 429 o un 503 nunca se cachean, para que el CDN no
+              pueda repetir una respuesta de límite de tasa o de caída.
+            </li>
+            <li>
+              <code>robots.txt</code> mantiene fuera del crawl las variantes de
+              filtros y <code>/buscar</code>; esas páginas ya declaran su URL
+              sin filtros como canónica.
+            </li>
+          </ul>
+
+          <h2 id="mediciones">Mediciones</h2>
+          <p>
+            Medido sobre el snapshot real del 27/10, con Node 24 local, en
+            milisegundos de CPU por request:
+          </p>
+          <figure class="table-figure glass">
+            <div class="table-scroll" tabindex="0" role="region" aria-labelledby="cap-mediciones">
+              <table>
+                <caption id="cap-mediciones">CPU por request, antes y después (ms)</caption>
+                <thead>
+                  <tr><th scope="col">Ruta</th><th scope="col" class="num">Antes</th><th scope="col" class="num">Después</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row" data-label="Ruta"><code>/sitemap.xml</code></th><td class="num" data-label="Antes">10.500-16.500</td><td class="num" data-label="Después">0 (estático)</td></tr>
+                  <tr><th scope="row" data-label="Ruta"><code>/ofertas</code></th><td class="num" data-label="Antes">2 × 10.500-16.500</td><td class="num" data-label="Después">128</td></tr>
+                  <tr><th scope="row" data-label="Ruta"><code>/categoria/*</code></th><td class="num" data-label="Antes">hasta 2 × 10.500-16.500</td><td class="num" data-label="Después">18-35</td></tr>
+                  <tr><th scope="row" data-label="Ruta"><code>/buscar?q=a</code> (la consulta más amplia)</th><td class="num" data-label="Antes">~10.400</td><td class="num" data-label="Después">173</td></tr>
+                  <tr><th scope="row" data-label="Ruta">500 búsquedas de producto</th><td class="num" data-label="Antes">4.375</td><td class="num" data-label="Después">8</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+          <p>
+            Una instancia en frío gasta ahora unos 0,45 s de CPU antes de su
+            primera respuesta: parsear el JSON (~260 ms), armar el índice
+            (~120 ms) y el primer ranking (~100 ms).
+          </p>
+
+          <h2 id="prueba">Cómo probé que el cambio era seguro</h2>
+          <p>
+            Cambiar el algoritmo de lectura de todo el catálogo sin cambiar la
+            salida era el riesgo real. Lo cubrí con tres pruebas:
+          </p>
+          <ul>
+            <li>
+              <strong>Oráculo.</strong> Los tests fijan el camino indexado
+              contra una copia del algoritmo anterior de escaneo completo
+              (<code>tests/helpers/naive-snapshot-oracle.ts</code>): mismos
+              productos, ofertas, orden, totales y URLs del sitemap, sobre un
+              fixture con EAN duplicados, gemelos de GTIN con relleno, ofertas
+              huérfanas y empates de nombre.
+            </li>
+            <li>
+              <strong>Conteo de lecturas.</strong> Un <code>Proxy</code> que
+              cuenta lecturas sobre las ofertas demuestra que un conjunto
+              completo de llamadas del camino caliente lee cada oferta como
+              mucho una vez. El código viejo leía 44,8 millones de ofertas en
+              esas mismas llamadas.
+            </li>
+            <li>
+              <strong>Corrida diferencial.</strong> Corrí el código viejo y el
+              nuevo sobre el snapshot real y comparé 25 casos (sitemap,
+              <code>/ofertas</code>, cuatro categorías con dos juegos de
+              filtros, cinco consultas, búsqueda por API y 500 lookups): las 25
+              salidas fueron idénticas.
+            </li>
+          </ul>
+          <p>
+            Los tests de equivalencia los escribí antes de cambiar el
+            algoritmo, así el cambio se pudo demostrar en lugar de argumentar.
+          </p>
+
+          <h2 id="descartadas">Opciones que descarté</h2>
+          <figure class="table-figure glass">
+            <div class="table-scroll" tabindex="0" role="region" aria-labelledby="cap-decisiones">
+              <table>
+                <caption id="cap-decisiones">Decisiones y motivos</caption>
+                <thead>
+                  <tr><th scope="col">Opción</th><th scope="col">Decisión</th><th scope="col">Por qué</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" data-label="Opción">Pasar a Vercel Pro</th>
+                    <td data-label="Decisión">No</td>
+                    <td data-label="Por qué">El costo era algorítmico; pagar lo habría escondido.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" data-label="Opción">Migrar a Cloudflare Workers</th>
+                    <td data-label="Decisión">No</td>
+                    <td data-label="Por qué">Los Workers gratis permiten 10 ms de CPU por request y 128 MB de memoria; solo parsear el snapshot de 39 MB lleva ~160 ms. La capa de datos habría que reescribirla igual.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" data-label="Opción">ISR para <code>/producto/[ean]</code></th>
+                    <td data-label="Decisión">No</td>
+                    <td data-label="Por qué">Un crawl diario de ~24,5 mil productos son ~735 mil escrituras de ISR por mes contra las 200 mil de Hobby. El caché del CDN no tiene cuota de escrituras.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" data-label="Opción">Dividir el snapshot / índice de trigramas para la búsqueda</th>
+                    <td data-label="Decisión">Por ahora no</td>
+                    <td data-label="Por qué">El arranque en frío es de ~0,45 s; 1.000 arranques en frío por mes son ~3 % de la cuota. Un índice de trigramas sumaría CPU a cada arranque y no puede atender consultas de una o dos letras, que son las únicas lentas. Lo retomo con datos reales de uso.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" data-label="Opción">Headers de CDN para la API en <code>next.config</code></th>
+                    <td data-label="Decisión">No, en los handlers</td>
+                    <td data-label="Por qué">Los headers de config aplican a todos los status, así que un 429 o un 503 se cacheaba una hora.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+
+          <h2 id="balance">Qué salió bien y qué salió mal</h2>
+          <h3>Bien</h3>
+          <ul>
+            <li>
+              El arreglo mantuvo la app en Hobby a USD 0 y sin cambiar su
+              salida.
+            </li>
+            <li>
+              Las pruebas de equivalencia existían antes de tocar el
+              algoritmo.
+            </li>
+          </ul>
+          <h3>Mal</h3>
+          <ul>
+            <li>
+              Salió a producción un camino caliente que crecía con
+              productos × ofertas sin un test de costo, y el snapshot creció
+              56 % en diez días sin que nadie midiera el costo por request.
+            </li>
+            <li>
+              No había ninguna alerta de uso. Hobby no expone el uso por ruta,
+              así que la causa tuve que reconstruirla desde el código después
+              de la pausa.
+            </li>
+          </ul>
+
+          <h2 id="pendientes">Qué sigue</h2>
+          <ul>
+            <li>
+              <strong>Hecho:</strong> una guarda de costo en la suite de tests
+              (<code>tests/catalog-snapshot-index.test.ts</code>) falla si un
+              camino caliente lee las ofertas más de una vez.
+            </li>
+            <li>
+              Después del 14/11: verificar que <code>x-vercel-cache</code>
+              llegue a <code>HIT</code> en <code>/ofertas</code>,
+              <code>/producto/&lt;ean&gt;</code> y <code>/api/categories</code>;
+              que <code>/_next/image</code> devuelva 404 y que el
+              <code>robots.txt</code> sea el nuevo.
+            </li>
+            <li>
+              Unos días después: leer el porcentaje de CPU activa en la pestaña
+              Usage del dashboard de Vercel y decidir con datos sobre lo que
+              dejé diferido.
+            </li>
+            <li>
+              Opcional: una regla de firewall de Vercel para bots que ignoran
+              <code>robots.txt</code> o agregan query strings al azar para
+              saltear el caché.
+            </li>
+          </ul>
+        </div>
+
+        <footer class="article-footer">
+          <h2>Para seguir leyendo</h2>
+          <ul>
+            <li><a href="../ofertas-super.html">El caso técnico de ofertasSUPER</a></li>
+            <li>
+              <a
+                href="https://github.com/Mateocas1/ofertaSUPER/blob/master/docs/postmortem-2026-10-vercel-cpu-pause.md"
+                target="_blank"
+                rel="noreferrer"
+                >El postmortem original en el repositorio</a
+              > (en inglés)
+            </li>
+            <li>
+              Pull requests:
+              <a
+                href="https://github.com/Mateocas1/ofertaSUPER/pull/581"
+                target="_blank"
+                rel="noreferrer"
+                >#581</a
+              >
+              y
+              <a
+                href="https://github.com/Mateocas1/ofertaSUPER/pull/582"
+                target="_blank"
+                rel="noreferrer"
+                >#582</a
+              >
+            </li>
+            <li><a href="../index.html#escritos">Todos los escritos</a></li>
+          </ul>
+        </footer>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <span>Mateo Vazquez</span>
+      <span>Desarrollador Backend Junior · APIs e Integraciones</span>
+      <div class="footer-social">
+        <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/vazquezmateo"
+          target="_blank"
+          rel="noreferrer"
+          >LinkedIn</a
+        >
+        <a href="mailto:castiglionemateo1@gmail.com">Correo</a>
+      </div>
+    </footer>
+    <script src="../script.js" type="module"></script>
+  </body>
+</html>
