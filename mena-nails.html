@@ -60,6 +60,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/diagrams.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -119,6 +120,13 @@
           <a class="button primary" href="./mena-nails-inventario.html"
             >Producto 2: Inventario</a
           >
+          <a
+            class="button ghost"
+            href="https://github.com/Mateocas1/receipt-verifier"
+            target="_blank"
+            rel="noreferrer"
+            >Código del verificador</a
+          >
         </div>
       </section>
 
@@ -154,8 +162,9 @@
             <span>Tradeoffs</span>
             <b>Los modelos ayudan, no deciden solos</b>
             <p>
-              Elegí los modelos con evals propias (6 LLMs, 150 comprobantes):
-              0 aprobaciones indebidas en 30 comprobantes adversariales (montos
+              Elegí los modelos con evals propias (6 LLMs, 150 comprobantes
+              sintéticos): 0 aprobaciones indebidas en 30 comprobantes
+              adversariales (montos
               editados, duplicados, prompt injection) y 99,7 % de exactitud por
               campo. Si todo falla, decide una persona.
             </p>
@@ -177,6 +186,40 @@
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="case-stack arch-section reveal" aria-labelledby="arch-mena-h">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura</p>
+          <h2 id="arch-mena-h">Una reserva, dos formas de pagar la seña.</h2>
+        </div>
+        <figure class="arch" aria-labelledby="arch-mena-h" aria-describedby="arch-mena-d">
+          <p class="arch__sr" id="arch-mena-d">Diagrama en cuatro bloques. Reserva: el cliente usa la app en Next.js con Clerk y el turno queda en Convex. Seña con Mercado Pago: Checkout Pro avisa por webhook y Convex cambia el estado del turno. Seña por transferencia: el comprobante lo verifica un microservicio en Python con FastAPI que usa deepseek-v4-flash, con qwen3.8-flash y OCR local con Tesseract como respaldo; si todo falla, lo revisa una persona. Agenda: los turnos confirmados se sincronizan a Google Calendar.</p>
+<div class="arch__lane"><p class="arch__lane-label">Reserva</p>
+<ol class="arch__flow" data-n="2">
+<li class="arch__node"><span class="arch__kicker">Cliente</span><b>Next.js y Clerk</b><small>reserva y login</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">Backend</span><b>Convex</b><small>turnos y estados</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>Cada turno espera una seña. Hay dos caminos para pagarla.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Seña con Mercado Pago</p>
+<ol class="arch__flow" data-n="2">
+<li class="arch__node"><span class="arch__kicker">Pago</span><b>Checkout Pro</b><small>el cliente paga en Mercado Pago</small></li>
+<li class="arch__node"><span class="arch__kicker">Aviso</span><b>Webhook</b><small>Convex cambia el estado del turno</small></li>
+</ol></div>
+<div class="arch__lane"><p class="arch__lane-label">Seña por transferencia</p>
+<ol class="arch__flow" data-n="4">
+<li class="arch__node"><span class="arch__kicker">Entrada</span><b>Comprobante</b><small>lo sube el cliente</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">Verificador</span><b>Python y FastAPI</b><small>deepseek-v4-flash</small></li>
+<li class="arch__node"><span class="arch__kicker">Respaldo</span><b>qwen3.8-flash y Tesseract</b><small>OCR local</small></li>
+<li class="arch__node"><span class="arch__kicker">Último recurso</span><b>Revisión manual</b><small>decide una persona</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>Con la seña confirmada, el turno pasa a confirmado en Convex.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Agenda</p>
+<ol class="arch__flow" data-n="1">
+<li class="arch__node"><span class="arch__kicker">Calendario</span><b>Google Calendar</b><small>sincroniza los turnos confirmados</small></li>
+</ol></div>
+          <figcaption>Notá que los modelos nunca deciden solos: el verificador tiene dos respaldos y, si todos fallan, la decisión es de una persona.</figcaption>
+        </figure>
       </section>
 
       <section class="case-stack reveal">

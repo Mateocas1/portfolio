@@ -63,6 +63,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/diagrams.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -119,14 +120,14 @@
           <a class="button ghost" href="./index.html#proyectos"
             >Volver al portfolio</a
           >
-          <a
-            class="button primary"
-            href="https://github.com/Mateocas1/mena-nails"
-            target="_blank"
-            rel="noreferrer"
-            >Repositorio</a
+          <a class="button primary" href="./mena-nails.html"
+            >Producto 1: Turnos y señas</a
           >
         </div>
+        <p class="case-note text-appear">
+          <b>Código privado:</b> el repositorio es del cliente y no es público.
+          Esta página describe la arquitectura, las decisiones y las pruebas.
+        </p>
       </section>
 
       <section class="case-breakdown reveal">
@@ -177,6 +178,30 @@
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="case-stack arch-section reveal" aria-labelledby="arch-inventario-h">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura</p>
+          <h2 id="arch-inventario-h">Un contrato OpenAPI entre la PWA y la API.</h2>
+        </div>
+        <figure class="arch" aria-labelledby="arch-inventario-h" aria-describedby="arch-inventario-d">
+          <p class="arch__sr" id="arch-inventario-d">Diagrama en dos bloques. Operación, de izquierda a derecha: la PWA en SvelteKit habla con la API en Go 1.24, que usa login por sesión con bcrypt y guarda en PostgreSQL con pgx y sqlc. Contrato y CI: el contrato OpenAPI define la interfaz, de él se genera el cliente, y una verificación en CI falla si el cliente generado se desvía del contrato.</p>
+<div class="arch__lane"><p class="arch__lane-label">Operación</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">Frontend</span><b>PWA en SvelteKit</b><small>operar el inventario del estudio</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">API</span><b>Go 1.24</b><small>login por sesión con bcrypt</small></li>
+<li class="arch__node"><span class="arch__kicker">Datos</span><b>PostgreSQL</b><small>consultas tipadas con pgx y sqlc</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>OpenAPI define la interfaz entre la PWA y la API.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Contrato y CI</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">Contrato</span><b>OpenAPI</b><small>fuente de verdad</small></li>
+<li class="arch__node"><span class="arch__kicker">Generado</span><b>Cliente</b><small>se genera a partir del contrato</small></li>
+<li class="arch__node"><span class="arch__kicker">Verificación</span><b>Check en CI</b><small>falla si el cliente se desvía</small></li>
+</ol></div>
+          <figcaption>El contrato manda: el cliente no se escribe a mano, se genera, y la CI frena cualquier desvío.</figcaption>
+        </figure>
       </section>
 
       <section class="case-stack reveal">
