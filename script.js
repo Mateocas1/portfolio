@@ -116,16 +116,6 @@ const translations = {
     "skills.title": "Con qué trabajo",
     "skills.lead":
       "El foco está en el backend: APIs, datos e integraciones. El resto es lo necesario para poner cada sistema en manos de alguien.",
-    "stack.languages": "Lenguajes",
-    "stack.backend": "Backend",
-    "stack.data": "Datos",
-    "stack.integrations": "Integraciones",
-    "stack.testing": "Testing y CI/CD",
-    "stack.cloud": "Infraestructura",
-    "stack.frontend": "Frontend",
-    "stack.ai": "IA",
-    "stack.ai.list":
-      "Claude Code, Codex, MCP, evals de LLMs; reviso cada cambio antes del commit",
     "education.eyebrow": "Formación",
     "education.title": "Formación",
     "edu.utn.title": "Diplomatura Professional Full-Stack Developer",
@@ -251,16 +241,6 @@ const translations = {
     "skills.title": "What I work with",
     "skills.lead":
       "The focus is the backend: APIs, data and integrations. The rest is what it takes to put each system in someone's hands.",
-    "stack.languages": "Languages",
-    "stack.backend": "Backend",
-    "stack.data": "Data",
-    "stack.integrations": "Integrations",
-    "stack.testing": "Testing & CI/CD",
-    "stack.cloud": "Infrastructure",
-    "stack.frontend": "Frontend",
-    "stack.ai": "AI",
-    "stack.ai.list":
-      "Claude Code, Codex, MCP, LLM evals; I review every change before it is committed",
     "education.eyebrow": "Education",
     "education.title": "Education",
     "edu.utn.title": "Diplomatura Professional Full-Stack Developer",

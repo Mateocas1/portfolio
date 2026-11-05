@@ -56,6 +56,29 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/portrait.css" />
+    <link rel="stylesheet" href="./css/stack-cards.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mateo Vazquez",
+        "jobTitle": "Desarrollador Backend Junior",
+        "url": "https://mateocas1.github.io/portfolio/",
+        "image": "https://mateocas1.github.io/portfolio/assets/profile-og.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        "alumniOf": "UTN FRBA",
+        "knowsAbout": ["Java", "Spring Boot", "TypeScript", "Go", "PostgreSQL", "REST APIs"],
+        "sameAs": [
+          "https://github.com/Mateocas1",
+          "https://www.linkedin.com/in/vazquezmateo"
+        ]
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
@@ -66,6 +89,7 @@
         <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
           <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
           <a href="#stack" data-i18n="nav.stack">Stack</a>
+          <a href="#escritos" data-i18n="nav.writing">Escritos</a>
           <a href="#formacion" data-i18n="nav.education">Formación</a>
           <a href="#contacto" data-i18n="nav.contact">Contacto</a>
           <a
@@ -142,7 +166,8 @@
               >
             </div>
           </div>
-          <div class="hero-photo">
+          <!-- Progressive enhancement: js/portrait.js turns the photo into particles (D3) -->
+          <div class="hero-portrait" data-portrait>
             <img
               src="./assets/profile.webp"
               alt="Foto de Mateo Vazquez"
@@ -153,7 +178,7 @@
           </div>
         </div>
 
-        <ul class="proof-strip" aria-label="Números de los proyectos">
+        <ul class="proof-strip glass" aria-label="Números de los proyectos">
           <li>
             <b class="proof-value" data-i18n="num.tests">1.533</b>
             <span class="proof-label" data-i18n="proof.tests"
@@ -173,10 +198,10 @@
           <li>
             <b class="proof-value">0 / 30</b>
             <span class="proof-label" data-i18n="proof.llm"
-              >aprobaciones indebidas con comprobantes adversariales</span
+              >aprobaciones indebidas con comprobantes adversariales sintéticos</span
             >
             <span class="proof-source" data-i18n="proof.llm.source"
-              >Mena Nails · evals propias</span
+              >Mena Nails · receipt-verifier</span
             >
           </li>
           <li>
@@ -199,7 +224,8 @@
           </p>
         </div>
 
-        <article class="project">
+        <div class="projects-list">
+        <article class="project glass" data-spotlight>
           <div class="project-copy">
             <div class="project-head">
               <span class="project-index">01</span>
@@ -231,6 +257,7 @@
           </div>
           <div>
             <figure class="project-media">
+              <figcaption>rindetuplata · preview privada</figcaption>
               <img
                 src="./assets/rindetuplata.webp"
                 alt="Página de inicio de rindetuplata con la mejor opción del día y el ranking por pesos ganados"
@@ -247,7 +274,7 @@
           </div>
         </article>
 
-        <article class="project project--text">
+        <article class="project project--text glass" data-spotlight>
           <div class="project-copy">
             <div class="project-head">
               <span class="project-index">02</span>
@@ -268,7 +295,7 @@
                 <p class="project-meta"><span data-i18n="project.mena.p1.dates">may – jun 2026</span></p>
                 <dl class="psr">
                   <div><dt data-i18n="psr.problem">Problema</dt><dd data-i18n="project.mena.p1.problem">La agenda manual generaba consultas por mensaje, señas difíciles de conciliar y riesgo de doble reserva.</dd></div>
-                  <div><dt data-i18n="psr.solution">Solución</dt><dd data-i18n="project.mena.p1.solution">Reserva autenticada con Mercado Pago, comprobantes de transferencia validados por un verificador con LLMs (0 aprobaciones indebidas en 30 casos adversariales) y turnos confirmados en Google Calendar.</dd></div>
+                  <div><dt data-i18n="psr.solution">Solución</dt><dd data-i18n="project.mena.p1.solution">Reserva autenticada con Mercado Pago, comprobantes de transferencia validados por un verificador con LLMs (0 aprobaciones indebidas en 30 casos adversariales sintéticos) y turnos confirmados en Google Calendar.</dd></div>
                   <div><dt data-i18n="psr.result">Resultado</dt><dd data-i18n="project.mena.p1.result">Verificado de extremo a extremo en producción con un turno y un pago reales.</dd></div>
                 </dl>
                 <p class="project-tech">
@@ -277,6 +304,7 @@
                 </p>
                 <div class="project-links">
                   <a class="text-link" href="./mena-nails.html" data-i18n="project.link.case">Caso técnico</a>
+                  <a class="text-link" href="https://github.com/Mateocas1/receipt-verifier" target="_blank" rel="noreferrer" data-i18n="project.link.verifier">Verificador</a>
                 </div>
               </div>
               <div class="product">
@@ -293,14 +321,13 @@
                 </p>
                 <div class="project-links">
                   <a class="text-link" href="./mena-nails-inventario.html" data-i18n="project.link.case">Caso técnico</a>
-                  <a class="text-link" href="https://github.com/Mateocas1/mena-nails" target="_blank" rel="noreferrer" data-i18n="project.link.repo">Repositorio</a>
                 </div>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="project">
+        <article class="project glass" data-spotlight>
           <div class="project-copy">
             <div class="project-head">
               <span class="project-index">03</span>
@@ -309,7 +336,8 @@
             <p class="project-meta">
               <span data-i18n="project.super.label">mar 2026 – actualidad</span>
               <span data-i18n="project.own">Proyecto propio</span>
-              <span class="is-flag" data-i18n="project.super.status">Sitio pausado hasta el 14/11</span>
+              <span class="is-flag" data-until="2026-11-15T03:00:00Z" data-i18n="project.super.status">Sitio pausado hasta el 14/11</span>
+              <span data-from="2026-11-15T03:00:00Z" hidden data-i18n="project.super.live">En línea</span>
             </p>
             <p class="project-summary" data-i18n="project.super.summary">
               Comparador de precios de supermercados argentinos: buscás un
@@ -326,6 +354,7 @@
               GitHub Actions
             </p>
             <div class="project-links">
+              <a class="text-link" href="https://ofertasuper.com" target="_blank" rel="noreferrer" data-from="2026-11-15T03:00:00Z" hidden data-i18n="project.link.site">Sitio</a>
               <a class="text-link" href="./ofertas-super.html" data-i18n="project.link.case">Caso técnico</a>
               <a class="text-link" href="https://github.com/Mateocas1/ofertaSUPER/blob/master/docs/postmortem-2026-10-vercel-cpu-pause.md" target="_blank" rel="noreferrer" data-i18n="project.link.postmortem">Postmortem</a>
               <a class="text-link" href="https://github.com/Mateocas1/ofertaSUPER" target="_blank" rel="noreferrer" data-i18n="project.link.repo">Repositorio</a>
@@ -333,6 +362,7 @@
           </div>
           <div>
             <figure class="project-media">
+              <figcaption>ofertasuper.com</figcaption>
               <img
                 src="./assets/ofertasuper.webp"
                 alt="Página de inicio de ofertasSUPER con la comparación de canasta entre supermercados"
@@ -349,7 +379,7 @@
           </div>
         </article>
 
-        <article class="project project--text">
+        <article class="project project--text glass" data-spotlight>
           <div class="project-copy">
             <div class="project-head">
               <span class="project-index">04</span>
@@ -377,6 +407,7 @@
             </div>
           </div>
         </article>
+        </div>
       </section>
 
       <section id="stack" class="section-shell section reveal">
@@ -388,16 +419,423 @@
             lo necesario para poner cada sistema en manos de alguien.
           </p>
         </div>
-        <dl class="skills">
-          <div><dt data-i18n="stack.languages">Lenguajes</dt><dd>Java, TypeScript, Go, Python, SQL</dd></div>
-          <div><dt data-i18n="stack.backend">Backend</dt><dd>Spring Boot, Spring Batch, Spring Security, Node.js, Fastify, FastAPI, REST, OpenAPI, webhooks</dd></div>
-          <div><dt data-i18n="stack.data">Datos</dt><dd>PostgreSQL, Flyway, Prisma, sqlc, Redis, RabbitMQ, DuckDB, dbt</dd></div>
-          <div><dt data-i18n="stack.integrations">Integraciones</dt><dd>Mercado Pago, Google Calendar, Telegram Bot API, Clerk, VTEX</dd></div>
-          <div><dt data-i18n="stack.testing">Testing y CI/CD</dt><dd>JUnit 5, Testcontainers, Vitest, Playwright, Go test, pytest, k6, GitHub Actions</dd></div>
-          <div><dt data-i18n="stack.cloud">Infraestructura</dt><dd>Docker, AWS, Terraform, Vercel, Caddy</dd></div>
-          <div><dt data-i18n="stack.frontend">Frontend</dt><dd>React, Next.js, SvelteKit, Astro, Tailwind</dd></div>
-          <div><dt data-i18n="stack.ai">IA</dt><dd data-i18n="stack.ai.list">Claude Code, Codex, MCP, evals de LLMs; reviso cada cambio antes del commit</dd></div>
-        </dl>
+        <!-- T3 owns everything inside [data-stack-cards] (css/stack-cards.css, js/stack-cards.js, js/i18n/stack.js) -->
+        <div class="stack-cards" data-stack-cards>
+          <p class="stack-hint" aria-hidden="true" data-stack-js hidden>
+            <span class="stack-hint__hover" data-i18n="stack.hint.hover">Pasá el cursor o hacé clic en una tarjeta para ver dónde y cómo la usé.</span>
+            <span class="stack-hint__touch" data-i18n="stack.hint.touch">Tocá una tarjeta para ver dónde y cómo la usé.</span>
+          </p>
+          <div class="stack-areas">
+            <div class="stack-area stack-area--full">
+              <h3 class="stack-area__title" data-i18n="stack.group.backend">Backend</h3>
+              <ul class="stack-area__list" role="list">
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="openjdk"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Java</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata</p>
+                      <p class="stack-card__how" data-i18n="stack.java.how">API en Java 21. La matemática financiera usa BigDecimal y está probada contra valores calculados a mano.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Java<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="springboot"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Spring Boot</span>
+                        <span class="stack-card__meta">Batch · Security</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata</p>
+                      <p class="stack-card__how" data-i18n="stack.spring.how">API REST con OpenAPI, ingesta diaria idempotente con Spring Batch (un job por fecha, 9 fuentes) y magic link con Spring Security.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Spring Boot<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="go"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Go</span>
+                        <span class="stack-card__meta">pgx · sqlc</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where" data-i18n="stack.where.menaInventory">Mena Nails · inventario</p>
+                      <p class="stack-card__how" data-i18n="stack.go.how">API con pgx y sqlc, y OpenAPI como contrato con control de desvío en CI. 156 tests de Go con integración.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Go<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="typescript"></span><span class="stack-logo" data-logo="nodedotjs"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">TypeScript</span>
+                        <span class="stack-card__meta">Node.js · Fastify</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">ShelfOps</p>
+                      <p class="stack-card__how" data-i18n="stack.ts.how">API en Fastify con arquitectura hexagonal, OIDC, CSRF y rate limiting; 258 tests. También en ofertasSUPER y en la web de rindetuplata.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">TypeScript<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="stack-area stack-area--full">
+              <h3 class="stack-area__title" data-i18n="stack.group.data">Datos y mensajería</h3>
+              <ul class="stack-area__list" role="list">
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="postgresql"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">PostgreSQL</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where" data-i18n="stack.where.all4">Los cuatro proyectos</p>
+                      <p class="stack-card__how" data-i18n="stack.postgres.how">rindetuplata con Flyway (v18), catálogo e historial de precios en ofertasSUPER, 17 migraciones en Mena Nails y ShelfOps (v16).</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">PostgreSQL<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="rabbitmq"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">RabbitMQ</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata</p>
+                      <p class="stack-card__how" data-i18n="stack.rabbitmq.how">Alertas con outbox transaccional, publisher confirms, consumidor idempotente y dead-letter queue.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">RabbitMQ<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="redis"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Redis</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">ofertasSUPER</p>
+                      <p class="stack-card__how" data-i18n="stack.redis.how">Rate limiting de las APIs públicas.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Redis<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__mark" aria-hidden="true">{{ ref }}</span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">DuckDB · dbt</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">ofertasSUPER</p>
+                      <p class="stack-card__how" data-i18n="stack.duckdb.how">Índice de canasta fija comparado con el IPC del INDEC.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">DuckDB · dbt<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="stack-area stack-area--half">
+              <h3 class="stack-area__title" data-i18n="stack.group.integrations">Integraciones</h3>
+              <ul class="stack-area__list" role="list">
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="mercadopago"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Mercado Pago</span>
+                        <span class="stack-card__meta">Checkout Pro</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">Mena Nails</p>
+                      <p class="stack-card__how" data-i18n="stack.mercadopago.how">Señas con Checkout Pro y webhooks, validado en producción con un pago real.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Mercado Pago<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="vtex"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">VTEX</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">ofertasSUPER</p>
+                      <p class="stack-card__how" data-i18n="stack.vtex.how">Catálogo de Carrefour, Disco, Jumbo y Vea desde la API de VTEX; Coto va por su búsqueda.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">VTEX<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="stack-area stack-area--half">
+              <h3 class="stack-area__title" data-i18n="stack.group.ai">IA</h3>
+              <ul class="stack-area__list" role="list">
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__mark" aria-hidden="true">.py</span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Python</span>
+                        <span class="stack-card__meta">FastAPI · pytest</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">Mena Nails</p>
+                      <p class="stack-card__how" data-i18n="stack.python.how">Microservicio que verifica comprobantes con LLMs: 0 aprobaciones indebidas en 30 comprobantes adversariales.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Python<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="claude"></span><span class="stack-logo" data-logo="openai"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Claude Code · Codex</span>
+                        <span class="stack-card__meta">MCP · evals</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where" data-i18n="stack.where.every">Todos los proyectos</p>
+                      <p class="stack-card__how" data-i18n="stack.claude.how">Desarrollo bajo ODD: specs, decisiones y evidencia por tarea; reviso cada cambio. MCP de solo lectura en rindetuplata y evals de 6 LLMs en Mena Nails.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Claude Code · Codex<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="stack-area stack-area--full">
+              <h3 class="stack-area__title" data-i18n="stack.group.quality">Calidad</h3>
+              <ul class="stack-area__list" role="list">
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__mark" aria-hidden="true">@Test</span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">JUnit 5</span>
+                        <span class="stack-card__meta">Testcontainers</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata</p>
+                      <p class="stack-card__how" data-i18n="stack.junit.how">899 tests de backend contra PostgreSQL y RabbitMQ reales, levantados con Testcontainers.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">JUnit 5<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="vitest"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Vitest</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata · Mena Nails</p>
+                      <p class="stack-card__how" data-i18n="stack.vitest.how">634 tests en la web de rindetuplata y 166 en el inventario de Mena Nails.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Vitest<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="playwright"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Playwright</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata</p>
+                      <p class="stack-card__how" data-i18n="stack.playwright.how">Tests end-to-end sobre el stack completo, levantado con Docker Compose.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Playwright<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__mark" aria-hidden="true">p50</span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">k6</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata</p>
+                      <p class="stack-card__how" data-i18n="stack.k6.how">Prueba de carga: la mediana del ranking bajó de 108 ms a 1,2 ms con caché por versión de datos (mejor caso).</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">k6<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="stack-area stack-area--half">
+              <h3 class="stack-area__title" data-i18n="stack.group.infra">Infraestructura</h3>
+              <ul class="stack-area__list" role="list">
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="githubactions"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">GitHub Actions</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where" data-i18n="stack.where.all4">Los cuatro proyectos</p>
+                      <p class="stack-card__how" data-i18n="stack.gha.how">CI en todos; refresh diario programado en ofertasSUPER y captura diaria de fuentes en rindetuplata.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">GitHub Actions<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__mark" aria-hidden="true">.tf</span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">AWS · Terraform</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">ShelfOps</p>
+                      <p class="stack-card__how" data-i18n="stack.aws.how">ECS Fargate, RDS, CloudFront y Cognito en Terraform, con deploy por OIDC desde GitHub.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">AWS · Terraform<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="stack-area stack-area--half">
+              <h3 class="stack-area__title" data-i18n="stack.group.frontend">Frontend</h3>
+              <ul class="stack-area__list" role="list">
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="nextdotjs"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Next.js</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">ofertasSUPER · Mena Nails</p>
+                      <p class="stack-card__how" data-i18n="stack.next.how">Sitio y APIs públicas de ofertasSUPER, servidas desde un snapshot sin base de datos al leer. También los turnos de Mena Nails.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Next.js<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+                <li class="stack-card" data-stack-card>
+                  <div class="stack-card__inner">
+                    <div class="stack-card__face stack-card__front">
+                      <span class="stack-card__logos" aria-hidden="true"><span class="stack-logo" data-logo="astro"></span><span class="stack-logo" data-logo="svelte"></span></span>
+                      <span class="stack-card__title">
+                        <span class="stack-card__name">Astro · SvelteKit</span>
+                        <span class="stack-card__meta">React</span>
+                      </span>
+                    </div>
+                    <div class="stack-card__face stack-card__back">
+                      <p class="stack-card__where">rindetuplata · Mena Nails</p>
+                      <p class="stack-card__how" data-i18n="stack.astro.how">Web estática de rindetuplata con islas de React; PWA del inventario de Mena Nails en SvelteKit.</p>
+                    </div>
+                  </div>
+                  <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
+                    <span class="stack-card__sr">Astro · SvelteKit<span data-i18n="stack.toggle">: dónde y cómo lo usé</span></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p class="stack-also"><span class="stack-also__label" data-i18n="stack.also">También</span> Docker · Google Calendar · Telegram Bot API · Clerk · Prisma · Tailwind · Vercel · Caddy</p>
+        </div>
+      </section>
+
+      <section id="escritos" class="section-shell section reveal">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="writing.eyebrow">Escritos</p>
+          <h2 data-i18n="writing.title">Lo que aprendí, por escrito</h2>
+          <p data-i18n="writing.lead">
+            Notas técnicas sobre problemas reales de mis proyectos: qué pasó,
+            cómo lo medí y qué decidí.
+          </p>
+        </div>
+        <ul class="writing-list">
+          <li>
+            <a class="writing-card glass" data-spotlight href="./escritos/ofertassuper-postmortem-cpu.html">
+              <span class="writing-meta">
+                <time datetime="2026-10-28" data-i18n="writing.pm.date">28 oct 2026</time>
+                <span data-i18n="writing.pm.kind">Postmortem · 8 min</span>
+              </span>
+              <span class="writing-title" data-i18n="writing.pm.title">ofertasSUPER se quedó sin CPU: el problema era el algoritmo</span>
+              <span class="writing-summary" data-i18n="writing.pm.summary">Vercel pausó el sitio 30 días. Sin métricas por ruta, lo diagnostiqué leyendo el código y midiendo una réplica: 1.200 millones de comparaciones por request, y un índice que las bajó a cero.</span>
+              <span class="writing-cta" data-i18n="writing.read">Leer</span>
+            </a>
+          </li>
+        </ul>
       </section>
 
       <section id="formacion" class="section-shell section reveal">
@@ -432,7 +870,7 @@
             posición o un proyecto, contame.
           </p>
         </div>
-        <div class="contact-links">
+        <div class="contact-links glass">
           <a href="mailto:castiglionemateo1@gmail.com"
             ><span data-i18n="contact.email.label">Correo</span
             ><b>castiglionemateo1@gmail.com</b></a
@@ -459,5 +897,7 @@
       </div>
     </footer>
     <script src="./script.js" type="module"></script>
+    <script src="./js/portrait.js" type="module"></script>
+    <script src="./js/stack-cards.js" type="module"></script>
   </body>
 </html>
