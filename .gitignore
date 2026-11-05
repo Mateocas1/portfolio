@@ -1,4 +1,8 @@
-odd/
+# Local ODD task docs; only feature documents that are part of the repo history are tracked
+odd/*
+!odd/tasks/
+odd/tasks/*
+!odd/tasks/portfolio-v3.md
 # Local Pi runtime state
 .atl/
 # Playwright CLI session artifacts

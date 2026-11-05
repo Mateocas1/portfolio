@@ -1,0 +1,8 @@
+# GitHub Pages (Jekyll) build settings.
+# The site is plain HTML; these paths are repo documentation, not pages.
+exclude:
+  - odd/
+  - cv/
+  - tools/
+  - AGENTS.md
+  - README.md
