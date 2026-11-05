@@ -1,3 +1,5 @@
+import stackTranslations from "./js/i18n/stack.js";
+
 document.documentElement.classList.add("js");
 
 const storage = {
@@ -135,6 +137,20 @@ const translations = {
       "Busco mi primer rol como desarrollador backend. Si tenés una posición o un proyecto, contame.",
     "contact.email.label": "Correo",
     "footer.role": "Desarrollador backend junior",
+    "nav.writing": "Escritos",
+    "project.super.live": "En línea",
+    "project.link.site": "Sitio",
+    "writing.eyebrow": "Escritos",
+    "writing.title": "Lo que aprendí, por escrito",
+    "writing.lead":
+      "Notas técnicas sobre problemas reales de mis proyectos: qué pasó, cómo lo medí y qué decidí.",
+    "writing.pm.date": "28 oct 2026",
+    "writing.pm.kind": "Postmortem · 8 min",
+    "writing.pm.title":
+      "ofertasSUPER se quedó sin CPU: el problema era el algoritmo",
+    "writing.pm.summary":
+      "Vercel pausó el sitio 30 días. Sin métricas por ruta, lo diagnostiqué leyendo el código y midiendo una réplica: 1.200 millones de comparaciones por request, y un índice que las bajó a cero.",
+    "writing.read": "Leer",
   },
   en: {
     "a11y.skip": "Skip to content",
@@ -255,8 +271,27 @@ const translations = {
       "I'm looking for my first backend developer role. If you have a position or a project, tell me about it.",
     "contact.email.label": "Email",
     "footer.role": "Junior backend developer",
+    "nav.writing": "Writing",
+    "project.super.live": "Live",
+    "project.link.site": "Website",
+    "writing.eyebrow": "Writing",
+    "writing.title": "What I learned, written down",
+    "writing.lead":
+      "Technical notes on real problems from my projects: what happened, how I measured it and what I decided.",
+    "writing.pm.date": "Oct 28, 2026",
+    "writing.pm.kind": "Postmortem · 8 min (in Spanish)",
+    "writing.pm.title":
+      "ofertasSUPER ran out of CPU: the problem was the algorithm",
+    "writing.pm.summary":
+      "Vercel paused the site for 30 days. With no per-route metrics, I diagnosed it by reading the code and measuring a replica: 1.2 billion comparisons per request, and an index that took them to zero.",
+    "writing.read": "Read",
   },
 };
+
+// Per-section dictionaries live in js/i18n/<section>.js (odd/tasks/portfolio-v3.md D6).
+for (const lang of Object.keys(translations)) {
+  Object.assign(translations[lang], stackTranslations[lang] ?? {});
+}
 
 const root = document.documentElement;
 const languageToggle = document.querySelector("[data-language-toggle]");
@@ -350,6 +385,29 @@ document.addEventListener("keydown", (event) => {
     menuToggle?.focus();
   }
 });
+
+// Time-boxed content (D5): [data-until] disappears and [data-from] appears at
+// an ISO instant. Without JavaScript the HTML default (the conservative state) stays.
+function applyTimeBoxes(now = Date.now()) {
+  document.querySelectorAll("[data-until]").forEach((node) => {
+    if (now >= Date.parse(node.dataset.until)) node.hidden = true;
+  });
+  document.querySelectorAll("[data-from]").forEach((node) => {
+    if (now >= Date.parse(node.dataset.from)) node.hidden = false;
+  });
+}
+applyTimeBoxes();
+
+// Pointer spotlight on glass cards: only for a fine pointer that can hover.
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  document.querySelectorAll("[data-spotlight]").forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    });
+  });
+}
 
 const revealItems = document.querySelectorAll(".reveal");
 if (reduceMotion || !("IntersectionObserver" in window)) {
