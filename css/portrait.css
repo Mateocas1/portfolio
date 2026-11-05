@@ -1,0 +1,47 @@
+/* Particle portrait (T2, odd/tasks/portfolio-v3.md S6, D3, D8).
+   The <img> is the content: no-JS, crawlers, LCP and the accessible name.
+   js/portrait.js adds a decorative canvas on top once the photo has
+   decoded and the page is idle, then fades the photo to opacity 0
+   (still in the accessibility tree, so its alt is announced once; the
+   canvas is aria-hidden). */
+
+.hero-portrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  transition: opacity 0.9s ease;
+}
+
+.hero-portrait canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-portrait.is-particles img {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Phones: the hero is a single column. A full-width portrait above the name
+   would push the name, role and actions below the first screen, and below
+   the copy it would assemble out of sight. A compact portrait above the
+   copy keeps the face as the first thing seen while the name and role stay
+   in the first viewport. */
+@media (max-width: 768px) {
+  .hero-portrait {
+    order: -1;
+    width: clamp(148px, 50vw, 208px);
+    margin-bottom: calc(-1 * var(--space-2));
+  }
+}

@@ -341,6 +341,14 @@ if (languageToggle) applyLanguage(getInitialLanguage());
 languageToggle?.addEventListener("click", () =>
   applyLanguage(root.dataset.lang === "en" ? "es" : "en"),
 );
+// Follow live OS theme changes until the visitor picks a theme explicitly.
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (event) => {
+    const stored = storage.get("portfolio:theme");
+    if (stored !== "light" && stored !== "dark")
+      applyTheme(event.matches ? "dark" : "light");
+  });
 themeToggle?.addEventListener("click", () =>
   applyTheme(root.dataset.theme === "light" ? "dark" : "light", {
     persist: true,
