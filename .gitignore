@@ -7,3 +7,8 @@ odd/tasks/*
 .atl/
 # Playwright CLI session artifacts
 .playwright-cli/
+# XeLaTeX build artifacts (the published PDF is CV_Mateo_Vazquez.pdf at the root)
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/cv.pdf
