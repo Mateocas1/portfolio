@@ -41,8 +41,8 @@ const translations = {
     "proof.tests": "tests automatizados en rindetuplata",
     "proof.cpu": "menos CPU por request en la ruta más cara de ofertasSUPER",
     "proof.cpu.source": "10,4 s → 173 ms · postmortem",
-    "proof.llm": "aprobaciones indebidas con comprobantes adversariales",
-    "proof.llm.source": "Mena Nails · evals propias",
+    "proof.llm": "aprobaciones indebidas con comprobantes adversariales sintéticos",
+    "proof.llm.source": "Mena Nails · receipt-verifier",
     "proof.prs": "pull requests integrados con CI",
     "projects.eyebrow": "Proyectos",
     "projects.title": "Sistemas con datos reales, tests y CI",
@@ -52,6 +52,7 @@ const translations = {
     "project.link.repo": "Repositorio",
     "project.link.case": "Caso técnico",
     "project.link.postmortem": "Postmortem",
+    "project.link.verifier": "Verificador",
     "psr.problem": "Problema",
     "psr.solution": "Solución",
     "psr.result": "Resultado",
@@ -80,7 +81,7 @@ const translations = {
     "project.mena.p1.problem":
       "La agenda manual generaba consultas por mensaje, señas difíciles de conciliar y riesgo de doble reserva.",
     "project.mena.p1.solution":
-      "Reserva autenticada con Mercado Pago, comprobantes de transferencia validados por un verificador con LLMs (0 aprobaciones indebidas en 30 casos adversariales) y turnos confirmados en Google Calendar.",
+      "Reserva autenticada con Mercado Pago, comprobantes de transferencia validados por un verificador con LLMs (0 aprobaciones indebidas en 30 casos adversariales sintéticos) y turnos confirmados en Google Calendar.",
     "project.mena.p1.result":
       "Verificado de extremo a extremo en producción con un turno y un pago reales.",
     "project.mena.p2.problem":
@@ -175,8 +176,8 @@ const translations = {
     "proof.tests": "automated tests in rindetuplata",
     "proof.cpu": "less CPU per request on ofertasSUPER's most expensive route",
     "proof.cpu.source": "10.4 s → 173 ms · postmortem",
-    "proof.llm": "false approvals on adversarial payment receipts",
-    "proof.llm.source": "Mena Nails · in-house evals",
+    "proof.llm": "false approvals on synthetic adversarial payment receipts",
+    "proof.llm.source": "Mena Nails · receipt-verifier",
     "proof.prs": "pull requests merged through CI",
     "projects.eyebrow": "Projects",
     "projects.title": "Systems with real data, tests and CI",
@@ -186,6 +187,7 @@ const translations = {
     "project.link.repo": "Repository",
     "project.link.case": "Case study",
     "project.link.postmortem": "Postmortem",
+    "project.link.verifier": "Verifier",
     "psr.problem": "Problem",
     "psr.solution": "Solution",
     "psr.result": "Result",
@@ -214,7 +216,7 @@ const translations = {
     "project.mena.p1.problem":
       "Manual scheduling meant availability asked over messages, deposits hard to reconcile and double-booking risk.",
     "project.mena.p1.solution":
-      "Authenticated booking with Mercado Pago, transfer receipts checked by an LLM-based verifier (0 false approvals on 30 adversarial cases) and confirmed bookings synced to Google Calendar.",
+      "Authenticated booking with Mercado Pago, transfer receipts checked by an LLM-based verifier (0 false approvals on 30 synthetic adversarial cases) and confirmed bookings synced to Google Calendar.",
     "project.mena.p1.result":
       "Validated end to end in production with a real booking and a real payment.",
     "project.mena.p2.problem":

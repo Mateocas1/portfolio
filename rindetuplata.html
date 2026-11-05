@@ -63,6 +63,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/diagrams.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -186,6 +187,39 @@
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="case-stack arch-section reveal" aria-labelledby="arch-rindetuplata-h">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura</p>
+          <h2 id="arch-rindetuplata-h">Cómo se mueve un dato, de punta a punta.</h2>
+        </div>
+        <figure class="arch" aria-labelledby="arch-rindetuplata-h" aria-describedby="arch-rindetuplata-d">
+          <p class="arch__sr" id="arch-rindetuplata-d">Diagrama en tres bloques. Bloque API Spring Boot, de izquierda a derecha: fuentes (BCRA, ArgentinaDatos, dolarapi, Ualá y curación manual), adaptadores por fuente, el job diario de Spring Batch, PostgreSQL con Flyway, dominio en Java puro con BigDecimal y la API REST con OpenAPI. Bloque GitHub Actions: captura diaria en crudo de las fuentes hacia una rama data, que el job de Spring Batch reproduce para fechas pasadas. Bloque salidas: el job escribe alertas en un outbox transaccional que llega a RabbitMQ y de ahí a un aviso por email, y dispara la reconstrucción del sitio estático de Astro, que lee la API REST.</p>
+<div class="arch__lane"><p class="arch__lane-label">API · Spring Boot</p>
+<ol class="arch__flow" data-n="6">
+<li class="arch__node"><span class="arch__kicker">Fuentes</span><b>BCRA, ArgentinaDatos, dolarapi, Ualá</b><small>más curación manual en un panel admin</small></li>
+<li class="arch__node"><span class="arch__kicker">Adaptadores</span><b>Uno por fuente</b><small>detrás de un puerto por tipo de dato</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">Ingesta</span><b>Spring Batch</b><small>dailyIngestionJob, una instancia por fecha</small></li>
+<li class="arch__node"><span class="arch__kicker">Datos</span><b>PostgreSQL</b><small>snapshots diarios, migraciones Flyway</small></li>
+<li class="arch__node"><span class="arch__kicker">Dominio</span><b>Java puro</b><small>TNA a TEA, topes y tramos en BigDecimal</small></li>
+<li class="arch__node"><span class="arch__kicker">API</span><b>REST + OpenAPI</b><small>ranking, historial y simulador</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>Lo que solo publica el valor de hoy se archiva a diario, y el mismo job lo reproduce para fechas pasadas (replay).</span></p>
+<div class="arch__lane"><p class="arch__lane-label">GitHub Actions · captura diaria</p>
+<ol class="arch__flow" data-n="2">
+<li class="arch__node"><span class="arch__kicker">Captura</span><b>BCRA, ArgentinaDatos y Ualá en crudo</b><small>todos los días a las 12:00 (Argentina)</small></li>
+<li class="arch__node"><span class="arch__kicker">Archivo</span><b>Rama data</b><small>un JSON por día y un manifest con sha256 por fuente</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>Con cada ingesta, el job escribe las alertas en un outbox y avisa al sitio para que se reconstruya.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Salidas</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">Alertas</span><b>Outbox transaccional y RabbitMQ</b><small>publisher confirms, consumidor idempotente, dead-letter queue</small></li>
+<li class="arch__node"><span class="arch__kicker">Aviso</span><b>Email</b><small>notificador por email</small></li>
+<li class="arch__node is-branch"><span class="arch__kicker">Sitio</span><b>Astro y React en un CDN</b><small>páginas estáticas que leen la API</small></li>
+</ol></div>
+          <figcaption>Lo que importa está en el centro: un job idempotente por fecha, con una sola puerta de entrada de datos y toda la matemática del lado de la API.</figcaption>
+        </figure>
       </section>
 
       <section class="case-stack reveal">

@@ -63,6 +63,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/diagrams.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -118,15 +119,30 @@
           GTIN-14. Permite armar una canasta entre tiendas, publica las bajas
           de precio del día y mide un índice de canasta contra el IPC.
         </p>
-        <p class="case-note text-appear">
+        <!-- Time-boxed status (odd/tasks/portfolio-v3.md D5): script.js swaps at 2026-11-15 00:00 ART -->
+        <p class="case-note text-appear" data-until="2026-11-15T03:00:00Z">
           <b>Estado:</b> Vercel pausó el sitio del 15/10 al 14/11/2026 por pasar
           la CPU del plan gratuito. El arreglo ya está integrado y el refresh
           diario nunca se detuvo; la causa y la solución están en el
           postmortem, más abajo.
         </p>
+        <p class="case-note text-appear" data-from="2026-11-15T03:00:00Z" hidden>
+          <b>Estado:</b> de nuevo en línea desde el 14/11/2026, después de una
+          pausa de 30 días por exceso de CPU en el plan gratuito de Vercel. La
+          causa y el arreglo están en el postmortem, más abajo.
+        </p>
         <div class="hero-actions text-appear">
           <a class="button ghost" href="./index.html#proyectos"
             >Volver al portfolio</a
+          >
+          <a
+            class="button primary"
+            href="https://ofertasuper.com"
+            target="_blank"
+            rel="noreferrer"
+            data-from="2026-11-15T03:00:00Z"
+            hidden
+            >Ver el sitio</a
           >
           <a
             class="button primary"
@@ -199,6 +215,32 @@
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="case-stack arch-section reveal" aria-labelledby="arch-ofertas-h">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura</p>
+          <h2 id="arch-ofertas-h">Del catálogo del súper al snapshot que sirve el sitio.</h2>
+        </div>
+        <figure class="arch" aria-labelledby="arch-ofertas-h" aria-describedby="arch-ofertas-d">
+          <p class="arch__sr" id="arch-ofertas-d">Diagrama en dos bloques. Bloque GitHub Actions, refresh diario, de izquierda a derecha: catálogos de los supermercados (VTEX y búsqueda de Coto), staging con controles de calidad, reconcile transaccional en PostgreSQL restaurado desde un dump del release db-state, control de frescura y exportación del snapshot JSON, que se commitea al repositorio. Bloque Vercel, solo lectura: Next.js y las APIs públicas sirven ese snapshot sin base de datos, con caché de CDN de una hora, y las bajas de precio del día se publican en una página, un feed Atom y Telegram.</p>
+<div class="arch__lane"><p class="arch__lane-label">GitHub Actions · refresh diario</p>
+<ol class="arch__flow" data-n="5">
+<li class="arch__node"><span class="arch__kicker">Fuentes</span><b>VTEX y búsqueda de Coto</b><small>5 supermercados</small></li>
+<li class="arch__node"><span class="arch__kicker">Staging</span><b>Controles de calidad</b><small>GTIN-14 válido, precio razonable</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">Reconcile</span><b>PostgreSQL, una transacción</b><small>advisory lock; estado restaurado del release db-state</small></li>
+<li class="arch__node"><span class="arch__kicker">Frescura</span><b>Gate por supermercado</b><small>SLA de frescura; relee las ofertas no observadas</small></li>
+<li class="arch__node"><span class="arch__kicker">Salida</span><b>Snapshot JSON</b><small>data/catalog-snapshot.json, commiteado</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>El snapshot viaja con el deploy: Vercel lo sirve sin base de datos en el camino de lectura.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Vercel · solo lectura</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">App</span><b>Next.js y APIs públicas</b><small>búsqueda, productos, historial y lote</small></li>
+<li class="arch__node"><span class="arch__kicker">Caché</span><b>CDN, 1 hora</b><small>s-maxage 3600, nunca para errores</small></li>
+<li class="arch__node is-branch"><span class="arch__kicker">Bajas</span><b>Bajas de precio del día</b><small>página, feed Atom y Telegram</small></li>
+</ol></div>
+          <figcaption>Fijate que la base de datos solo existe del lado de la actualización: lo que ve el visitante es un archivo versionado, y por eso el costo de lectura es lineal.</figcaption>
+        </figure>
       </section>
 
       <section class="case-stack reveal">
