@@ -1,0 +1,501 @@
+/* ============================================================
+   Stack flip cards (T3, odd/tasks/portfolio-v3.md S7, D4).
+   - Front: logo and name. Back: where and how it was used.
+   - Without JavaScript (no .is-interactive) each card is one glass
+     panel with both faces stacked: every word is readable.
+   - js/stack-cards.js adds .is-interactive: the faces share one grid
+     cell (the card is as tall as its taller face, so nothing can
+     overflow) and the back is rotated behind the front.
+   - Reduced motion: a short crossfade instead of the rotation.
+   ============================================================ */
+
+.stack-cards {
+  --stack-cols: 1;
+  --stack-gap: var(--space-3);
+  --stack-flip: 760ms;
+  --stack-ease: cubic-bezier(0.2, 0.85, 0.25, 1);
+  --stack-sheen: rgba(255, 255, 255, 0.07);
+  --stack-back-bg: rgba(30, 30, 28, 0.66);
+  --stack-logo-mix: 78%;
+}
+
+[data-theme="light"] .stack-cards {
+  --stack-sheen: rgba(255, 255, 255, 0.6);
+  --stack-back-bg: rgba(255, 255, 255, 0.66);
+  --stack-logo-mix: 82%;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .stack-cards {
+    --stack-sheen: rgba(255, 255, 255, 0.6);
+    --stack-back-bg: rgba(255, 255, 255, 0.66);
+    --stack-logo-mix: 82%;
+  }
+}
+
+/* ---------- Layout: groups on a shared column rhythm ---------- */
+
+.stack-areas {
+  display: grid;
+  grid-template-columns: repeat(var(--stack-cols), minmax(0, 1fr));
+  gap: var(--space-6) var(--stack-gap);
+}
+
+.stack-area {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.stack-area__title {
+  margin: 0 0 var(--space-3);
+  /* Eyebrow style, but --muted: --faint is below 4.5:1 for 12px text. */
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stack-area__list {
+  display: grid;
+  /* A full group spans every column; a half group spans half of them with
+     the same gap, so card columns line up across groups. */
+  grid-template-columns: repeat(var(--stack-area-cols, var(--stack-cols)), minmax(0, 1fr));
+  gap: var(--stack-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 560px) {
+  .stack-cards {
+    --stack-cols: 2;
+  }
+  .stack-area--half {
+    --stack-area-cols: 2;
+  }
+}
+
+@media (min-width: 920px) {
+  .stack-cards {
+    --stack-cols: 4;
+  }
+  .stack-area--half {
+    grid-column: span 2;
+  }
+}
+
+/* ---------- Card (base: both faces readable, no JavaScript) ---------- */
+
+.stack-card {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+.stack-card__inner {
+  display: grid;
+  min-width: 0;
+}
+
+.stack-card__face {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-4) var(--space-4) var(--space-4);
+  overflow-wrap: break-word;
+}
+
+.stack-card__back {
+  gap: var(--space-2);
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Front ---------- */
+
+.stack-card__front {
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.stack-card__logos {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 28px;
+}
+
+.stack-logo {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  /* Brand colour pulled toward the text colour: lighter on dark, darker
+     on light, so every mark keeps its hue and its contrast in both themes.
+     Marks without a usable brand colour (black, or the amber family that
+     is reserved for actions) stay neutral. */
+  background-color: var(--text);
+  background-color: color-mix(in oklab, var(--brand, var(--text)) var(--stack-logo-mix), var(--text));
+  -webkit-mask: var(--logo) center / contain no-repeat;
+  mask: var(--logo) center / contain no-repeat;
+}
+
+.stack-logo + .stack-logo {
+  width: 22px;
+  height: 22px;
+}
+
+.stack-logo[data-logo="openjdk"] { --logo: url("../assets/icons/openjdk.svg"); }
+.stack-logo[data-logo="springboot"] { --logo: url("../assets/icons/springboot.svg"); --brand: #6db33f; }
+.stack-logo[data-logo="go"] { --logo: url("../assets/icons/go.svg"); --brand: #00add8; }
+.stack-logo[data-logo="typescript"] { --logo: url("../assets/icons/typescript.svg"); --brand: #3178c6; }
+.stack-logo[data-logo="nodedotjs"] { --logo: url("../assets/icons/nodedotjs.svg"); --brand: #5fa04e; }
+.stack-logo[data-logo="postgresql"] { --logo: url("../assets/icons/postgresql.svg"); --brand: #4169e1; }
+.stack-logo[data-logo="rabbitmq"] { --logo: url("../assets/icons/rabbitmq.svg"); --brand: #ff6600; }
+.stack-logo[data-logo="redis"] { --logo: url("../assets/icons/redis.svg"); --brand: #ff4438; }
+.stack-logo[data-logo="mercadopago"] { --logo: url("../assets/icons/mercadopago.svg"); --brand: #00b1ea; }
+.stack-logo[data-logo="vtex"] { --logo: url("../assets/icons/vtex.svg"); --brand: #ed125f; }
+.stack-logo[data-logo="claude"] { --logo: url("../assets/icons/claude.svg"); }
+.stack-logo[data-logo="openai"] { --logo: url("../assets/icons/openai.svg"); }
+.stack-logo[data-logo="vitest"] { --logo: url("../assets/icons/vitest.svg"); --brand: #729b1b; }
+.stack-logo[data-logo="playwright"] { --logo: url("../assets/icons/playwright.svg"); --brand: #2ead33; }
+.stack-logo[data-logo="githubactions"] { --logo: url("../assets/icons/githubactions.svg"); --brand: #2088ff; }
+.stack-logo[data-logo="nextdotjs"] { --logo: url("../assets/icons/nextdotjs.svg"); }
+.stack-logo[data-logo="astro"] { --logo: url("../assets/icons/astro.svg"); --brand: #bc52ee; }
+.stack-logo[data-logo="svelte"] { --logo: url("../assets/icons/svelte.svg"); --brand: #ff3e00; }
+
+/* Technologies without a mark get the token you would type: a file
+   extension, an annotation, a template tag. Neutral, set in mono. */
+.stack-card__mark {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.stack-card__title {
+  display: grid;
+  gap: 2px;
+}
+
+.stack-card__name {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.stack-card__meta {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Back ---------- */
+
+.stack-card__where {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.stack-card__how {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* ---------- Hint, "También" line, toggle ---------- */
+
+.stack-hint {
+  margin: calc(-1 * var(--space-5)) 0 var(--space-5);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.stack-hint[hidden] {
+  display: none;
+}
+
+.stack-hint__touch {
+  display: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .stack-hint__hover {
+    display: none;
+  }
+  .stack-hint__touch {
+    display: inline;
+  }
+}
+
+.stack-also {
+  text-wrap: balance;
+  margin: var(--space-6) 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.stack-also__label {
+  margin-right: var(--space-2);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stack-card__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.stack-card__toggle[hidden] {
+  display: none;
+}
+
+/* ============================================================
+   Interactive mode (js/stack-cards.js): a real 3D flip.
+   ============================================================ */
+
+.stack-cards.is-interactive .stack-card {
+  min-height: var(--stack-card-h, 11rem);
+  perspective: 1200px;
+  /* The faces carry the glass; the card itself is only the 3D stage. */
+  background: none;
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Measuring pass (JS): natural heights, no stretching. */
+.stack-cards.is-interactive.is-measuring .stack-card {
+  min-height: 0;
+}
+.stack-cards.is-measuring .stack-area__list {
+  align-items: start;
+}
+
+.stack-cards.is-interactive .stack-card__inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform var(--stack-flip) var(--stack-ease);
+}
+
+.stack-cards.is-interactive .stack-card.is-flipped .stack-card__inner {
+  transform: rotateY(180deg);
+}
+
+.stack-cards.is-interactive .stack-card__face {
+  grid-area: 1 / 1;
+  isolation: isolate;
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.stack-cards.is-interactive .stack-card__back {
+  justify-content: flex-start;
+  background: var(--stack-back-bg);
+  transform: rotateY(180deg);
+}
+
+/* Flip affordance: a small turn arrow in the front's corner. */
+.stack-cards.is-interactive .stack-card__front::after {
+  content: "";
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 14px;
+  height: 14px;
+  background-color: var(--muted);
+  opacity: 0.7;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 8a5.5 5.5 0 0 1 9.6-3.7'/%3E%3Cpath d='M12.5 1.8v2.8H9.7'/%3E%3Cpath d='M13.5 8a5.5 5.5 0 0 1-9.6 3.7'/%3E%3Cpath d='M3.5 14.2v-2.8h2.8'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 8a5.5 5.5 0 0 1 9.6-3.7'/%3E%3Cpath d='M12.5 1.8v2.8H9.7'/%3E%3Cpath d='M13.5 8a5.5 5.5 0 0 1-9.6 3.7'/%3E%3Cpath d='M3.5 14.2v-2.8h2.8'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: opacity 240ms ease;
+}
+
+.stack-cards.is-interactive .stack-card.is-hovered .stack-card__front::after {
+  opacity: 1;
+}
+
+/* Sheen: a soft, neutral highlight that follows a mouse (--mx/--my set by
+   JS). The back is mirrored by the rotation, so its x is mirrored too. */
+.stack-cards.is-interactive .stack-card__face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* above the face's glass, below its text */
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), var(--stack-sheen), transparent 70%);
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.stack-cards.is-interactive .stack-card__back::before {
+  background: radial-gradient(260px circle at calc(100% - var(--mx, 50%)) var(--my, 0%), var(--stack-sheen), transparent 70%);
+}
+
+.stack-cards.is-interactive .stack-card.is-hovered .stack-card__face::before {
+  opacity: 1;
+}
+
+/* The toggle covers the whole card, outside the 3D stage, so it is the
+   same hit target on either face. Its name starts with the visible name. */
+.stack-card__toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-xl);
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stack-cards .stack-card__toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: calc(var(--radius-xl) + 2px);
+}
+
+/* ---------- Single column: a horizontal front ---------- */
+
+@media (max-width: 559px) {
+  .stack-cards.is-interactive .stack-card__face {
+    padding: var(--space-4) var(--space-4);
+  }
+  .stack-cards.is-interactive .stack-card__back {
+    gap: var(--space-1);
+  }
+  .stack-cards.is-interactive .stack-card__front {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--space-4);
+    padding-right: calc(var(--space-4) + 24px);
+  }
+  .stack-cards.is-interactive .stack-card__front::after {
+    top: 50%;
+    right: var(--space-4);
+    margin-top: -7px;
+  }
+  .stack-card__logos,
+  .stack-card__mark {
+    min-width: 52px;
+  }
+  .stack-cards.is-interactive .stack-card {
+    min-height: var(--stack-card-h, 7rem);
+  }
+}
+
+/* ---------- Reduced motion: crossfade, no rotation ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-cards.is-interactive .stack-card__inner,
+  .stack-cards.is-interactive .stack-card.is-flipped .stack-card__inner {
+    transform: none;
+    transition: none;
+  }
+  .stack-cards.is-interactive .stack-card__face {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    /* styles.css shortens every transition to 0.01ms here; a short fade
+       is not motion, so it is restored for the faces only. */
+    transition: opacity 200ms ease !important;
+  }
+  .stack-cards.is-interactive .stack-card__back {
+    transform: none;
+    opacity: 0;
+  }
+  .stack-cards.is-interactive .stack-card.is-flipped .stack-card__front {
+    opacity: 0;
+  }
+  .stack-cards.is-interactive .stack-card.is-flipped .stack-card__back {
+    opacity: 1;
+  }
+}
+
+/* ---------- Without translucency, and forced colours ---------- */
+
+@media (prefers-reduced-transparency: reduce) {
+  .stack-card,
+  .stack-cards.is-interactive .stack-card__face {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .stack-card,
+  .stack-cards.is-interactive .stack-card__face {
+    background: var(--surface);
+  }
+}
+
+@media (forced-colors: active) {
+  .stack-logo {
+    forced-color-adjust: none;
+    background-color: CanvasText;
+  }
+  .stack-cards.is-interactive .stack-card__face {
+    border-color: CanvasText;
+  }
+  .stack-cards.is-interactive .stack-card__front::after {
+    forced-color-adjust: none;
+    background-color: CanvasText;
+  }
+}
+
+/* Parent (T7): in the grid, names share one baseline whether or not a card
+   has a meta line. The single-column row layout centers them instead. */
+@media (min-width: 560px) {
+  .stack-card__title {
+    align-content: start;
+    min-height: calc(1.25rem + 2px + 0.72rem * 1.4);
+  }
+}
