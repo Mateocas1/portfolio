@@ -27,7 +27,7 @@ URL in the site is relative).
 ## Conventions
 
 - **Facts are verified.** Every number on the site comes from a project repository, its README or the owner's CV.
-  Never round up, never invent. When a fact changes, update `index.html`, `script.js` (both languages), the case page
+  Never invent and never inflate: an approximation says so ("unos", "casi", "≈"). When a fact changes, update `index.html`, `script.js` (both languages), the case page
   and the CV together.
 - **Copy:** Spanish in Río de la Plata voseo ("ganás", "escribime"), sentence case, no emoji, no hype words. English
   translations live in the i18n dictionaries. Code, comments, identifiers, commits and docs in English.

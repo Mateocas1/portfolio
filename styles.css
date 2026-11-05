@@ -21,7 +21,7 @@
   --border-strong: rgba(255, 255, 255, 0.16);
   --text: #ecebe6;
   --muted: #a3a19a;
-  --faint: #8a8780;
+  --faint: #96938b;
   --accent: #e3a857;
   --accent-contrast: #17160f;
 
@@ -69,7 +69,7 @@
   --border-strong: rgba(23, 22, 20, 0.2);
   --text: #171614;
   --muted: #57554f;
-  --faint: #6b6862;
+  --faint: #625f59;
   --accent: #98600f;
   --accent-contrast: #ffffff;
   --ambient-1: rgba(227, 168, 87, 0.22);
@@ -93,7 +93,7 @@
     --border-strong: rgba(23, 22, 20, 0.2);
     --text: #171614;
     --muted: #57554f;
-    --faint: #6b6862;
+    --faint: #625f59;
     --accent: #98600f;
     --accent-contrast: #ffffff;
     --ambient-1: rgba(227, 168, 87, 0.22);
@@ -319,8 +319,22 @@ button:focus-visible,
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 1fr auto;
+  /* The nav follows the toggles in the DOM (focus order on mobile, WCAG 2.4.3). */
+  grid-template-areas: "brand nav actions";
   align-items: center;
   gap: var(--space-5);
+}
+
+.brand {
+  grid-area: brand;
+}
+
+.site-nav {
+  grid-area: nav;
+}
+
+.header-actions {
+  grid-area: actions;
 }
 
 .brand {
@@ -1315,6 +1329,7 @@ button:focus-visible,
 
   .header-inner {
     grid-template-columns: auto 1fr;
+    grid-template-areas: "brand actions";
     min-height: 56px;
     gap: var(--space-3);
   }

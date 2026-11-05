@@ -86,27 +86,12 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="#main">Mateo Vazquez</a>
-        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
-          <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
-          <a href="#stack" data-i18n="nav.stack">Stack</a>
-          <a href="#escritos" data-i18n="nav.writing">Escritos</a>
-          <a href="#formacion" data-i18n="nav.education">Formación</a>
-          <a href="#contacto" data-i18n="nav.contact">Contacto</a>
-          <a
-            href="./CV_Mateo_Vazquez.pdf"
-            target="_blank"
-            rel="noreferrer"
-            data-i18n="nav.resume"
-            >CV</a
-          >
-        </nav>
         <div class="header-actions">
           <button
             class="toggle-button"
             type="button"
             data-language-toggle
             aria-label="Cambiar idioma: EN"
-            aria-pressed="false"
           >
             <span data-i18n="toggle.lang">EN</span>
           </button>
@@ -115,7 +100,6 @@
             type="button"
             data-theme-toggle
             aria-label="Cambiar tema: Claro"
-            aria-pressed="false"
           >
             <span data-i18n="toggle.theme">Claro</span>
           </button>
@@ -129,6 +113,20 @@
             <span data-i18n="menu.toggle">Menú</span>
           </button>
         </div>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal" data-i18n-aria-label="a11y.nav">
+          <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+          <a href="#stack" data-i18n="nav.stack">Stack</a>
+          <a href="#escritos" data-i18n="nav.writing">Escritos</a>
+          <a href="#formacion" data-i18n="nav.education">Formación</a>
+          <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="nav.resume"
+            >CV</a
+          >
+        </nav>
       </div>
     </header>
 
@@ -170,7 +168,7 @@
           <div class="hero-portrait" data-portrait>
             <img
               src="./assets/profile.webp"
-              alt="Foto de Mateo Vazquez"
+              alt="Foto de Mateo Vazquez" data-i18n-alt="alt.portrait"
               width="720"
               height="720"
               fetchpriority="high"
@@ -178,7 +176,7 @@
           </div>
         </div>
 
-        <ul class="proof-strip glass" aria-label="Números de los proyectos">
+        <ul class="proof-strip glass" aria-label="Números de los proyectos" data-i18n-aria-label="a11y.proof">
           <li>
             <b class="proof-value" data-i18n="num.tests">1.533</b>
             <span class="proof-label" data-i18n="proof.tests"
@@ -189,7 +187,7 @@
           <li>
             <b class="proof-value">60×</b>
             <span class="proof-label" data-i18n="proof.cpu"
-              >menos CPU por request en la ruta más cara de ofertasSUPER</span
+              >menos CPU por request en la búsqueda más amplia de ofertasSUPER</span
             >
             <span class="proof-source" data-i18n="proof.cpu.source"
               >10,4 s → 173 ms · postmortem</span
@@ -257,10 +255,10 @@
           </div>
           <div>
             <figure class="project-media">
-              <figcaption>rindetuplata · preview privada</figcaption>
+              <figcaption data-i18n="figure.rtp">rindetuplata · preview privada</figcaption>
               <img
                 src="./assets/rindetuplata.webp"
-                alt="Página de inicio de rindetuplata con la mejor opción del día y el ranking por pesos ganados"
+                alt="Página de inicio de rindetuplata con la mejor opción del día y el ranking por pesos ganados" data-i18n-alt="alt.rtp"
                 width="1440"
                 height="900"
                 loading="lazy"
@@ -365,16 +363,16 @@
               <figcaption>ofertasuper.com</figcaption>
               <img
                 src="./assets/ofertasuper.webp"
-                alt="Página de inicio de ofertasSUPER con la comparación de canasta entre supermercados"
+                alt="Página de inicio de ofertasSUPER con la comparación de canasta entre supermercados" data-i18n-alt="alt.super"
                 width="1440"
                 height="900"
                 loading="lazy"
               />
             </figure>
             <ul class="project-stats">
-              <li><b data-i18n="num.products">25.000</b><span data-i18n="project.super.stat1">productos de 5 supermercados, a diario</span></li>
+              <li><b data-i18n="num.products">≈ 25.000</b><span data-i18n="project.super.stat1">productos de 5 supermercados, a diario</span></li>
               <li><b>308</b><span data-i18n="project.super.stat2">pull requests integrados con CI</span></li>
-              <li><b>60×</b><span data-i18n="project.super.stat3">menos CPU en la ruta más cara</span></li>
+              <li><b>60×</b><span data-i18n="project.super.stat3">menos CPU en la búsqueda más amplia</span></li>
             </ul>
           </div>
         </article>
@@ -629,7 +627,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where">Mena Nails</p>
-                      <p class="stack-card__how" data-i18n="stack.python.how">Microservicio que verifica comprobantes con LLMs: 0 aprobaciones indebidas en 30 comprobantes adversariales.</p>
+                      <p class="stack-card__how" data-i18n="stack.python.how">Microservicio que verifica comprobantes con LLMs: 0 aprobaciones indebidas en 30 comprobantes adversariales sintéticos.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
