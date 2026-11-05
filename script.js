@@ -20,6 +20,15 @@ const storage = {
 const translations = {
   es: {
     "a11y.skip": "Saltar al contenido",
+    "meta.title": "Mateo Vazquez | Desarrollador Backend Junior",
+    "a11y.nav": "Navegación principal",
+    "a11y.proof": "Números de los proyectos",
+    "alt.portrait": "Foto de Mateo Vazquez",
+    "alt.rtp":
+      "Página de inicio de rindetuplata con la mejor opción del día y el ranking por pesos ganados",
+    "alt.super":
+      "Página de inicio de ofertasSUPER con la comparación de canasta entre supermercados",
+    "figure.rtp": "rindetuplata · preview privada",
     "nav.stack": "Stack",
     "nav.projects": "Proyectos",
     "nav.education": "Formación",
@@ -37,9 +46,9 @@ const translations = {
     "cta.projects": "Ver proyectos",
     "num.tests": "1.533",
     "num.p50": "1,2 ms",
-    "num.products": "25.000",
+    "num.products": "≈ 25.000",
     "proof.tests": "tests automatizados en rindetuplata",
-    "proof.cpu": "menos CPU por request en la ruta más cara de ofertasSUPER",
+    "proof.cpu": "menos CPU por request en la búsqueda más amplia de ofertasSUPER",
     "proof.cpu.source": "10,4 s → 173 ms · postmortem",
     "proof.llm": "aprobaciones indebidas con comprobantes adversariales sintéticos",
     "proof.llm.source": "Mena Nails · receipt-verifier",
@@ -102,7 +111,7 @@ const translations = {
       "Unos 25.000 productos y 47.000 ofertas con USD 0 de infraestructura. Cuando Vercel pausó el sitio por exceso de CPU, lo diagnostiqué sin métricas de producción y lo documenté en un postmortem.",
     "project.super.stat1": "productos de 5 supermercados, a diario",
     "project.super.stat2": "pull requests integrados con CI",
-    "project.super.stat3": "menos CPU en la ruta más cara",
+    "project.super.stat3": "menos CPU en la búsqueda más amplia",
     "project.shelfops.label": "jul – oct 2026",
     "project.shelfops.summary":
       "API de triage de incidentes en tiendas, donde cada decisión queda auditada.",
@@ -145,6 +154,15 @@ const translations = {
   },
   en: {
     "a11y.skip": "Skip to content",
+    "meta.title": "Mateo Vazquez | Junior Backend Developer",
+    "a11y.nav": "Main navigation",
+    "a11y.proof": "Project numbers",
+    "alt.portrait": "Photo of Mateo Vazquez",
+    "alt.rtp":
+      "rindetuplata home page with today's best option and the ranking by pesos earned",
+    "alt.super":
+      "ofertasSUPER home page comparing a basket across supermarkets",
+    "figure.rtp": "rindetuplata · private preview",
     "nav.stack": "Stack",
     "nav.projects": "Projects",
     "nav.education": "Education",
@@ -162,9 +180,9 @@ const translations = {
     "cta.projects": "View projects",
     "num.tests": "1,533",
     "num.p50": "1.2 ms",
-    "num.products": "25,000",
+    "num.products": "≈ 25,000",
     "proof.tests": "automated tests in rindetuplata",
-    "proof.cpu": "less CPU per request on ofertasSUPER's most expensive route",
+    "proof.cpu": "less CPU per request on ofertasSUPER's broadest search",
     "proof.cpu.source": "10.4 s → 173 ms · postmortem",
     "proof.llm": "false approvals on synthetic adversarial payment receipts",
     "proof.llm.source": "Mena Nails · receipt-verifier",
@@ -227,7 +245,7 @@ const translations = {
       "About 25,000 products and 47,000 offers at USD 0 infrastructure cost. When Vercel paused the site for CPU overuse, I diagnosed it without production metrics and wrote it up as a postmortem.",
     "project.super.stat1": "products from 5 supermarkets, daily",
     "project.super.stat2": "pull requests merged through CI",
-    "project.super.stat3": "less CPU on the most expensive route",
+    "project.super.stat3": "less CPU on the broadest search",
     "project.shelfops.label": "jul – oct 2026",
     "project.shelfops.summary":
       "A retail incident triage API where every decision is audited.",
@@ -314,8 +332,15 @@ function applyLanguage(lang) {
     const key = node.dataset.i18n;
     if (dictionary[key]) node.textContent = dictionary[key];
   });
+  // Accessible names and alt text follow the language too (WCAG 3.1.2).
+  for (const attr of ["aria-label", "alt"]) {
+    document.querySelectorAll(`[data-i18n-${attr}]`).forEach((node) => {
+      const value = dictionary[node.getAttribute(`data-i18n-${attr}`)];
+      if (value) node.setAttribute(attr, value);
+    });
+  }
+  if (dictionary["meta.title"]) document.title = dictionary["meta.title"];
   if (languageToggle) {
-    languageToggle.setAttribute("aria-pressed", String(lang === "en"));
     languageToggle.setAttribute(
       "aria-label",
       (lang === "es" ? "Cambiar idioma: " : "Change language: ") +
@@ -327,8 +352,6 @@ function applyLanguage(lang) {
 }
 function applyTheme(theme, { persist = false } = {}) {
   root.dataset.theme = theme;
-  if (themeToggle)
-    themeToggle.setAttribute("aria-pressed", String(theme === "light"));
   updateThemeLabel();
   // Persist only on an explicit toggle so the OS preference keeps working.
   if (persist) storage.set("portfolio:theme", theme);
