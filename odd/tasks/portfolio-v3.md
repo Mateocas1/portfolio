@@ -35,12 +35,12 @@ the standing permission in S1 and is recorded in `## Decisions` with its reasoni
 
 | ID | Specs | Task | Route | Status | Commit |
 |---|---|---|---|---|---|
-| T1 | S1 S3 S5 S2b | Foundation: this document, `AGENTS.md`, glass system and ambient background, index structure and mount points, per-section i18n modules, time-boxed ofertasSUPER status, Person JSON-LD | Parent | pending | |
+| T1 | S1 S3 S5 S2b | Foundation: this document, `AGENTS.md`, glass system and ambient background, index structure and mount points, per-section i18n modules, time-boxed ofertasSUPER status, Person JSON-LD | Parent | done | 0e05894 |
 | T2 | S6 | Particle portrait: canvas progressive enhancement over the photo | Opus subagent, high | pending | |
 | T3 | S7 | Stack as flip cards: logo and name on the front, where and how it was used on the back | Opus subagent, high | pending | |
-| T4 | S2d | Architecture diagram per case page, accessible and theme-aware | Sonnet subagent, high | pending | |
-| T5 | S2e | "Escritos": Spanish long-form postmortem page and index section | Sonnet subagent, medium | pending | |
-| T6 | S2a | CV: reproducible source and an updated one-page PDF | Sonnet subagent, high | pending | |
+| T4 | S2d | Architecture diagram per case page, accessible and theme-aware | Sonnet subagent, high | done | see L5 |
+| T5 | S2e | "Escritos": Spanish long-form postmortem page and index section | Sonnet subagent, medium | done | e44f5ac |
+| T6 | S2a | CV: reproducible source and an updated one-page PDF | Sonnet subagent, high | done | a7720be |
 | T7 | S1 | Integration, QA (overflow, console, both themes, both languages, reduced motion) and closing audit loop | Parent + Opus auditor | pending | |
 
 Routing (S4): Opus for the two units where front-end craft is the deliverable (T2 canvas physics and performance, T3
@@ -84,8 +84,24 @@ Each one was the owner's call in principle (S1); taken by the session, with the 
   proposal S2c without asking the owner for a new photo. A new photo with a neutral background would still improve
   the static fallback.
 
+- **D9 Private repository links (found during T4).** `Mateocas1/mena-nails` is private (anonymous clone asks for
+  credentials; the account's repository search lists it as private), so the "Repositorio" links on the home page
+  and on `mena-nails-inventario.html` were a 404 for every visitor. They are replaced: the inventory case page says
+  the code belongs to the client, and the bookings product links the public `Mateocas1/receipt-verifier` (the
+  receipt verifier the case page describes: deepseek-v4-flash → qwen3.8-flash → Tesseract cascade, 6 models,
+  150 receipts). That repository states that every published number comes from synthetic data, so the "0/30 false
+  approvals" claim now says "sintéticos" everywhere it appears (home, case page, both languages). The CV keeps the
+  owner's wording; worth aligning on the next CV edit.
+
 ## Log
 
 - **L1** (2026-11-05, owner): the S1-S7 message; the owner is away ~8 h and asked for no blocking questions.
 - **L2** (2026-11-05, parent): plan and routing as in `## Tasks`; decisions D1-D8 taken before delegating so every
   worker builds against the same contracts (tokens, mount points, file ownership).
+- **L3** (2026-11-05, T5 integrated): article verified against the repo postmortem (numbers spot-checked); parent
+  changed its tables to stack as labeled blocks under 560 px instead of scrolling sideways. Reading time 8 min
+  (≈1,690 words) matches the index card.
+- **L4** (2026-11-05, T6 integrated): XeLaTeX installed in the container; `pdftotext` diff against the previous PDF
+  shows only the intended fact changes; one A4 page, fonts embedded, 9 links preserved.
+- **L5** (2026-11-05, T4 integrated, commit `feat(case-pages)`): four HTML/CSS diagrams checked at 1440 and 390 px
+  in both themes. The worker could not clone `mena-nails`, which surfaced D9; D9 shipped in the same commit.
