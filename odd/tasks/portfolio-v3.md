@@ -36,12 +36,12 @@ the standing permission in S1 and is recorded in `## Decisions` with its reasoni
 | ID | Specs | Task | Route | Status | Commit |
 |---|---|---|---|---|---|
 | T1 | S1 S3 S5 S2b | Foundation: this document, `AGENTS.md`, glass system and ambient background, index structure and mount points, per-section i18n modules, time-boxed ofertasSUPER status, Person JSON-LD | Parent | done | 0e05894 |
-| T2 | S6 | Particle portrait: canvas progressive enhancement over the photo | Opus subagent, high | pending | |
-| T3 | S7 | Stack as flip cards: logo and name on the front, where and how it was used on the back | Opus subagent, high | pending | |
-| T4 | S2d | Architecture diagram per case page, accessible and theme-aware | Sonnet subagent, high | done | see L5 |
+| T2 | S6 | Particle portrait: canvas progressive enhancement over the photo | Opus subagent, high | done | 880f3f9 |
+| T3 | S7 | Stack as flip cards: logo and name on the front, where and how it was used on the back | Opus subagent, high | done | ccb69c9 |
+| T4 | S2d | Architecture diagram per case page, accessible and theme-aware | Sonnet subagent, high | done | a60f0ea |
 | T5 | S2e | "Escritos": Spanish long-form postmortem page and index section | Sonnet subagent, medium | done | e44f5ac |
 | T6 | S2a | CV: reproducible source and an updated one-page PDF | Sonnet subagent, high | done | a7720be |
-| T7 | S1 | Integration, QA (overflow, console, both themes, both languages, reduced motion) and closing audit loop | Parent + Opus auditor | pending | |
+| T7 | S1 | Integration, QA (overflow, console, both themes, both languages, reduced motion) and closing audit loop | Parent + Opus auditor | done | 1102eb0 |
 
 Routing (S4): Opus for the two units where front-end craft is the deliverable (T2 canvas physics and performance, T3
 3D interaction and accessibility); Sonnet for bounded, spec-heavy units (T4-T6). Haiku was not used: no unit was
@@ -105,3 +105,28 @@ Each one was the owner's call in principle (S1); taken by the session, with the 
   shows only the intended fact changes; one A4 page, fonts embedded, 9 links preserved.
 - **L5** (2026-11-05, T4 integrated, commit `feat(case-pages)`): four HTML/CSS diagrams checked at 1440 and 390 px
   in both themes. The worker could not clone `mena-nails`, which surfaced D9; D9 shipped in the same commit.
+- **L6** (2026-11-05, T3 integrated, ccb69c9): 20 flip cards verified (mouse, keyboard, tap, no-JS, reduced motion,
+  EN). Parent fixes: names on one baseline in the grid; `--faint` raised to AA (it measured 4.1:1 dark, 3.9:1
+  light, flagged by the worker); removed the unused `.skills` CSS and old `stack.*` keys.
+- **L7** (2026-11-05, T2 integrated, 880f3f9): particle portrait verified in both themes, pointer, theme toggle,
+  reduced motion and phone layout; ~5,100 particles at 1.4 ms/frame. Parent fix from the worker's note: the page now
+  follows live OS theme changes while no theme is stored.
+- **L8** (2026-11-05, T7): parent QA matrix (6 pages × 5 widths × 2 themes; console, overflow, 18 internal links and
+  anchors, EN leftovers, reduced motion, no-JS): clean. Closing audit round 1 (Opus, independent): six low findings,
+  all qualifying (F1 the 60× figure is the broadest search, not the most expensive route; F2 "sintéticos" missing on
+  a stack card; F3 mobile menu focus order; F4 toggles announced the opposite state with `aria-pressed`; F5
+  attributes and title stayed Spanish in EN; F6 `--faint` under 4.5:1 over the amber glow), plus "≈ 25.000" from its
+  not-pursued list because AGENTS.md forbids inflating. Fixed in 1102eb0; CV rebuilt.
+- **L9** (2026-11-05, closing audit round 2): no qualifying finding; fixes complete, no regressions. **The loop ends at
+  round 2.** Not pursued: the CV keeps "30 comprobantes adversariales" without "sintéticos" (D9, owner's wording);
+  desktop tab order reaches the toggles before the nav (deliberate F3 trade-off).
+- **L10** (2026-11-05, follow-up): a reminder fires in this session on 2026-11-15 10:00 ART to check that
+  ofertasuper.com really answers after the D5 switch, and to clean up the expired `data-until` nodes.
+
+## Open for the owner
+
+Nothing blocks. Worth a look when you are back:
+
+1. D1-D9 above, especially D4 (flip only on the stack) and D5 (status switch by date).
+2. The CV line about the receipt verifier could say "sintéticos" like the site (D9).
+3. A photo with a neutral background would improve the no-JS fallback (D8); the particle portrait already removes it.
