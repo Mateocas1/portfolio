@@ -45,7 +45,7 @@
     />
     <meta
       property="og:image"
-      content="https://mateocas1.github.io/portfolio/assets/profile.png"
+      content="https://mateocas1.github.io/portfolio/assets/profile-og.jpg"
     />
     <meta name="twitter:card" content="summary" />
     <link
@@ -54,7 +54,7 @@
     />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230E0F11%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230F0F0E%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,34 +63,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/diagrams.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
 
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="./index.html" aria-label="Volver al portfolio — MV Mateo">
-          <span class="brand-mark" aria-hidden="true">MV</span>
-          <span>Mateo</span>
-        </a>
-        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
-          <a href="./index.html">Inicio</a>
-          <a href="./index.html#proyectos">Proyectos</a>
-          <a href="./index.html#contacto">Contacto</a>
-          <a
-            href="./CV_Mateo_Vazquez.pdf"
-            target="_blank"
-            rel="noreferrer"
-            >CV</a
-          >
-        </nav>
+        <a class="brand" href="./index.html">Mateo Vazquez</a>
         <div class="header-actions">
           <button
             class="toggle-button"
             type="button"
             data-theme-toggle
             aria-label="Cambiar tema: Claro"
-            aria-pressed="false"
           >
             <span>Claro</span>
           </button>
@@ -104,12 +90,23 @@
             <span>Menú</span>
           </button>
         </div>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="./index.html">Inicio</a>
+          <a href="./index.html#proyectos">Proyectos</a>
+          <a href="./index.html#contacto">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
       </div>
     </header>
 
     <main id="main" class="section-shell case-study-page">
       <section class="hero-copy reveal">
-        <p class="eyebrow text-appear">Caso técnico · oct 2026</p>
+        <p class="eyebrow text-appear">Caso técnico · oct – nov 2026</p>
         <h1 class="text-appear">rindetuplata</h1>
         <p class="role-line text-appear">
           <span>¿Dónde rinde tu plata hoy? Comparador de rendimientos por retorno real</span>
@@ -121,16 +118,22 @@
           inflación esperada. Backend en Java 21 y Spring Boot 4, con la fuente y
           la fecha de cada número.
         </p>
+        <p class="case-note text-appear">
+          <b>Estado, noviembre 2026:</b> MVP terminado en octubre y una segunda
+          etapa cerrada el 1/11 (modelo financiero, performance, operación y
+          contenido), con 1.533 tests. Corre como preview privada; todavía no
+          tiene despliegue público.
+        </p>
         <div class="hero-actions text-appear">
-          <a class="button ghost" href="./index.html#proyectos"
-            >Volver al portfolio</a
-          >
           <a
             class="button primary"
             href="https://github.com/Mateocas1/rindetuplata"
             target="_blank"
             rel="noreferrer"
             >Repositorio</a
+          >
+          <a class="button ghost" href="./index.html#proyectos"
+            >Volver al portfolio</a
           >
         </div>
       </section>
@@ -185,6 +188,39 @@
         </div>
       </section>
 
+      <section class="case-stack arch-section reveal" aria-labelledby="arch-rindetuplata-h">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura</p>
+          <h2 id="arch-rindetuplata-h">Cómo se mueve un dato, de punta a punta.</h2>
+        </div>
+        <figure class="arch" aria-labelledby="arch-rindetuplata-h" aria-describedby="arch-rindetuplata-d">
+          <p class="arch__sr" id="arch-rindetuplata-d">Diagrama en tres bloques. Bloque API Spring Boot, de izquierda a derecha: fuentes (BCRA, ArgentinaDatos, dolarapi, Ualá y curación manual), adaptadores por fuente, el job diario de Spring Batch, PostgreSQL con Flyway, dominio en Java puro con BigDecimal y la API REST con OpenAPI. Bloque GitHub Actions: captura diaria en crudo de las fuentes hacia una rama data, que el job de Spring Batch reproduce para fechas pasadas. Bloque salidas: el job escribe alertas en un outbox transaccional que llega a RabbitMQ y de ahí a un aviso por email, y dispara la reconstrucción del sitio estático de Astro, que lee la API REST.</p>
+<div class="arch__lane"><p class="arch__lane-label">API · Spring Boot</p>
+<ol class="arch__flow" data-n="6">
+<li class="arch__node"><span class="arch__kicker">Fuentes</span><b>BCRA, ArgentinaDatos, dolarapi, Ualá</b><small>más curación manual en un panel admin</small></li>
+<li class="arch__node"><span class="arch__kicker">Adaptadores</span><b>Uno por fuente</b><small>detrás de un puerto por tipo de dato</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">Ingesta</span><b>Spring Batch</b><small>dailyIngestionJob, una instancia por fecha</small></li>
+<li class="arch__node"><span class="arch__kicker">Datos</span><b>PostgreSQL</b><small>snapshots diarios, migraciones Flyway</small></li>
+<li class="arch__node"><span class="arch__kicker">Dominio</span><b>Java puro</b><small>TNA a TEA, topes y tramos en BigDecimal</small></li>
+<li class="arch__node"><span class="arch__kicker">API</span><b>REST + OpenAPI</b><small>ranking, historial y simulador</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>Lo que solo publica el valor de hoy se archiva a diario, y el mismo job lo reproduce para fechas pasadas (replay).</span></p>
+<div class="arch__lane"><p class="arch__lane-label">GitHub Actions · captura diaria</p>
+<ol class="arch__flow" data-n="2">
+<li class="arch__node"><span class="arch__kicker">Captura</span><b>BCRA, ArgentinaDatos y Ualá en crudo</b><small>todos los días a las 12:00 (Argentina)</small></li>
+<li class="arch__node"><span class="arch__kicker">Archivo</span><b>Rama data</b><small>un JSON por día y un manifest con sha256 por fuente</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>Con cada ingesta, el job escribe las alertas en un outbox y avisa al sitio para que se reconstruya.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Salidas</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">Alertas</span><b>Outbox transaccional y RabbitMQ</b><small>publisher confirms, consumidor idempotente, dead-letter queue</small></li>
+<li class="arch__node"><span class="arch__kicker">Aviso</span><b>Email</b><small>notificador por email</small></li>
+<li class="arch__node is-branch"><span class="arch__kicker">Sitio</span><b>Astro y React en un CDN</b><small>páginas estáticas que leen la API</small></li>
+</ol></div>
+          <figcaption>Lo que importa está en el centro: un job idempotente por fecha, con una sola puerta de entrada de datos y toda la matemática del lado de la API.</figcaption>
+        </figure>
+      </section>
+
       <section class="case-stack reveal">
         <div class="section-heading">
           <p class="eyebrow text-appear">Flujo de datos</p>
@@ -225,6 +261,61 @@
         </div>
       </section>
 
+      <section class="case-breakdown reveal">
+        <div class="case-breakdown__intro">
+          <p class="eyebrow text-appear">Después del MVP</p>
+          <h2 class="text-appear">Una auditoría, seis frentes y tres rondas de cierre.</h2>
+          <p class="text-appear">
+            Con el MVP andando, audité el proyecto entero y ordené lo que
+            encontré en seis frentes: errores, modelo financiero, performance,
+            deploy, cobertura y contenido. Cada frente se cerró con tests, y al
+            final repetí la auditoría hasta que una ronda no encontró nada que
+            corregir: hicieron falta tres.
+          </p>
+        </div>
+        <div class="case-breakdown__grid" aria-label="Trabajo después del MVP">
+          <article class="text-appear">
+            <span>Modelo financiero</span>
+            <b>Que el ranking no recomiende mal</b>
+            <p>
+              El plazo fijo se renueva mes a mes en plazos largos en lugar de
+              castigarlo con interés simple; fondos por rendimiento de 7 días y
+              una fila por fondo; el dólar MEP como devaluación de equilibrio de
+              cada opción.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Performance</span>
+            <b>De 108 ms a 1,2 ms de mediana</b>
+            <p>
+              Caché del ranking por versión de datos y ETag débil: con k6, el
+              ranking pasó de 81 a 4.795 req/s y las revalidaciones responden
+              304 sin calcular nada. Es un mejor caso: el mix repite consultas,
+              y el README lo aclara.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Operación</span>
+            <b>Preparado para un servidor real</b>
+            <p>
+              Backups con restauración probada, límites de memoria, backfill de
+              historial (fondos, macro y dólar), health de frescura de la
+              ingesta y un build que se niega a publicar datos viejos o vacíos.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Producto</span>
+            <b>Razones para volver</b>
+            <p>
+              Páginas por banco con la tasa de hoy y 90 días de historial,
+              informe mensual de quién le ganó a la inflación del INDEC, alertas
+              nuevas, API keys con cuota y un servidor MCP de solo lectura con
+              <code>llms.txt</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="case-stack reveal">
         <div class="section-heading">
           <p class="eyebrow text-appear">Resultado</p>
@@ -233,10 +324,10 @@
         <div class="stack-groups">
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Tests</h3>
-            <p>450 tests de backend (JUnit 5 con Testcontainers: PostgreSQL y
-            RabbitMQ reales), 398 de frontend (Vitest) y un end-to-end con
-            Playwright sobre el stack completo en Docker Compose; CI en GitHub
-            Actions.</p>
+            <p>1.533 tests: 899 de backend (JUnit 5 con Testcontainers:
+            PostgreSQL y RabbitMQ reales) y 634 de frontend (Vitest), más un
+            end-to-end con Playwright sobre el stack completo en Docker Compose;
+            CI en GitHub Actions y prueba de carga con k6.</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">En funcionamiento</h3>
@@ -246,8 +337,10 @@
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Límite honesto</h3>
-            <p>Todavía no tiene despliegue público. Es informativo, no es
-            asesoramiento financiero, y no modela impuestos.</p>
+            <p>Todavía no tiene despliegue público: la receta de VPS y CDN está
+            escrita y probada en CI, pero el servidor, el dominio y el proveedor
+            de email siguen pendientes. Es informativo, no es asesoramiento
+            financiero, y no modela impuestos.</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Cómo lo construí</h3>
@@ -266,7 +359,8 @@
         <div class="stack-groups">
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Backend</h3>
-            <p>Java 21, Spring Boot 4.1, Spring Batch 6, Spring Security 7</p>
+            <p>Java 21, Spring Boot 4.1, Spring Batch 6, Spring Security 7, servidor
+            MCP</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Datos y mensajería</h3>
@@ -278,7 +372,7 @@
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Testing e infraestructura</h3>
-            <p>JUnit 5, Testcontainers, Vitest, Playwright, Docker Compose,
+            <p>JUnit 5, Testcontainers, Vitest, Playwright, k6, Docker Compose,
             Caddy, GitHub Actions</p>
           </section>
         </div>

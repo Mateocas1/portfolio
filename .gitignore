@@ -1,5 +1,14 @@
-odd/
+# Local ODD task docs; only feature documents that are part of the repo history are tracked
+odd/*
+!odd/tasks/
+odd/tasks/*
+!odd/tasks/portfolio-v3.md
 # Local Pi runtime state
 .atl/
 # Playwright CLI session artifacts
 .playwright-cli/
+# XeLaTeX build artifacts (the published PDF is CV_Mateo_Vazquez.pdf at the root)
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/cv.pdf

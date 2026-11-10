@@ -45,7 +45,7 @@
     />
     <meta
       property="og:image"
-      content="https://mateocas1.github.io/portfolio/assets/profile.png"
+      content="https://mateocas1.github.io/portfolio/assets/profile-og.jpg"
     />
     <meta name="twitter:card" content="summary" />
     <link
@@ -54,7 +54,7 @@
     />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230E0F11%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230F0F0E%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,34 +63,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/diagrams.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
 
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="./index.html" aria-label="Volver al portfolio — MV Mateo">
-          <span class="brand-mark" aria-hidden="true">MV</span>
-          <span>Mateo</span>
-        </a>
-        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
-          <a href="./index.html">Inicio</a>
-          <a href="./index.html#proyectos">Proyectos</a>
-          <a href="./index.html#contacto">Contacto</a>
-          <a
-            href="./CV_Mateo_Vazquez.pdf"
-            target="_blank"
-            rel="noreferrer"
-            >CV</a
-          >
-        </nav>
+        <a class="brand" href="./index.html">Mateo Vazquez</a>
         <div class="header-actions">
           <button
             class="toggle-button"
             type="button"
             data-theme-toggle
             aria-label="Cambiar tema: Claro"
-            aria-pressed="false"
           >
             <span>Claro</span>
           </button>
@@ -104,6 +90,17 @@
             <span>Menú</span>
           </button>
         </div>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="./index.html">Inicio</a>
+          <a href="./index.html#proyectos">Proyectos</a>
+          <a href="./index.html#contacto">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
       </div>
     </header>
 
@@ -122,14 +119,14 @@
           <a class="button ghost" href="./index.html#proyectos"
             >Volver al portfolio</a
           >
-          <a
-            class="button primary"
-            href="https://github.com/Mateocas1/mena-nails"
-            target="_blank"
-            rel="noreferrer"
-            >Repositorio</a
+          <a class="button primary" href="./mena-nails.html"
+            >Producto 1: Turnos y señas</a
           >
         </div>
+        <p class="case-note text-appear">
+          <b>Código privado:</b> el repositorio es del cliente y no es público.
+          Esta página describe la arquitectura, las decisiones y las pruebas.
+        </p>
       </section>
 
       <section class="case-breakdown reveal">
@@ -180,6 +177,30 @@
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="case-stack arch-section reveal" aria-labelledby="arch-inventario-h">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura</p>
+          <h2 id="arch-inventario-h">Un contrato OpenAPI entre la PWA y la API.</h2>
+        </div>
+        <figure class="arch" aria-labelledby="arch-inventario-h" aria-describedby="arch-inventario-d">
+          <p class="arch__sr" id="arch-inventario-d">Diagrama en dos bloques. Operación, de izquierda a derecha: la PWA en SvelteKit habla con la API en Go 1.24, que usa login por sesión con bcrypt y guarda en PostgreSQL con pgx y sqlc. Contrato y CI: el contrato OpenAPI define la interfaz, de él se genera el cliente, y una verificación en CI falla si el cliente generado se desvía del contrato.</p>
+<div class="arch__lane"><p class="arch__lane-label">Operación</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">Frontend</span><b>PWA en SvelteKit</b><small>operar el inventario del estudio</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">API</span><b>Go 1.24</b><small>login por sesión con bcrypt</small></li>
+<li class="arch__node"><span class="arch__kicker">Datos</span><b>PostgreSQL</b><small>consultas tipadas con pgx y sqlc</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>OpenAPI define la interfaz entre la PWA y la API.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Contrato y CI</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">Contrato</span><b>OpenAPI</b><small>fuente de verdad</small></li>
+<li class="arch__node"><span class="arch__kicker">Generado</span><b>Cliente</b><small>se genera a partir del contrato</small></li>
+<li class="arch__node"><span class="arch__kicker">Verificación</span><b>Check en CI</b><small>falla si el cliente se desvía</small></li>
+</ol></div>
+          <figcaption>El contrato manda: el cliente no se escribe a mano, se genera, y la CI frena cualquier desvío.</figcaption>
+        </figure>
       </section>
 
       <section class="case-stack reveal">

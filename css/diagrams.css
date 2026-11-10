@@ -1,0 +1,316 @@
+/* Architecture diagrams (T4): semantic HTML lanes, theme tokens only.
+   Each lane is an ordered list that reads left to right on wide containers and
+   top to bottom on narrow ones (container queries, per node count). */
+
+.arch {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.arch__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Lane: a labeled, subtle boundary ---------- */
+
+.arch__lane {
+  position: relative;
+  container-type: inline-size;
+  margin: 0;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-xl);
+}
+
+.arch__lane + .arch__lane {
+  margin-top: var(--space-5);
+}
+
+.arch__lane-label {
+  position: absolute;
+  top: -0.7em;
+  left: var(--space-4);
+  padding: 0 var(--space-2);
+  background: var(--bg);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Flow: nodes and arrows ---------- */
+
+.arch__flow {
+  --arch-gap: 28px;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr));
+  gap: var(--arch-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.arch__node {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-3) var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  color: var(--text);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .arch__node {
+    background: var(--surface);
+  }
+}
+
+.arch__kicker {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.arch__node b {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.arch__node small {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.arch__node code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+/* The one critical path in each diagram: the only use of the accent. */
+.arch__node.is-key {
+  border-color: var(--accent);
+}
+
+.arch__node.is-key .arch__kicker {
+  color: var(--accent);
+}
+
+/* Arrow into every node but the first, unless it starts a separate branch.
+   Geometry comes from custom properties: vertical by default, horizontal once
+   the lane is wide enough for the flow's node count (container queries). */
+.arch__node:not(:first-child, .is-branch)::before {
+  content: "";
+  position: absolute;
+  top: var(--a-top);
+  left: var(--a-left);
+  width: var(--a-w);
+  height: var(--a-h);
+  background: var(--border-strong);
+}
+
+.arch__node:not(:first-child, .is-branch)::after {
+  content: "";
+  position: absolute;
+  top: var(--a-head-top);
+  left: var(--a-head-left);
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid var(--muted);
+  border-right: 1px solid var(--muted);
+  transform: var(--a-head-rot);
+}
+
+.arch__node.is-key:not(:first-child, .is-branch)::before {
+  background: var(--accent);
+}
+
+.arch__node.is-key:not(:first-child, .is-branch)::after {
+  border-color: var(--accent);
+}
+
+/* A branch starts a new flow inside the same lane: a quiet divider, no arrow. */
+.arch__node.is-branch {
+  border-style: dashed;
+}
+
+/* ---------- Bridge: the real edge between two lanes ---------- */
+
+.arch__bridge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-2) 0 var(--space-4) var(--space-6);
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.arch__bridge::before {
+  content: "";
+  flex: none;
+  align-self: stretch;
+  width: 1px;
+  min-height: 32px;
+  background: var(--border-strong);
+}
+
+.arch__bridge {
+  position: relative;
+}
+
+.arch__bridge::after {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--space-4) + 1px);
+  left: calc(var(--space-6) - 3px);
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid var(--muted);
+  border-bottom: 1px solid var(--muted);
+  transform: rotate(45deg);
+}
+
+.arch__bridge.is-key::after {
+  border-color: var(--accent);
+}
+
+.arch__bridge span {
+  max-width: 62ch;
+}
+
+.arch__bridge.is-key::before {
+  background: var(--accent);
+}
+
+.arch figcaption {
+  margin-top: var(--space-4);
+  max-width: 72ch;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+/* ---------- Layout: stacked by default, columns when the lane is wide ---------- */
+
+.arch__flow {
+  --arch-gap: 24px;
+  --a-top: calc(-1 * var(--arch-gap));
+  --a-left: 24px;
+  --a-w: 1px;
+  --a-h: var(--arch-gap);
+  --a-head-top: -9px;
+  --a-head-left: 21px;
+  --a-head-rot: rotate(135deg);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.arch__node.is-branch {
+  margin-top: var(--space-2);
+}
+
+@container (min-width: 480px) {
+  .arch__flow[data-n="2"] {
+    --arch-gap: 32px;
+    --a-top: 50%;
+    --a-left: calc(-1 * var(--arch-gap));
+    --a-w: var(--arch-gap);
+    --a-h: 1px;
+    --a-head-top: calc(50% - 3px);
+    --a-head-left: -7px;
+    --a-head-rot: rotate(45deg);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .arch__flow[data-n="2"] > .arch__node.is-branch { margin-top: 0; }
+}
+@container (min-width: 560px) {
+  .arch__flow[data-n="3"] {
+    --arch-gap: 32px;
+    --a-top: 50%;
+    --a-left: calc(-1 * var(--arch-gap));
+    --a-w: var(--arch-gap);
+    --a-h: 1px;
+    --a-head-top: calc(50% - 3px);
+    --a-head-left: -7px;
+    --a-head-rot: rotate(45deg);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .arch__flow[data-n="3"] > .arch__node.is-branch { margin-top: 0; }
+}
+@container (min-width: 700px) {
+  .arch__flow[data-n="4"] {
+    --arch-gap: 28px;
+    --a-top: 50%;
+    --a-left: calc(-1 * var(--arch-gap));
+    --a-w: var(--arch-gap);
+    --a-h: 1px;
+    --a-head-top: calc(50% - 3px);
+    --a-head-left: -7px;
+    --a-head-rot: rotate(45deg);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .arch__flow[data-n="4"] > .arch__node.is-branch { margin-top: 0; }
+}
+@container (min-width: 880px) {
+  .arch__flow[data-n="5"] {
+    --arch-gap: 28px;
+    --a-top: 50%;
+    --a-left: calc(-1 * var(--arch-gap));
+    --a-w: var(--arch-gap);
+    --a-h: 1px;
+    --a-head-top: calc(50% - 3px);
+    --a-head-left: -7px;
+    --a-head-rot: rotate(45deg);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .arch__flow[data-n="5"] > .arch__node.is-branch { margin-top: 0; }
+}
+@container (min-width: 970px) {
+  .arch__flow[data-n="6"] {
+    --arch-gap: 26px;
+    --a-top: 50%;
+    --a-left: calc(-1 * var(--arch-gap));
+    --a-w: var(--arch-gap);
+    --a-h: 1px;
+    --a-head-top: calc(50% - 3px);
+    --a-head-left: -7px;
+    --a-head-rot: rotate(45deg);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .arch__flow[data-n="6"] > .arch__node.is-branch { margin-top: 0; }
+}
+
+@media (max-width: 480px) {
+  .arch__lane {
+    padding: var(--space-5) var(--space-3) var(--space-3);
+  }
+
+  .arch__bridge {
+    padding-left: var(--space-5);
+  }
+
+  .arch__bridge::after {
+    left: calc(var(--space-5) - 3px);
+  }
+}

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Caso técnico de ofertaSUPER: comparador de precios de supermercados argentinos con datos de la API de VTEX, emparejamiento por EAN, PostgreSQL y Redis, con CI en cada push."
+      content="Caso técnico de ofertasSUPER: comparador de precios de supermercados argentinos con datos de la API de VTEX, emparejamiento por EAN, PostgreSQL y Redis, con CI en cada push."
     />
-    <title>ofertaSUPER | Caso técnico — Mateo Vazquez</title>
+    <title>ofertasSUPER | Caso técnico — Mateo Vazquez</title>
     <script>
       (() => {
         try {
@@ -32,7 +32,7 @@
     </script>
     <meta
       property="og:title"
-      content="ofertaSUPER | Caso técnico — Mateo Vazquez"
+      content="ofertasSUPER | Caso técnico — Mateo Vazquez"
     />
     <meta
       property="og:description"
@@ -45,7 +45,7 @@
     />
     <meta
       property="og:image"
-      content="https://mateocas1.github.io/portfolio/assets/profile.png"
+      content="https://mateocas1.github.io/portfolio/assets/profile-og.jpg"
     />
     <meta name="twitter:card" content="summary" />
     <link
@@ -54,7 +54,7 @@
     />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230E0F11%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%230F0F0E%27/%3E%3Ctext x=%2732%27 y=%2739%27 text-anchor=%27middle%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27%23E3A857%27%3EMV%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,34 +63,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/diagrams.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
 
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="./index.html" aria-label="Volver al portfolio — MV Mateo">
-          <span class="brand-mark" aria-hidden="true">MV</span>
-          <span>Mateo</span>
-        </a>
-        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
-          <a href="./index.html">Inicio</a>
-          <a href="./index.html#proyectos">Proyectos</a>
-          <a href="./index.html#contacto">Contacto</a>
-          <a
-            href="./CV_Mateo_Vazquez.pdf"
-            target="_blank"
-            rel="noreferrer"
-            >CV</a
-          >
-        </nav>
+        <a class="brand" href="./index.html">Mateo Vazquez</a>
         <div class="header-actions">
           <button
             class="toggle-button"
             type="button"
             data-theme-toggle
             aria-label="Cambiar tema: Claro"
-            aria-pressed="false"
           >
             <span>Claro</span>
           </button>
@@ -104,25 +90,65 @@
             <span>Menú</span>
           </button>
         </div>
+        <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
+          <a href="./index.html">Inicio</a>
+          <a href="./index.html#proyectos">Proyectos</a>
+          <a href="./index.html#contacto">Contacto</a>
+          <a
+            href="./CV_Mateo_Vazquez.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >CV</a
+          >
+        </nav>
       </div>
     </header>
 
     <main id="main" class="section-shell case-study-page">
       <section class="hero-copy reveal">
         <p class="eyebrow text-appear">Caso técnico · mar 2026 – actualidad</p>
-        <h1 class="text-appear">ofertaSUPER</h1>
+        <h1 class="text-appear">ofertasSUPER</h1>
         <p class="role-line text-appear">
           <span>Comparador de precios de supermercados argentinos</span>
         </p>
         <p class="hero-lead text-appear">
-          Compara precios de 5 supermercados
-          argentinos, unos 23.000 productos y 40.000 ofertas que se actualizan
-          a diario con USD 0 de infraestructura, empareja productos por código
-          EAN y permite armar una canasta para comparar entre tiendas.
+          Compara precios de 5 supermercados argentinos (Carrefour, Coto,
+          Disco, Jumbo y Vea): unos 25.000 productos y 47.000 ofertas que se
+          actualizan a diario con USD 0 de infraestructura, emparejados por
+          GTIN-14. Permite armar una canasta entre tiendas, publica las bajas
+          de precio del día y mide un índice de canasta contra el IPC.
+        </p>
+        <!-- Time-boxed status (odd/tasks/portfolio-v3.md D5): script.js swaps at 2026-11-15 00:00 ART -->
+        <p class="case-note text-appear" data-until="2026-11-15T03:00:00Z">
+          <b>Estado:</b> Vercel pausó el sitio del 15/10 al 14/11/2026 por pasar
+          la CPU del plan gratuito. El arreglo ya está integrado y el refresh
+          diario nunca se detuvo; la causa y la solución están en el
+          postmortem, más abajo.
+        </p>
+        <p class="case-note text-appear" data-from="2026-11-15T03:00:00Z" hidden>
+          <b>Estado:</b> de nuevo en línea desde el 14/11/2026, después de una
+          pausa de 30 días por exceso de CPU en el plan gratuito de Vercel. La
+          causa y el arreglo están en el postmortem, más abajo.
         </p>
         <div class="hero-actions text-appear">
           <a class="button ghost" href="./index.html#proyectos"
             >Volver al portfolio</a
+          >
+          <a
+            class="button primary"
+            href="https://ofertasuper.com"
+            target="_blank"
+            rel="noreferrer"
+            data-from="2026-11-15T03:00:00Z"
+            hidden
+            >Ver el sitio</a
+          >
+          <a
+            class="button primary"
+            href="https://github.com/Mateocas1/ofertaSUPER/blob/master/docs/postmortem-2026-10-vercel-cpu-pause.md"
+            target="_blank"
+            rel="noreferrer"
+            >Leer el postmortem</a
           >
           <a
             class="button ghost"
@@ -145,7 +171,7 @@
           <p class="text-appear">
             Un precio comparado solo sirve si el producto es el mismo y el dato
             está al día: la base del proyecto es un refresh diario con controles
-            de calidad y el emparejamiento por EAN.
+            de calidad y una identidad de producto por GTIN-14.
           </p>
         </div>
         <div class="credential-rail">
@@ -154,8 +180,8 @@
             <b>5 supermercados, refresh diario</b>
             <p>
               Carrefour, Coto, Disco, Jumbo y Vea: los datos llegan desde la API
-              de VTEX y la búsqueda de Coto, y los productos se emparejan por
-              código EAN.
+              de VTEX y la búsqueda de Coto, y cada código (EAN-8, UPC-12, EAN-13)
+              se normaliza a GTIN-14 validando el dígito verificador.
             </p>
           </article>
           <article class="text-appear">
@@ -172,8 +198,9 @@
             <span>Calidad</span>
             <b>CI en cada cambio</b>
             <p>
-              304 pull requests integrados con GitHub Actions: lint, typecheck,
-              685 tests, build y Lighthouse, con 100/100 en accesibilidad y SEO.
+              308 pull requests integrados con GitHub Actions: lint, typecheck,
+              cerca de 700 tests, build y Lighthouse, con 100/100 en
+              accesibilidad y SEO.
             </p>
           </article>
           <article class="text-appear">
@@ -181,11 +208,38 @@
             <b>Refresh programado</b>
             <p>
               Un job de GitHub Actions restaura el estado de PostgreSQL, refresca
-              el catálogo con controles de frescura, publica el snapshot y manda
-              un resumen de bajas de precio por Telegram.
+              el catálogo con controles de frescura, publica el snapshot y las
+              bajas de precio del día (página, feed Atom y Telegram), y descarta
+              las bajas sospechosas antes de publicarlas.
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="case-stack arch-section reveal" aria-labelledby="arch-ofertas-h">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura</p>
+          <h2 id="arch-ofertas-h">Del catálogo del súper al snapshot que sirve el sitio.</h2>
+        </div>
+        <figure class="arch" aria-labelledby="arch-ofertas-h" aria-describedby="arch-ofertas-d">
+          <p class="arch__sr" id="arch-ofertas-d">Diagrama en dos bloques. Bloque GitHub Actions, refresh diario, de izquierda a derecha: catálogos de los supermercados (VTEX y búsqueda de Coto), staging con controles de calidad, reconcile transaccional en PostgreSQL restaurado desde un dump del release db-state, control de frescura y exportación del snapshot JSON, que se commitea al repositorio. Bloque Vercel, solo lectura: Next.js y las APIs públicas sirven ese snapshot sin base de datos, con caché de CDN de una hora, y las bajas de precio del día se publican en una página, un feed Atom y Telegram.</p>
+<div class="arch__lane"><p class="arch__lane-label">GitHub Actions · refresh diario</p>
+<ol class="arch__flow" data-n="5">
+<li class="arch__node"><span class="arch__kicker">Fuentes</span><b>VTEX y búsqueda de Coto</b><small>5 supermercados</small></li>
+<li class="arch__node"><span class="arch__kicker">Staging</span><b>Controles de calidad</b><small>GTIN-14 válido, precio razonable</small></li>
+<li class="arch__node is-key"><span class="arch__kicker">Reconcile</span><b>PostgreSQL, una transacción</b><small>advisory lock; estado restaurado del release db-state</small></li>
+<li class="arch__node"><span class="arch__kicker">Frescura</span><b>Gate por supermercado</b><small>SLA de frescura; relee las ofertas no observadas</small></li>
+<li class="arch__node"><span class="arch__kicker">Salida</span><b>Snapshot JSON</b><small>data/catalog-snapshot.json, commiteado</small></li>
+</ol></div>
+<p class="arch__bridge" aria-hidden="false"><span>El snapshot viaja con el deploy: Vercel lo sirve sin base de datos en el camino de lectura.</span></p>
+<div class="arch__lane"><p class="arch__lane-label">Vercel · solo lectura</p>
+<ol class="arch__flow" data-n="3">
+<li class="arch__node"><span class="arch__kicker">App</span><b>Next.js y APIs públicas</b><small>búsqueda, productos, historial y lote</small></li>
+<li class="arch__node"><span class="arch__kicker">Caché</span><b>CDN, 1 hora</b><small>s-maxage 3600, nunca para errores</small></li>
+<li class="arch__node is-branch"><span class="arch__kicker">Bajas</span><b>Bajas de precio del día</b><small>página, feed Atom y Telegram</small></li>
+</ol></div>
+          <figcaption>Fijate que la base de datos solo existe del lado de la actualización: lo que ve el visitante es un archivo versionado, y por eso el costo de lectura es lineal.</figcaption>
+        </figure>
       </section>
 
       <section class="case-stack reveal">
@@ -193,7 +247,7 @@
           <p class="eyebrow text-appear">Flujo de datos</p>
           <h2 class="text-appear">De la API de VTEX a la comparación.</h2>
         </div>
-        <div class="data-flow" aria-label="Flujo de datos de ofertaSUPER">
+        <div class="data-flow" aria-label="Flujo de datos de ofertasSUPER">
           <article class="flow-step text-appear">
             <span>Fuente</span>
             <b>API de VTEX</b>
@@ -208,8 +262,9 @@
           </article>
           <article class="flow-step text-appear">
             <span>Emparejamiento</span>
-            <b>Código EAN</b>
-            <p>Los productos se emparejan entre tiendas por EAN.</p>
+            <b>GTIN-14</b>
+            <p>Cada código se valida y se normaliza a GTIN-14, así el mismo
+            producto colapsa en una sola fila entre tiendas.</p>
           </article>
           <article class="flow-step text-appear">
             <span>Catálogo</span>
@@ -222,6 +277,63 @@
             <b>APIs REST públicas</b>
             <p>Búsqueda, productos, historial de precios y lote, desde un
             snapshot versionado y con rate limiting en Redis.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-breakdown reveal">
+        <div class="case-breakdown__intro">
+          <p class="eyebrow text-appear">Postmortem · octubre 2026</p>
+          <h2 class="text-appear">El sitio se quedó sin CPU. El problema era el algoritmo.</h2>
+          <p class="text-appear">
+            El 15/10 Vercel pausó el proyecto por pasar las 4 horas de CPU
+            mensuales del plan gratuito. El plan gratuito no da métricas por
+            ruta, así que lo diagnostiqué leyendo el build y el código y midiendo
+            una réplica local con el snapshot real.
+          </p>
+          <p class="text-appear">
+            Descarté pagar el plan Pro (hubiera escondido el problema), migrar a
+            Cloudflare Workers (10 ms de CPU por request no alcanzan ni para
+            parsear el snapshot) e ISR (excede la cuota de escrituras).
+          </p>
+        </div>
+        <div class="case-breakdown__grid" aria-label="Postmortem de ofertasSUPER">
+          <article class="text-appear">
+            <span>Causa</span>
+            <b>Productos × ofertas en cada request</b>
+            <p>
+              Cada producto recorría todas las ofertas: 24.547 × 48.419, unas
+              1.200 millones de comparaciones y 10-16 s de CPU por request, en
+              el sitemap y las listas, sin caché. Un solo crawler alcanzaba.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Arreglo</span>
+            <b>Índice por EAN y caché en el CDN</b>
+            <p>
+              Un índice armado una vez por proceso, el sitemap generado en el
+              build, caché del CDN de una hora (nunca para errores ni 429) y
+              robots.txt que deja afuera a los crawlers de IA y a los filtros.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Medición</span>
+            <b>De 10,4 s a 173 ms</b>
+            <p>
+              La búsqueda más amplia bajó de ~10,4 s a 173 ms de CPU; /ofertas,
+              a 128 ms; cada categoría, a 18-35 ms; 500 búsquedas de producto,
+              de 4.375 ms a 8 ms.
+            </p>
+          </article>
+          <article class="text-appear">
+            <span>Prueba</span>
+            <b>La misma salida, garantizada por tests</b>
+            <p>
+              Un oráculo con el algoritmo anterior compara resultados, un Proxy
+              cuenta lecturas para que ninguna ruta vuelva a escalar como
+              productos × ofertas, y 25 casos sobre el snapshot real dieron
+              salidas idénticas.
+            </p>
           </article>
         </div>
       </section>
@@ -248,8 +360,9 @@
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">CI y operación</h3>
             <p>
-              GitHub Actions (lint, typecheck, tests, build, Lighthouse) y
-              refresh diario programado, con USD 0 de infraestructura
+              GitHub Actions (lint, typecheck, tests, build, Lighthouse),
+              refresh diario programado y bajas de precio por Telegram, con USD 0
+              de infraestructura
             </p>
           </section>
         </div>
