@@ -1,4 +1,4 @@
-// Stack flip cards (T3, odd/tasks/portfolio-v3.md S7, D4).
+// Stack flip cards.
 //
 // Progressive enhancement over complete HTML: without this module every card
 // shows both faces. With it, the faces share one 3D stage and:

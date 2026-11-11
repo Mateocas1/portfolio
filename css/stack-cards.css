@@ -1,5 +1,5 @@
 /* ============================================================
-   Stack flip cards (T3, odd/tasks/portfolio-v3.md S7, D4).
+   Stack flip cards.
    - Front: logo and name. Back: where and how it was used.
    - Without JavaScript (no .is-interactive) each card is one glass
      panel with both faces stacked: every word is readable.
@@ -491,7 +491,7 @@
   }
 }
 
-/* Parent (T7): in the grid, names share one baseline whether or not a card
+/* In the grid, names share one baseline whether or not a card
    has a meta line. The single-column row layout centers them instead. */
 @media (min-width: 560px) {
   .stack-card__title {

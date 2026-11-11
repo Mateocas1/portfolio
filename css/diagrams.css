@@ -1,4 +1,4 @@
-/* Architecture diagrams (T4): semantic HTML lanes, theme tokens only.
+/* Architecture diagrams: semantic HTML lanes, theme tokens only.
    Each lane is an ordered list that reads left to right on wide containers and
    top to bottom on narrow ones (container queries, per node count). */
 

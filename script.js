@@ -288,7 +288,7 @@ const translations = {
   },
 };
 
-// Per-section dictionaries live in js/i18n/<section>.js (odd/tasks/portfolio-v3.md D6).
+// Per-section dictionaries live in js/i18n/<section>.js.
 for (const lang of Object.keys(translations)) {
   Object.assign(translations[lang], stackTranslations[lang] ?? {});
 }
@@ -399,7 +399,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Time-boxed content (D5): [data-until] disappears and [data-from] appears at
+// Time-boxed content: [data-until] disappears and [data-from] appears at
 // an ISO instant. Without JavaScript the HTML default (the conservative state) stays.
 function applyTimeBoxes(now = Date.now()) {
   document.querySelectorAll("[data-until]").forEach((node) => {

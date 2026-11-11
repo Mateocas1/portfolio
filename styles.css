@@ -4,10 +4,10 @@
      labels and metadata stay neutral.
    - Glass only where something sits behind it: a fixed ambient
      layer (two soft colour fields + grain) gives every glass
-     surface something to refract (odd/tasks/portfolio-v3.md D2).
+     surface something to refract.
    - Tokens on :root; theme follows prefers-color-scheme and the
      manual toggle (localStorage + data-theme) overrides it.
-   - Feature styles live in css/<feature>.css (D6).
+   - Feature styles live in css/<feature>.css.
    ============================================================ */
 
 :root {

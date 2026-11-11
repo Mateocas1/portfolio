@@ -1,4 +1,4 @@
-// Particle portrait (T2, odd/tasks/portfolio-v3.md S6, D3, D8).
+// Particle portrait.
 //
 // Progressive enhancement over the hero photo: once the <img> has decoded and
 // the page is idle, the photo is analysed once (background removed, tone

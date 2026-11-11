@@ -1,4 +1,4 @@
-// Translations for the stack section (owned by T3). Merged by script.js.
+// Translations for the stack section. Merged by script.js.
 // The Spanish strings also live in index.html (data-i18n), so the page reads without JavaScript.
 export default {
   es: {
