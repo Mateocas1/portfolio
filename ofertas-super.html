@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Caso técnico de ofertasSUPER: comparador de precios de supermercados argentinos con datos de la API de VTEX, emparejamiento por EAN, PostgreSQL y Redis, con CI en cada push."
+      content="Caso técnico de ofertasSUPER: comparador de precios de supermercados argentinos con datos de la API de VTEX, emparejamiento por EAN y snapshot JSON versionado, con CI en cada push."
     />
-    <title>ofertasSUPER | Caso técnico — Mateo Vazquez</title>
+    <title>ofertasSUPER | Caso técnico — Mateo Vazquez Castiglione</title>
     <script>
       (() => {
         try {
@@ -32,11 +32,11 @@
     </script>
     <meta
       property="og:title"
-      content="ofertasSUPER | Caso técnico — Mateo Vazquez"
+      content="ofertasSUPER | Caso técnico — Mateo Vazquez Castiglione"
     />
     <meta
       property="og:description"
-      content="Comparador de precios de supermercados argentinos: API de VTEX, emparejamiento por EAN, PostgreSQL y Redis, con CI en cada push."
+      content="Comparador de precios de supermercados argentinos: API de VTEX, emparejamiento por EAN y snapshot JSON versionado, con CI en cada push."
     />
     <meta property="og:type" content="article" />
     <meta
@@ -70,7 +70,7 @@
 
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="./index.html">Mateo Vazquez</a>
+        <a class="brand" href="./index.html">Mateo Vazquez Castiglione</a>
         <div class="header-actions">
           <button
             class="toggle-button"
@@ -95,7 +95,7 @@
           <a href="./index.html#proyectos">Proyectos</a>
           <a href="./index.html#contacto">Contacto</a>
           <a
-            href="./CV_Mateo_Vazquez.pdf"
+            href="./CV_Mateo_Vazquez_Castiglione.pdf"
             target="_blank"
             rel="noreferrer"
             >CV</a
@@ -106,26 +106,27 @@
 
     <main id="main" class="section-shell case-study-page">
       <section class="hero-copy reveal">
-        <p class="eyebrow text-appear">Caso técnico · mar 2026 – actualidad</p>
+        <p class="eyebrow text-appear">Caso técnico · may 2026 – actualidad</p>
         <h1 class="text-appear">ofertasSUPER</h1>
         <p class="role-line text-appear">
           <span>Comparador de precios de supermercados argentinos</span>
         </p>
         <p class="hero-lead text-appear">
           Compara precios de 5 supermercados argentinos (Carrefour, Coto,
-          Disco, Jumbo y Vea): unos 25.000 productos y 47.000 ofertas que se
+          Disco, Jumbo y Vea): unos 24.500 productos y 47.500 ofertas que se
           actualizan a diario con USD 0 de infraestructura, emparejados por
           GTIN-14. Permite armar una canasta entre tiendas, publica las bajas
-          de precio del día y mide un índice de canasta contra el IPC.
+          de precio del día. El pipeline de un índice de canasta está armado,
+          pero todavía no produce datos.
         </p>
-        <!-- Time-boxed status: script.js swaps at 2026-11-15 00:00 ART -->
-        <p class="case-note text-appear" data-until="2026-11-15T03:00:00Z">
-          <b>Estado:</b> Vercel pausó el sitio del 15/10 al 14/11/2026 por pasar
+        <!-- Manual switch: swap these two notes and add a "Ver el sitio" button only after ofertasuper.com answers 200. A date cannot tell. -->
+        <p class="case-note text-appear">
+          <b>Estado:</b> Vercel pausó el sitio hasta el 14/11/2026 por pasar
           la CPU del plan gratuito. El arreglo ya está integrado y el refresh
-          diario nunca se detuvo; la causa y la solución están en el
-          postmortem, más abajo.
+          diario está verde desde el 27/10; la causa y la solución están en
+          el postmortem, más abajo.
         </p>
-        <p class="case-note text-appear" data-from="2026-11-15T03:00:00Z" hidden>
+        <p class="case-note text-appear" hidden>
           <b>Estado:</b> de nuevo en línea desde el 14/11/2026, después de una
           pausa de 30 días por exceso de CPU en el plan gratuito de Vercel. La
           causa y el arreglo están en el postmortem, más abajo.
@@ -133,15 +134,6 @@
         <div class="hero-actions text-appear">
           <a class="button ghost" href="./index.html#proyectos"
             >Volver al portfolio</a
-          >
-          <a
-            class="button primary"
-            href="https://ofertasuper.com"
-            target="_blank"
-            rel="noreferrer"
-            data-from="2026-11-15T03:00:00Z"
-            hidden
-            >Ver el sitio</a
           >
           <a
             class="button primary"
@@ -199,8 +191,8 @@
             <b>CI en cada cambio</b>
             <p>
               308 pull requests integrados con GitHub Actions: lint, typecheck,
-              cerca de 700 tests, build y Lighthouse, con 100/100 en
-              accesibilidad y SEO.
+              703 tests, build y Lighthouse. Accesibilidad 1,00 en las 4 URLs
+              medidas y SEO 1,00 en 3 de 4 (/buscar es noindex a propósito).
             </p>
           </article>
           <article class="text-appear">
@@ -318,11 +310,12 @@
           </article>
           <article class="text-appear">
             <span>Medición</span>
-            <b>De 10,4 s a 173 ms</b>
+            <b>De 10-16 s a 18-173 ms</b>
             <p>
-              La búsqueda más amplia bajó de ~10,4 s a 173 ms de CPU; /ofertas,
-              a 128 ms; cada categoría, a 18-35 ms; 500 búsquedas de producto,
-              de 4.375 ms a 8 ms.
+              Las páginas pesadas bajaron de 10-16 s a 18-173 ms de CPU por
+              request; 500 búsquedas de producto, de 4.375 ms a 8 ms. Medido en
+              una réplica local; todavía no está medido en producción: se mide
+              cuando Vercel levante la pausa.
             </p>
           </article>
           <article class="text-appear">
@@ -350,8 +343,9 @@
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Datos</h3>
-            <p>PostgreSQL, Prisma, Redis; DuckDB y dbt para un índice de precios
-            de canasta fija comparado con el IPC del INDEC</p>
+            <p>Snapshot JSON versionado al servir; PostgreSQL y Prisma solo en la
+            ingesta y en CI; Redis para rate limit; DuckDB y dbt para un índice
+            de canasta que todavía no produce datos</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">APIs y panel</h3>
@@ -370,8 +364,8 @@
     </main>
 
     <footer class="site-footer">
-      <span>Mateo Vazquez</span>
-      <span>Desarrollador Backend Junior · APIs e Integraciones</span>
+      <span>Mateo Vazquez Castiglione</span>
+      <span>Desarrollador Backend · APIs e Integraciones</span>
       <div class="footer-social">
         <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
           >GitHub</a

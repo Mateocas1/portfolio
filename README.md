@@ -1,6 +1,6 @@
 # portfolio
 
-Personal portfolio of Mateo Vazquez — junior backend developer (APIs, integrations and data). Static site: plain
+Personal portfolio of Mateo Vazquez Castiglione — backend & AI integrations developer (APIs, data and LLM integrations). Static site: plain
 HTML, CSS and ES modules, no build step and no dependencies. Deployed at https://mateocas1.github.io/portfolio/.
 
 ## Preview locally
@@ -17,4 +17,4 @@ Then open http://localhost:8765/.
 - `styles.css` — design tokens, ambient layer, glass system and shared layout; `css/` — feature styles.
 - `script.js` — theme, language, menu, reveal and time-boxed content; `js/` — feature modules and per-section
   translations.
-- `cv/` — source of `CV_Mateo_Vazquez.pdf` and how to rebuild it.
+- `cv/` — source of `CV_Mateo_Vazquez_Castiglione.pdf` and how to rebuild it.
