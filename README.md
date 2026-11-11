@@ -18,6 +18,3 @@ Then open http://localhost:8765/.
 - `script.js` — theme, language, menu, reveal and time-boxed content; `js/` — feature modules and per-section
   translations.
 - `cv/` — source of `CV_Mateo_Vazquez.pdf` and how to rebuild it.
-
-Conventions and checks: [`AGENTS.md`](AGENTS.md). Current feature document and its decisions:
-[`odd/tasks/portfolio-v3.md`](odd/tasks/portfolio-v3.md).
