@@ -1488,6 +1488,20 @@ button:focus-visible,
   }
 }
 
+/* Narrow phones: the full name wraps to two lines instead of pushing the
+   header toggles past the viewport (horizontal scroll on the home page). */
+@media (max-width: 420px) {
+  .header-inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .brand {
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
+
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {

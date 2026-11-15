@@ -103,7 +103,6 @@ const translations = {
     "project.mena.change":
       "Correría los tests de integración con PostgreSQL en CI (hoy se saltean), probaría el verificador con comprobantes reales (el set es sintético) y dejaría un deploy en línea antes de cerrar el trabajo.",
     "project.super.label": "may 2026 – actualidad",
-    "project.super.status": "Sitio pausado por Vercel",
     "project.super.summary":
       "Comparador de precios de supermercados argentinos: buscás un producto, ves su precio en cada súper y armás una canasta que mezcla tiendas.",
     "project.super.problem":
@@ -115,7 +114,7 @@ const translations = {
     "project.super.result":
       "De 10-16 s a 18-173 ms de CPU por página, medido en réplica local, con salida idéntica en 25 de 25 casos. El refresh diario de 5 supermercados (unos 24.500 productos) está verde desde el 27/10.",
     "project.super.change":
-      "Mediría la CPU por ruta desde el primer deploy: el arreglo todavía no está medido en producción, porque el sitio sigue pausado hasta el 14/11.",
+      "Mediría la CPU por ruta desde el primer deploy: el plan gratuito no da esa métrica, así que el arreglo está medido en una réplica local y no en producción.",
     "project.super.stat1": "productos de 5 supermercados, a diario",
     "project.super.stat2": "pull requests integrados con CI",
     "project.super.stat3": "tests en CI, 0 fallan",
@@ -255,7 +254,6 @@ const translations = {
     "project.mena.change":
       "I would run the PostgreSQL integration tests in CI (today they skip), test the verifier on real receipts (the set is synthetic) and leave a live deploy before closing the job.",
     "project.super.label": "may 2026 – present",
-    "project.super.status": "Site paused by Vercel",
     "project.super.summary":
       "An Argentine supermarket price comparator: search a product, see its price at every store and build a basket that mixes stores.",
     "project.super.problem":
@@ -267,7 +265,7 @@ const translations = {
     "project.super.result":
       "From 10-16 s to 18-173 ms of CPU per page, measured on a local replica, with identical output in 25 of 25 cases. The daily refresh of 5 supermarkets (about 24,500 products) has been green since 27 Oct.",
     "project.super.change":
-      "I would measure CPU per route from the first deploy: the fix is not yet measured in production, because the site stays paused until 14 Nov.",
+      "I would measure CPU per route from the first deploy: the free plan does not report it, so the fix is measured on a local replica, not in production.",
     "project.super.stat1": "products from 5 supermarkets, daily",
     "project.super.stat2": "pull requests merged through CI",
     "project.super.stat3": "tests in CI, 0 failing",
@@ -434,18 +432,6 @@ document.addEventListener("keydown", (event) => {
     menuToggle?.focus();
   }
 });
-
-// Time-boxed content: [data-until] disappears and [data-from] appears at
-// an ISO instant. Without JavaScript the HTML default (the conservative state) stays.
-function applyTimeBoxes(now = Date.now()) {
-  document.querySelectorAll("[data-until]").forEach((node) => {
-    if (now >= Date.parse(node.dataset.until)) node.hidden = true;
-  });
-  document.querySelectorAll("[data-from]").forEach((node) => {
-    if (now >= Date.parse(node.dataset.from)) node.hidden = false;
-  });
-}
-applyTimeBoxes();
 
 // Pointer spotlight on glass cards: only for a fine pointer that can hover.
 if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
