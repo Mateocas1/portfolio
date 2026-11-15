@@ -15,6 +15,6 @@ Then open http://localhost:8765/.
 
 - `index.html` — home; `<project>.html` — case pages; `escritos/` — long-form writing.
 - `styles.css` — design tokens, ambient layer, glass system and shared layout; `css/` — feature styles.
-- `script.js` — theme, language, menu, reveal and time-boxed content; `js/` — feature modules and per-section
+- `script.js` — theme, language, menu, reveal and spotlight; `js/` — feature modules and per-section
   translations.
 - `cv/` — source of `CV_Mateo_Vazquez_Castiglione.pdf` and how to rebuild it.
