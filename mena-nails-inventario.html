@@ -162,11 +162,11 @@
           </article>
           <article class="text-appear">
             <span>Calidad</span>
-            <b>Tests en CI, con un hueco declarado</b>
+            <b>Tests en CI, incluida la base</b>
             <p>
               Tests de Go y de Vitest corren en cada cambio. Los de integración
-              con Postgres se saltean en CI porque el pipeline no levanta una
-              base: es lo primero que agregaría.
+              corren contra un Postgres 17 real dentro del CI, y el pipeline
+              falla si alguno se saltea sin estar permitido.
             </p>
           </article>
           <article class="text-appear">
@@ -227,7 +227,7 @@
             <p>
               Tests de Go y de Vitest, y una verificación que falla si el
               cliente generado se desvía del contrato OpenAPI. Los tests de
-              integración con Postgres se saltean en CI
+              integración corren contra un Postgres 17 real en CI.
             </p>
           </section>
         </div>

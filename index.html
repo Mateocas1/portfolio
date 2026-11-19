@@ -249,7 +249,7 @@
               <div><dt data-i18n="psr.discovery">Qué descubrí</dt><dd data-i18n="project.mena.discovery">Que la decisión riesgosa no podía quedar en manos de un modelo: una escritura equivocada en la agenda o un comprobante falso cuestan plata. Y que el modelo había que elegirlo midiendo.</dd></div>
               <div><dt data-i18n="psr.solution">Qué construí</dt><dd data-i18n="project.mena.solution">Una API de inventario en Go y PostgreSQL con contrato OpenAPI 3.1; un asistente de Telegram en TypeScript que usa esa API por MCP y no escribe nada sin que la dueña lo confirme con un botón de un solo uso; un verificador de comprobantes en Python donde aprueba código determinístico, nunca el modelo; y la app de turnos con Mercado Pago Checkout Pro.</dd></div>
               <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.mena.result">Elegí el modelo con un eval propio de 87 casos de tool-calling sobre 6 LLMs: el elegido aprobó completos 84 de 87. El verificador aprobó 0 de 30 comprobantes adversariales en un set sintético de 150, con los modelos elegidos. Quedó en pre-lanzamiento: no hay un deploy público para visitar.</dd></div>
-              <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.mena.change">Correría los tests de integración con PostgreSQL en CI (hoy se saltean), probaría el verificador con comprobantes reales (el set es sintético) y dejaría un deploy en línea antes de cerrar el trabajo.</dd></div>
+              <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.mena.change">Probaría el verificador con comprobantes reales (el set es sintético) y dejaría un deploy en línea antes de cerrar el trabajo.</dd></div>
             </dl>
             <p class="project-tech">
               Go · PostgreSQL · OpenAPI · TypeScript · MCP · Python · FastAPI ·
@@ -490,7 +490,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where" data-i18n="stack.where.menaInventory">Mena Nails · inventario</p>
-                      <p class="stack-card__how" data-i18n="stack.go.how">API con pgx y sqlc, y OpenAPI como contrato con control de desvío en CI. Los tests de integración con Postgres todavía no corren en CI.</p>
+                      <p class="stack-card__how" data-i18n="stack.go.how">API con pgx y sqlc, y OpenAPI como contrato con control de desvío en CI. Los tests de integración corren contra un Postgres real en CI.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>

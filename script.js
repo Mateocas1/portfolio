@@ -101,7 +101,7 @@ const translations = {
     "project.mena.result":
       "Elegí el modelo con un eval propio de 87 casos de tool-calling sobre 6 LLMs: el elegido aprobó completos 84 de 87. El verificador aprobó 0 de 30 comprobantes adversariales en un set sintético de 150, con los modelos elegidos. Quedó en pre-lanzamiento: no hay un deploy público para visitar.",
     "project.mena.change":
-      "Correría los tests de integración con PostgreSQL en CI (hoy se saltean), probaría el verificador con comprobantes reales (el set es sintético) y dejaría un deploy en línea antes de cerrar el trabajo.",
+      "Probaría el verificador con comprobantes reales (el set es sintético) y dejaría un deploy en línea antes de cerrar el trabajo.",
     "project.super.label": "may 2026 – actualidad",
     "project.super.summary":
       "Comparador de precios de supermercados argentinos: buscás un producto, ves su precio en cada súper y armás una canasta que mezcla tiendas.",
@@ -252,7 +252,7 @@ const translations = {
     "project.mena.result":
       "I chose the model with my own eval of 87 tool-calling cases across 6 LLMs: the chosen one fully passed 84 of 87. The verifier approved 0 of 30 adversarial receipts on a synthetic set of 150, with the chosen models. It stayed pre-launch: there is no public deploy to visit.",
     "project.mena.change":
-      "I would run the PostgreSQL integration tests in CI (today they skip), test the verifier on real receipts (the set is synthetic) and leave a live deploy before closing the job.",
+      "I would test the verifier on real receipts (the set is synthetic) and leave a live deploy before closing the job.",
     "project.super.label": "may 2026 – present",
     "project.super.summary":
       "An Argentine supermarket price comparator: search a product, see its price at every store and build a basket that mixes stores.",
