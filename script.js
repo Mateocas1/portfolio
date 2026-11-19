@@ -126,7 +126,7 @@ const translations = {
     "project.shelfops.solution":
       "API en Fastify y PostgreSQL 16 con arquitectura hexagonal, OIDC con sesiones del lado del servidor, CSRF, rate limiting y auditoría de decisiones por incidente.",
     "project.shelfops.result":
-      "MVP con demo reproducible en Docker y 258 tests (datos al 13/10). La infraestructura está escrita en Terraform: solo plan y LocalStack, no está desplegada.",
+      "MVP con demo reproducible en Docker y suite de tests (estado al 13/10). La infraestructura está escrita en Terraform: solo plan y LocalStack, no está desplegada.",
     "skills.eyebrow": "Stack",
     "skills.title": "Con qué trabajo",
     "skills.lead":
@@ -153,7 +153,7 @@ const translations = {
     "project.planner.solution":
       "Una app de escritorio en Tauri 2 (Rust) y React, offline-first con Firestore. El agente tiene 12 herramientas, 8 de escritura, y cada una muestra una tarjeta de confirmación. La API key queda en el keyring del sistema y la llamada HTTPS la hace Rust.",
     "project.planner.result":
-      "La salida del modelo se valida con un esquema. Un delete_all inyectado queda inerte, y un test lo prueba. El CI corre 1.013 tests unitarios y 139 del núcleo en Rust; los E2E con Playwright se corren localmente.",
+      "La salida del modelo se valida con un esquema. Un delete_all inyectado queda inerte, y un test lo prueba. El CI corre los tests unitarios y los del núcleo en Rust en cada cambio; los E2E con Playwright se corren localmente.",
     "project.planner.change":
       "Pondría CI desde el primer día (llegó recién al publicar el repo) y un set de evals para el agente, que todavía no existe.",
     "project.link.site": "Sitio",
@@ -277,7 +277,7 @@ const translations = {
     "project.shelfops.solution":
       "Fastify and PostgreSQL 16 API with hexagonal architecture, OIDC with server-side sessions, CSRF, rate limiting and per-incident decision auditing.",
     "project.shelfops.result":
-      "MVP with a Docker-reproducible demo and 258 tests (as of 13/10). The infrastructure is written in Terraform: plan and LocalStack only, not deployed.",
+      "MVP with a Docker-reproducible demo and a test suite (as of 13 Oct). The infrastructure is written in Terraform: plan and LocalStack only, not deployed.",
     "skills.eyebrow": "Stack",
     "skills.title": "What I work with",
     "skills.lead":
@@ -304,7 +304,7 @@ const translations = {
     "project.planner.solution":
       "A desktop app in Tauri 2 (Rust) and React, offline-first with Firestore. The agent has 12 tools, 8 of them writes, and each write shows a confirmation card. The API key stays in the system keyring and Rust makes the HTTPS call.",
     "project.planner.result":
-      "The model's output is validated against a schema. An injected delete_all stays inert, and a test proves it. CI runs 1,013 unit tests and 139 Rust core tests; the Playwright E2E tests run locally.",
+      "The model's output is validated against a schema. An injected delete_all stays inert, and a test proves it. CI runs the unit tests and the Rust core tests on every change; the Playwright E2E tests run locally.",
     "project.planner.change":
       "I would add CI from day one (it only arrived when the repo went public) and an eval set for the agent, which does not exist yet.",
     "project.link.site": "Website",

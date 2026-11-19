@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Caso técnico de ofertasSUPER: comparador de precios de supermercados argentinos con datos de la API de VTEX, emparejamiento por EAN y snapshot JSON versionado, con CI en cada push."
+      content="Caso técnico de ofertaSUPER: comparador de precios de supermercados argentinos con datos de la API de VTEX, emparejamiento por EAN y snapshot JSON versionado, con CI en cada push."
     />
-    <title>ofertasSUPER | Caso técnico — Mateo Vazquez Castiglione</title>
+    <title>ofertaSUPER | Caso técnico — Mateo Vazquez Castiglione</title>
     <script>
       (() => {
         try {
@@ -32,7 +32,7 @@
     </script>
     <meta
       property="og:title"
-      content="ofertasSUPER | Caso técnico — Mateo Vazquez Castiglione"
+      content="ofertaSUPER | Caso técnico — Mateo Vazquez Castiglione"
     />
     <meta
       property="og:description"
@@ -107,7 +107,7 @@
     <main id="main" class="section-shell case-study-page">
       <section class="hero-copy reveal">
         <p class="eyebrow text-appear">Caso técnico · may 2026 – actualidad</p>
-        <h1 class="text-appear">ofertasSUPER</h1>
+        <h1 class="text-appear">ofertaSUPER</h1>
         <p class="role-line text-appear">
           <span>Comparador de precios de supermercados argentinos</span>
         </p>
@@ -115,9 +115,9 @@
           Compara precios de 5 supermercados argentinos (Carrefour, Coto,
           Disco, Jumbo y Vea): más de 25.000 productos y 50.000 ofertas en un
           catálogo diario, emparejados por GTIN-14 y servidos con USD 0 de
-          infraestructura. Permite armar una canasta entre tiendas, publica las bajas
-          de precio del día. El pipeline de un índice de canasta está armado,
-          pero todavía no produce datos.
+          infraestructura. Permite armar una canasta entre tiendas y publica las
+          bajas de precio del día. En /inflacion, un índice de canasta con serie
+          diaria desde el 3/10 se compara con el IPC del INDEC.
         </p>
         <p class="case-note text-appear">
           <b>Estado:</b> en línea en ofertasuper.com desde el 14/11, después
@@ -157,13 +157,13 @@
           <div>
             <p class="eyebrow text-appear">El problema</p>
             <h2 class="text-appear">
-              Comparar precios exige confianza del dato, no solo interfaz.
+              Un precio comparado solo sirve si el producto es el mismo y el dato está al día.
             </h2>
           </div>
           <p class="text-appear">
-            Un precio comparado solo sirve si el producto es el mismo y el dato
-            está al día: la base del proyecto es un refresh diario con controles
-            de calidad y una identidad de producto por GTIN-14.
+            Por eso la base del proyecto es un refresh diario con controles de
+            calidad y una identidad de producto por GTIN-14: el mismo producto
+            queda en una sola fila aunque cada súper lo cargue distinto.
           </p>
         </div>
         <div class="credential-rail">
@@ -191,7 +191,7 @@
             <b>CI en cada cambio</b>
             <p>
               308 pull requests integrados con GitHub Actions: lint, typecheck,
-              703 tests, build y Lighthouse. Accesibilidad 1,00 en las 4 URLs
+              tests, build y Lighthouse. Accesibilidad 1,00 en las 4 URLs
               medidas y SEO 1,00 en 3 de 4 (/buscar es noindex a propósito).
             </p>
           </article>
@@ -239,7 +239,7 @@
           <p class="eyebrow text-appear">Flujo de datos</p>
           <h2 class="text-appear">De la API de VTEX a la comparación.</h2>
         </div>
-        <div class="data-flow" aria-label="Flujo de datos de ofertasSUPER">
+        <div class="data-flow" aria-label="Flujo de datos de ofertaSUPER">
           <article class="flow-step text-appear">
             <span>Fuente</span>
             <b>API de VTEX</b>
@@ -289,7 +289,7 @@
             parsear el snapshot) e ISR (excede la cuota de escrituras).
           </p>
         </div>
-        <div class="case-breakdown__grid" aria-label="Postmortem de ofertasSUPER">
+        <div class="case-breakdown__grid" aria-label="Postmortem de ofertaSUPER">
           <article class="text-appear">
             <span>Causa</span>
             <b>Productos × ofertas en cada request</b>
@@ -344,8 +344,8 @@
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Datos</h3>
             <p>Snapshot JSON versionado al servir; PostgreSQL y Prisma solo en la
-            ingesta y en CI; Redis para rate limit; DuckDB y dbt para un índice
-            de canasta que todavía no produce datos</p>
+            ingesta y en CI; Redis para rate limit; DuckDB y dbt para el índice
+            de canasta de /inflacion</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">APIs y panel</h3>

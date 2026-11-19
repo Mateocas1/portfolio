@@ -325,16 +325,17 @@
         <div class="stack-groups">
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Tests</h3>
-            <p>1.704 tests: 905 de backend (JUnit 5 con Testcontainers:
-            PostgreSQL y RabbitMQ reales) y 799 de frontend (Vitest), más un
-            end-to-end con Playwright sobre el stack completo en Docker Compose;
-            CI en GitHub Actions y prueba de carga con k6.</p>
+            <p>Tests del backend con JUnit 5, con Testcontainers para correr
+            contra PostgreSQL y RabbitMQ reales; tests del frontend con Vitest y
+            un end-to-end con Playwright sobre el stack completo en Docker
+            Compose; CI en GitHub Actions. La prueba de carga con k6 es la del
+            caché del ranking, más arriba.</p>
           </section>
           <section class="stack-group text-appear">
-            <h3 class="stack-group__title">En funcionamiento</h3>
-            <p>Preview privada en mi máquina detrás de Tailscale Funnel (sin
-            indexar), con ingesta real, login por magic link y alertas por
-            email probados desde el celular.</p>
+            <h3 class="stack-group__title">Preview privado</h3>
+            <p>Corrió en mi máquina detrás de Tailscale Funnel (sin indexar),
+            con ingesta real; desde el celular probé el login por magic link y
+            las alertas por email. Hoy ese preview está apagado.</p>
           </section>
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">Límite honesto</h3>

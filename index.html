@@ -382,7 +382,7 @@
               <div><dt data-i18n="psr.problem">Problema</dt><dd data-i18n="project.planner.problem">Quería un asistente que ordenara mis tareas sin poder borrar ni mover nada por su cuenta.</dd></div>
               <div><dt data-i18n="psr.discovery">Qué descubrí</dt><dd data-i18n="project.planner.discovery">Que un mail pegado puede traer instrucciones inyectadas, como un delete_all.</dd></div>
               <div><dt data-i18n="psr.solution">Qué construí</dt><dd data-i18n="project.planner.solution">Una app de escritorio en Tauri 2 (Rust) y React, offline-first con Firestore. El agente tiene 12 herramientas, 8 de escritura, y cada una muestra una tarjeta de confirmación. La API key queda en el keyring del sistema y la llamada HTTPS la hace Rust.</dd></div>
-              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.planner.result">La salida del modelo se valida con un esquema. Un delete_all inyectado queda inerte, y un test lo prueba. El CI corre 1.013 tests unitarios y 139 del núcleo en Rust; los E2E con Playwright se corren localmente.</dd></div>
+              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.planner.result">La salida del modelo se valida con un esquema. Un delete_all inyectado queda inerte, y un test lo prueba. El CI corre los tests unitarios y los del núcleo en Rust en cada cambio; los E2E con Playwright se corren localmente.</dd></div>
               <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.planner.change">Pondría CI desde el primer día (llegó recién al publicar el repo) y un set de evals para el agente, que todavía no existe.</dd></div>
             </dl>
             <p class="project-tech">
@@ -412,7 +412,7 @@
             <dl class="psr">
               <div><dt data-i18n="psr.problem">Problema</dt><dd data-i18n="project.shelfops.problem">Un incidente de tienda necesita trazabilidad: quién actuó, qué sugirió el sistema y qué confirmó una persona.</dd></div>
               <div><dt data-i18n="psr.solution">Qué construí</dt><dd data-i18n="project.shelfops.solution">API en Fastify y PostgreSQL 16 con arquitectura hexagonal, OIDC con sesiones del lado del servidor, CSRF, rate limiting y auditoría de decisiones por incidente.</dd></div>
-              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.shelfops.result">MVP con demo reproducible en Docker y 258 tests (datos al 13/10). La infraestructura está escrita en Terraform: solo plan y LocalStack, no está desplegada.</dd></div>
+              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.shelfops.result">MVP con demo reproducible en Docker y suite de tests (estado al 13/10). La infraestructura está escrita en Terraform: solo plan y LocalStack, no está desplegada.</dd></div>
             </dl>
             <p class="project-tech">
               Fastify · TypeScript · PostgreSQL · OIDC · Terraform (plan + LocalStack) · Docker
@@ -581,7 +581,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where">ofertaSUPER</p>
-                      <p class="stack-card__how" data-i18n="stack.duckdb.how">Pipeline de dbt y DuckDB sobre la serie diaria de precios. El índice todavía no produce datos.</p>
+                      <p class="stack-card__how" data-i18n="stack.duckdb.how">Pipeline de dbt y DuckDB sobre la serie diaria de precios: arma el índice de canasta de /inflacion, con datos desde el 3/10, y lo compara con el IPC del INDEC.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
