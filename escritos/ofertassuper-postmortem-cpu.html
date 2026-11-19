@@ -187,9 +187,12 @@
           </aside>
 
           <p>
-            Todas las horas están en horario de Argentina (ART). El estado
-            actual: el arreglo está integrado (#581 y #582) y producción vuelve
-            cuando Vercel levante la pausa, el 14/11/2026 a las 02:45.
+            Todas las horas están en horario de Argentina (ART).
+            Actualización: Vercel levantó la pausa el 14/11/2026 y el sitio
+            volvió a estar en línea, con los dos arreglos (#581 y #582) ya
+            integrados. La CPU en producción después de la pausa todavía no
+            está registrada; las cifras de este texto son de la réplica
+            local.
           </p>
 
           <h2 id="cronologia">Cronología</h2>
@@ -222,8 +225,8 @@
                     <td data-label="Qué pasó">Se integra el seguimiento #582: cierre del optimizador de imágenes abierto, caché del CDN para la API pública y filtros facetados y búsqueda interna fuera del crawl.</td>
                   </tr>
                   <tr>
-                    <th scope="row" class="num" data-label="Fecha">14/11 02:45</th>
-                    <td data-label="Qué pasó">Fin previsto de la pausa. El primer deploy incluye los dos arreglos.</td>
+                    <th scope="row" class="num" data-label="Fecha">14/11</th>
+                    <td data-label="Qué pasó">Vercel levanta la pausa y el sitio vuelve a estar en línea, con los dos arreglos integrados.</td>
                   </tr>
                 </tbody>
               </table>
@@ -470,16 +473,16 @@
               camino caliente lee las ofertas más de una vez.
             </li>
             <li>
-              Después del 14/11: verificar que <code>x-vercel-cache</code>
+              <strong>Pendiente:</strong> verificar que <code>x-vercel-cache</code>
               llegue a <code>HIT</code> en <code>/ofertas</code>,
               <code>/producto/&lt;ean&gt;</code> y <code>/api/categories</code>;
               que <code>/_next/image</code> devuelva 404 y que el
               <code>robots.txt</code> sea el nuevo.
             </li>
             <li>
-              Unos días después: leer el porcentaje de CPU activa en la pestaña
-              Usage del dashboard de Vercel y decidir con datos sobre lo que
-              dejé diferido.
+              <strong>Pendiente:</strong> leer el porcentaje de CPU activa en la
+              pestaña Usage del dashboard de Vercel y decidir con datos sobre lo
+              que dejé diferido. Todavía no está registrado.
             </li>
             <li>
               Opcional: una regla de firewall de Vercel para bots que ignoran
@@ -525,7 +528,7 @@
 
     <footer class="site-footer">
       <span>Mateo Vazquez Castiglione</span>
-      <span>Desarrollador Backend · APIs e Integraciones</span>
+      <span>Desarrollador backend e integraciones con IA</span>
       <div class="footer-social">
         <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
           >GitHub</a

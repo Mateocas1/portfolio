@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Mateo Vazquez Castiglione, desarrollador backend e integraciones con IA en Buenos Aires. TypeScript, PostgreSQL, Python, Go y Java. Una clienta y tres productos propios, con tests, números medidos y límites declarados: Mena Nails, ofertaSUPER, Rinde tu Plata y Planner."
+      content="Mateo Vazquez Castiglione, desarrollador backend e integraciones con IA en Buenos Aires. TypeScript, PostgreSQL, Python, Go y Java. Un trabajo para una clienta y cuatro proyectos propios, con números medidos y límites declarados: Mena Nails, ofertaSUPER, Rinde tu Plata, Planner y ShelfOps."
     />
     <title>Mateo Vazquez Castiglione | Desarrollador backend e integraciones con IA</title>
     <script>
@@ -35,7 +35,7 @@
     <meta property="og:title" content="Mateo Vazquez Castiglione | Desarrollador backend e integraciones con IA" />
     <meta
       property="og:description"
-      content="Desarrollador backend e integraciones con IA (TypeScript, PostgreSQL, Python, Go, Java). Proyectos: Mena Nails, ofertaSUPER, Rinde tu Plata y Planner."
+      content="Desarrollador backend e integraciones con IA (TypeScript, PostgreSQL, Python, Go, Java). Proyectos: Mena Nails, ofertaSUPER, Rinde tu Plata, Planner y ShelfOps."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mateocas1.github.io/portfolio/" />
@@ -151,8 +151,8 @@
               Diseño, decido y verifico: defino los tests, los criterios de
               revisión y las mediciones. Agentes de IA escriben buena parte del
               código bajo esos tests y esa revisión. Abajo, un
-              trabajo para una clienta y tres productos propios, contados como
-              historias.
+              trabajo para una clienta y cuatro proyectos propios, contados
+              como historias.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#proyectos" data-i18n="cta.projects"
@@ -191,11 +191,13 @@
             >
           </li>
           <li>
-            <b class="proof-value" data-i18n="num.tests">1.704</b>
-            <span class="proof-label" data-i18n="proof.tests"
-              >tests automatizados en rindetuplata</span
+            <b class="proof-value">84 / 87</b>
+            <span class="proof-label" data-i18n="proof.eval"
+              >casos de tool-calling aprobados completos por el modelo elegido</span
             >
-            <span class="proof-source">JUnit 5 + Testcontainers · Vitest</span>
+            <span class="proof-source" data-i18n="proof.eval.source"
+              >Mena Nails · eval propio sobre 6 LLMs</span
+            >
           </li>
           <li>
             <b class="proof-value" data-i18n="num.cpu">18-173 ms</b>
@@ -219,7 +221,7 @@
       <section id="proyectos" class="section-shell section reveal">
         <div class="section-head">
           <p class="eyebrow" data-i18n="projects.eyebrow">Proyectos</p>
-          <h2 data-i18n="projects.title">Una clienta y tres productos propios</h2>
+          <h2 data-i18n="projects.title">Una clienta y cuatro proyectos propios</h2>
           <p data-i18n="projects.lead">
             Cada historia sigue el mismo orden: problema, qué descubrí, qué
             construí, resultado medido y qué cambiaría hoy. Cada una enlaza su
@@ -282,8 +284,8 @@
               <div><dt data-i18n="psr.problem">Problema</dt><dd data-i18n="project.super.problem">Vercel pausó el sitio por pasarse de la CPU del plan gratuito.</dd></div>
               <div><dt data-i18n="psr.discovery">Qué descubrí</dt><dd data-i18n="project.super.discovery">Cada producto recorría todas las ofertas: unos 1.200 millones de comparaciones por request y 10-16 s de CPU por página.</dd></div>
               <div><dt data-i18n="psr.solution">Qué construí</dt><dd data-i18n="project.super.solution">Un índice por EAN armado una vez por proceso. Antes de cambiar el algoritmo dejé el viejo como oráculo y un test que cuenta lecturas.</dd></div>
-              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.super.result">De 10-16 s a 18-173 ms de CPU por página, medido en réplica local, con salida idéntica en 25 de 25 casos. El refresh diario de 5 supermercados (unos 24.500 productos) está verde desde el 27/10.</dd></div>
-              <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.super.change">Mediría la CPU por ruta desde el primer deploy: el plan gratuito no da esa métrica, así que el arreglo está medido en una réplica local y no en producción.</dd></div>
+              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.super.result">De 10-16 s a 18-173 ms de CPU por página, medido en réplica local, con salida idéntica en 25 de 25 casos. El sitio volvió a estar en línea el 14/11, con más de 25.000 productos de 5 supermercados.</dd></div>
+              <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.super.change">Mediría la CPU por ruta desde el primer deploy: el plan gratuito no da esa métrica, así que el arreglo está medido en una réplica local y todavía no en producción.</dd></div>
             </dl>
             <p class="project-tech">
               Next.js · TypeScript · snapshot JSON · PostgreSQL y Prisma (solo
@@ -308,9 +310,9 @@
               />
             </figure>
             <ul class="project-stats">
-              <li><b data-i18n="num.products">≈ 24.500</b><span data-i18n="project.super.stat1">productos de 5 supermercados, a diario</span></li>
+              <li><b data-i18n="num.products">+25.000</b><span data-i18n="project.super.stat1">productos de 5 supermercados, en un catálogo diario</span></li>
               <li><b>308</b><span data-i18n="project.super.stat2">pull requests integrados con CI</span></li>
-              <li><b>703</b><span data-i18n="project.super.stat3">tests en CI, 0 fallan</span></li>
+              <li><b>USD 0</b><span data-i18n="project.super.stat3">de infraestructura: el sitio sirve un snapshot, sin base de datos al leer</span></li>
             </ul>
           </div>
         </article>
@@ -335,8 +337,8 @@
               <div><dt data-i18n="psr.problem">Problema</dt><dd data-i18n="project.rtp.problem">Con inflación, una tasa alta no dice si ganás plata, y los datos llegan de 9 fuentes que fallan cada una a su manera.</dd></div>
               <div><dt data-i18n="psr.discovery">Qué descubrí</dt><dd data-i18n="project.rtp.discovery">Que la ingesta diaria se iba a re-ejecutar y que alguna fuente iba a fallar; y que un aviso por mail puede salir dos veces si el envío se corta a mitad de camino.</dd></div>
               <div><dt data-i18n="psr.solution">Qué construí</dt><dd data-i18n="project.rtp.solution">Java 21 y Spring Boot: un job de Spring Batch por fecha, un adaptador por fuente, matemática en BigDecimal y un outbox transaccional hacia RabbitMQ con confirms, consumidor idempotente y DLQ.</dd></div>
-              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.rtp.result">Re-ejecutar un día no duplica datos y una fuente caída no frena a las demás; 905 tests backend contra PostgreSQL y RabbitMQ reales. En la corrida del 14/10, 79 del top 200 pierden contra la inflación esperada.</dd></div>
-              <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.rtp.change">La entrega es at-least-once con deduplicación, no exactly-once. Publicaría un demo de solo lectura antes de sumar funciones (hoy no está desplegado) y no sumaría dependencias sin uso: JPA estuvo en el pom sin ninguna entidad.</dd></div>
+              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.rtp.result">Re-ejecutar un día no duplica datos, una fuente caída no frena a las demás y las alertas salen at-least-once con deduplicación, probado con tests de integración contra PostgreSQL y RabbitMQ reales. En la corrida del 14/10, 79 de las 200 opciones que más pagaban perdían contra la inflación esperada.</dd></div>
+              <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.rtp.change">Publicaría una versión de solo lectura antes de sumar funciones (hoy no está desplegado) y no sumaría dependencias sin uso: JPA estuvo en el pom sin ninguna entidad.</dd></div>
             </dl>
             <p class="project-tech">
               Java 21 · Spring Boot 4 · Spring Batch · Spring Security ·
@@ -359,7 +361,7 @@
               />
             </figure>
             <ul class="project-stats">
-              <li><b data-i18n="num.tests">1.704</b><span data-i18n="project.rtp.stat1">tests: 905 de backend y 799 de frontend</span></li>
+              <li><b>27</b><span data-i18n="project.rtp.stat1">días seguidos de datos crudos archivados, sin huecos (14/10 → 09/11)</span></li>
               <li><b>9</b><span data-i18n="project.rtp.stat2">fuentes de datos, un adaptador cada una</span></li>
               <li><b data-i18n="num.p50">1,2 ms</b><span data-i18n="project.rtp.stat3">p50 del ranking con caché (antes 108 ms, k6)</span></li>
             </ul>
@@ -380,7 +382,7 @@
               <div><dt data-i18n="psr.problem">Problema</dt><dd data-i18n="project.planner.problem">Quería un asistente que ordenara mis tareas sin poder borrar ni mover nada por su cuenta.</dd></div>
               <div><dt data-i18n="psr.discovery">Qué descubrí</dt><dd data-i18n="project.planner.discovery">Que un mail pegado puede traer instrucciones inyectadas, como un delete_all.</dd></div>
               <div><dt data-i18n="psr.solution">Qué construí</dt><dd data-i18n="project.planner.solution">Una app de escritorio en Tauri 2 (Rust) y React, offline-first con Firestore. El agente tiene 12 herramientas, 8 de escritura, y cada una muestra una tarjeta de confirmación. La API key queda en el keyring del sistema y la llamada HTTPS la hace Rust.</dd></div>
-              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.planner.result">Un delete_all inyectado queda inerte, y un test lo prueba. 1.013 tests unitarios y 449 E2E, medidos localmente; el repo público corre CI en GitHub Actions.</dd></div>
+              <div><dt data-i18n="psr.result">Resultado medido</dt><dd data-i18n="project.planner.result">La salida del modelo se valida con un esquema. Un delete_all inyectado queda inerte, y un test lo prueba. El CI corre 1.013 tests unitarios y 139 del núcleo en Rust; los E2E con Playwright se corren localmente.</dd></div>
               <div><dt data-i18n="psr.change">Qué cambiaría hoy</dt><dd data-i18n="project.planner.change">Pondría CI desde el primer día (llegó recién al publicar el repo) y un set de evals para el agente, que todavía no existe.</dd></div>
             </dl>
             <p class="project-tech">
@@ -488,7 +490,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where" data-i18n="stack.where.menaInventory">Mena Nails · inventario</p>
-                      <p class="stack-card__how" data-i18n="stack.go.how">API con pgx y sqlc, y OpenAPI como contrato con control de desvío en CI. 156 tests de Go; los de integración con Postgres no corren en CI.</p>
+                      <p class="stack-card__how" data-i18n="stack.go.how">API con pgx y sqlc, y OpenAPI como contrato con control de desvío en CI. Los tests de integración con Postgres todavía no corren en CI.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
@@ -506,7 +508,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where">ShelfOps</p>
-                      <p class="stack-card__how" data-i18n="stack.ts.how">API en Fastify con arquitectura hexagonal, OIDC, CSRF y rate limiting; 258 tests. También en ofertaSUPER y en la web de rindetuplata.</p>
+                      <p class="stack-card__how" data-i18n="stack.ts.how">API en Fastify con arquitectura hexagonal, OIDC, CSRF y rate limiting. También en ofertaSUPER y en la web de rindetuplata.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
@@ -642,7 +644,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where">Mena Nails</p>
-                      <p class="stack-card__how" data-i18n="stack.python.how">Microservicio que verifica comprobantes con LLMs: 0 aprobaciones indebidas en 30 comprobantes adversariales sintéticos.</p>
+                      <p class="stack-card__how" data-i18n="stack.python.how">Microservicio que verifica comprobantes con LLMs: con los modelos elegidos, 0 aprobaciones indebidas en 30 comprobantes adversariales sintéticos.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
@@ -683,7 +685,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where">rindetuplata</p>
-                      <p class="stack-card__how" data-i18n="stack.junit.how">905 tests de backend contra PostgreSQL y RabbitMQ reales, levantados con Testcontainers.</p>
+                      <p class="stack-card__how" data-i18n="stack.junit.how">Tests de integración contra PostgreSQL y RabbitMQ reales, levantados con Testcontainers en CI.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
@@ -700,7 +702,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where">rindetuplata · Mena Nails</p>
-                      <p class="stack-card__how" data-i18n="stack.vitest.how">799 tests en la web de rindetuplata y 166 en el inventario de Mena Nails.</p>
+                      <p class="stack-card__how" data-i18n="stack.vitest.how">Tests de la web de rindetuplata y del inventario y la app de turnos de Mena Nails.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>
@@ -756,7 +758,7 @@
                     </div>
                     <div class="stack-card__face stack-card__back">
                       <p class="stack-card__where" data-i18n="stack.where.all4">Cuatro de los proyectos</p>
-                      <p class="stack-card__how" data-i18n="stack.gha.how">CI en todos; refresh diario programado en ofertaSUPER y captura diaria de fuentes en rindetuplata.</p>
+                      <p class="stack-card__how" data-i18n="stack.gha.how">CI en ofertaSUPER, rindetuplata, Mena Nails y Planner; además, el refresh diario de ofertaSUPER y la captura diaria de fuentes de rindetuplata.</p>
                     </div>
                   </div>
                   <button class="stack-card__toggle" type="button" aria-pressed="false" data-stack-js hidden>

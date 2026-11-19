@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Caso técnico del producto Inventario de Mena Nails: API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI, login por sesión y PWA en SvelteKit, con tests de integración en CI."
+      content="Caso técnico del producto Inventario de Mena Nails: API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI verificado en CI, login por sesión y PWA en SvelteKit."
     />
     <title>Mena Nails · Inventario | Caso técnico — Mateo Vazquez Castiglione</title>
     <script>
@@ -36,7 +36,7 @@
     />
     <meta
       property="og:description"
-      content="API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI, login por sesión y PWA en SvelteKit, con tests de integración en CI."
+      content="API en Go con PostgreSQL (pgx, sqlc), contrato OpenAPI verificado en CI, login por sesión y PWA en SvelteKit."
     />
     <meta property="og:type" content="article" />
     <meta
@@ -162,10 +162,11 @@
           </article>
           <article class="text-appear">
             <span>Calidad</span>
-            <b>Tests de integración en CI</b>
+            <b>Tests en CI, con un hueco declarado</b>
             <p>
-              322 tests: 156 de Go —incluidos tests de integración— y 166 de
-              Vitest para el frontend.
+              Tests de Go y de Vitest corren en cada cambio. Los de integración
+              con Postgres se saltean en CI porque el pipeline no levanta una
+              base: es lo primero que agregaría.
             </p>
           </article>
           <article class="text-appear">
@@ -224,9 +225,9 @@
           <section class="stack-group text-appear">
             <h3 class="stack-group__title">CI</h3>
             <p>
-              Tests de Go —incluidos tests de integración—, Vitest/Playwright y
-              una verificación que falla si el cliente generado se desvía del
-              contrato OpenAPI
+              Tests de Go y de Vitest, y una verificación que falla si el
+              cliente generado se desvía del contrato OpenAPI. Los tests de
+              integración con Postgres se saltean en CI
             </p>
           </section>
         </div>
@@ -235,7 +236,7 @@
 
     <footer class="site-footer">
       <span>Mateo Vazquez Castiglione</span>
-      <span>Desarrollador Backend · APIs e Integraciones</span>
+      <span>Desarrollador backend e integraciones con IA</span>
       <div class="footer-social">
         <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
           >GitHub</a

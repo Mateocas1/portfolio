@@ -41,13 +41,13 @@ const translations = {
     "hero.role":
       "Desarrollador backend e integraciones con IA: construyo backend en TypeScript/Node y PostgreSQL, y también en Python, Go y Java; integro LLMs en flujos reales con confirmación humana y evals.",
     "hero.lead":
-      "Diseño, decido y verifico: defino los tests, los criterios de revisión y las mediciones. Agentes de IA escriben buena parte del código bajo esos tests y esa revisión. Abajo, un trabajo para una clienta y tres productos propios, contados como historias.",
+      "Diseño, decido y verifico: defino los tests, los criterios de revisión y las mediciones. Agentes de IA escriben buena parte del código bajo esos tests y esa revisión. Abajo, un trabajo para una clienta y cuatro proyectos propios, contados como historias.",
     "cta.resume": "Descargar CV",
     "cta.projects": "Ver proyectos",
-    "num.tests": "1.704",
     "num.p50": "1,2 ms",
-    "num.products": "≈ 24.500",
-    "proof.tests": "tests automatizados en rindetuplata",
+    "num.products": "+25.000",
+    "proof.eval": "casos de tool-calling aprobados completos por el modelo elegido",
+    "proof.eval.source": "Mena Nails · eval propio sobre 6 LLMs",
     "num.cpu": "18-173 ms",
     "proof.cpu": "de CPU por página en ofertaSUPER, antes 10-16 s",
     "proof.cpu.source": "réplica local · postmortem",
@@ -55,7 +55,7 @@ const translations = {
     "proof.llm.source": "Mena Nails · receipt-verifier",
     "proof.prs": "pull requests integrados con CI",
     "projects.eyebrow": "Proyectos",
-    "projects.title": "Una clienta y tres productos propios",
+    "projects.title": "Una clienta y cuatro proyectos propios",
     "projects.lead":
       "Cada historia sigue el mismo orden: problema, qué descubrí, qué construí, resultado medido y qué cambiaría hoy. Cada una enlaza su caso técnico.",
     "project.own": "Proyecto propio",
@@ -81,10 +81,10 @@ const translations = {
     "project.rtp.solution":
       "Java 21 y Spring Boot: un job de Spring Batch por fecha, un adaptador por fuente, matemática en BigDecimal y un outbox transaccional hacia RabbitMQ con confirms, consumidor idempotente y DLQ.",
     "project.rtp.result":
-      "Re-ejecutar un día no duplica datos y una fuente caída no frena a las demás; 905 tests backend contra PostgreSQL y RabbitMQ reales. En la corrida del 14/10, 79 del top 200 pierden contra la inflación esperada.",
+      "Re-ejecutar un día no duplica datos, una fuente caída no frena a las demás y las alertas salen at-least-once con deduplicación, probado con tests de integración contra PostgreSQL y RabbitMQ reales. En la corrida del 14/10, 79 de las 200 opciones que más pagaban perdían contra la inflación esperada.",
     "project.rtp.change":
-      "La entrega es at-least-once con deduplicación, no exactly-once. Publicaría un demo de solo lectura antes de sumar funciones (hoy no está desplegado) y no sumaría dependencias sin uso: JPA estuvo en el pom sin ninguna entidad.",
-    "project.rtp.stat1": "tests: 905 de backend y 799 de frontend",
+      "Publicaría una versión de solo lectura antes de sumar funciones (hoy no está desplegado) y no sumaría dependencias sin uso: JPA estuvo en el pom sin ninguna entidad.",
+    "project.rtp.stat1": "días seguidos de datos crudos archivados, sin huecos (14/10 → 09/11)",
     "project.rtp.stat2": "fuentes de datos, un adaptador cada una",
     "project.rtp.stat3": "p50 del ranking con caché (antes 108 ms, k6)",
     "project.mena.range": "may 2026 – oct 2026",
@@ -112,12 +112,12 @@ const translations = {
     "project.super.solution":
       "Un índice por EAN armado una vez por proceso. Antes de cambiar el algoritmo dejé el viejo como oráculo y un test que cuenta lecturas.",
     "project.super.result":
-      "De 10-16 s a 18-173 ms de CPU por página, medido en réplica local, con salida idéntica en 25 de 25 casos. El refresh diario de 5 supermercados (unos 24.500 productos) está verde desde el 27/10.",
+      "De 10-16 s a 18-173 ms de CPU por página, medido en réplica local, con salida idéntica en 25 de 25 casos. El sitio volvió a estar en línea el 14/11, con más de 25.000 productos de 5 supermercados.",
     "project.super.change":
-      "Mediría la CPU por ruta desde el primer deploy: el plan gratuito no da esa métrica, así que el arreglo está medido en una réplica local y no en producción.",
-    "project.super.stat1": "productos de 5 supermercados, a diario",
+      "Mediría la CPU por ruta desde el primer deploy: el plan gratuito no da esa métrica, así que el arreglo está medido en una réplica local y todavía no en producción.",
+    "project.super.stat1": "productos de 5 supermercados, en un catálogo diario",
     "project.super.stat2": "pull requests integrados con CI",
-    "project.super.stat3": "tests en CI, 0 fallan",
+    "project.super.stat3": "de infraestructura: el sitio sirve un snapshot, sin base de datos al leer",
     "project.shelfops.label": "jul – oct 2026",
     "project.shelfops.summary":
       "API de triage de incidentes en tiendas, donde cada decisión queda auditada.",
@@ -153,7 +153,7 @@ const translations = {
     "project.planner.solution":
       "Una app de escritorio en Tauri 2 (Rust) y React, offline-first con Firestore. El agente tiene 12 herramientas, 8 de escritura, y cada una muestra una tarjeta de confirmación. La API key queda en el keyring del sistema y la llamada HTTPS la hace Rust.",
     "project.planner.result":
-      "Un delete_all inyectado queda inerte, y un test lo prueba. 1.013 tests unitarios y 449 E2E, medidos localmente; el repo público corre CI en GitHub Actions.",
+      "La salida del modelo se valida con un esquema. Un delete_all inyectado queda inerte, y un test lo prueba. El CI corre 1.013 tests unitarios y 139 del núcleo en Rust; los E2E con Playwright se corren localmente.",
     "project.planner.change":
       "Pondría CI desde el primer día (llegó recién al publicar el repo) y un set de evals para el agente, que todavía no existe.",
     "project.link.site": "Sitio",
@@ -192,13 +192,13 @@ const translations = {
     "hero.role":
       "Backend & AI integrations developer: I build backends in TypeScript/Node and PostgreSQL, and also in Python, Go and Java; I integrate LLMs into real workflows with human confirmation and evals.",
     "hero.lead":
-      "I design, decide and verify: I define the tests, the review criteria and the measurements. AI agents write much of the code under those tests and that review. Below: one client job and three products of my own, told as stories.",
+      "I design, decide and verify: I define the tests, the review criteria and the measurements. AI agents write much of the code under those tests and that review. Below: one client job and four projects of my own, told as stories.",
     "cta.resume": "Download resume",
     "cta.projects": "View projects",
-    "num.tests": "1,704",
     "num.p50": "1.2 ms",
-    "num.products": "≈ 24,500",
-    "proof.tests": "automated tests in rindetuplata",
+    "num.products": "25,000+",
+    "proof.eval": "tool-calling cases fully passed by the chosen model",
+    "proof.eval.source": "Mena Nails · my own eval across 6 LLMs",
     "num.cpu": "18-173 ms",
     "proof.cpu": "of CPU per page on ofertaSUPER, down from 10-16 s",
     "proof.cpu.source": "local replica · postmortem",
@@ -206,7 +206,7 @@ const translations = {
     "proof.llm.source": "Mena Nails · receipt-verifier",
     "proof.prs": "pull requests merged through CI",
     "projects.eyebrow": "Projects",
-    "projects.title": "One client and three products of my own",
+    "projects.title": "One client and four projects of my own",
     "projects.lead":
       "Each story follows the same order: problem, what I found, what I built, measured result and what I would change today. Each links its technical case.",
     "project.own": "Personal project",
@@ -232,10 +232,10 @@ const translations = {
     "project.rtp.solution":
       "Java 21 and Spring Boot: one Spring Batch job per date, one adapter per source, BigDecimal math, and a transactional outbox to RabbitMQ with confirms, an idempotent consumer and a DLQ.",
     "project.rtp.result":
-      "Re-running a day does not duplicate data and one failing source does not stop the others; 905 backend tests against real PostgreSQL and RabbitMQ. In the 14 Oct run, 79 of the top 200 lose to expected inflation.",
+      "Re-running a day does not duplicate data, one failing source does not stop the others and alerts go out at-least-once with deduplication, tested with integration tests against real PostgreSQL and RabbitMQ. In the 14 Oct run, 79 of the 200 best-paying options lost to expected inflation.",
     "project.rtp.change":
-      "Delivery is at-least-once with deduplication, not exactly-once. I would ship a read-only demo before adding features (today it is not deployed) and would not add dependencies I do not use: JPA sat in the pom with no entities.",
-    "project.rtp.stat1": "tests: 905 backend and 799 frontend",
+      "I would ship a read-only version before adding features (today it is not deployed) and would not add dependencies I do not use: JPA sat in the pom with no entities.",
+    "project.rtp.stat1": "days in a row of raw data archived, no gaps (14 Oct → 9 Nov)",
     "project.rtp.stat2": "data sources, one adapter each",
     "project.rtp.stat3": "ranking p50 with cache (108 ms before, k6)",
     "project.mena.range": "May 2026 – Oct 2026",
@@ -263,12 +263,12 @@ const translations = {
     "project.super.solution":
       "An EAN index built once per process. Before changing the algorithm I kept the old one as an oracle, plus a test that counts reads.",
     "project.super.result":
-      "From 10-16 s to 18-173 ms of CPU per page, measured on a local replica, with identical output in 25 of 25 cases. The daily refresh of 5 supermarkets (about 24,500 products) has been green since 27 Oct.",
+      "From 10-16 s to 18-173 ms of CPU per page, measured on a local replica, with identical output in 25 of 25 cases. The site came back online on 14 Nov, with more than 25,000 products from 5 supermarkets.",
     "project.super.change":
-      "I would measure CPU per route from the first deploy: the free plan does not report it, so the fix is measured on a local replica, not in production.",
-    "project.super.stat1": "products from 5 supermarkets, daily",
+      "I would measure CPU per route from the first deploy: the free plan does not report it, so the fix is measured on a local replica and not yet in production.",
+    "project.super.stat1": "products from 5 supermarkets, in a daily catalogue",
     "project.super.stat2": "pull requests merged through CI",
-    "project.super.stat3": "tests in CI, 0 failing",
+    "project.super.stat3": "infrastructure: the site serves a snapshot, with no database on reads",
     "project.shelfops.label": "jul – oct 2026",
     "project.shelfops.summary":
       "A retail incident triage API where every decision is audited.",
@@ -304,7 +304,7 @@ const translations = {
     "project.planner.solution":
       "A desktop app in Tauri 2 (Rust) and React, offline-first with Firestore. The agent has 12 tools, 8 of them writes, and each write shows a confirmation card. The API key stays in the system keyring and Rust makes the HTTPS call.",
     "project.planner.result":
-      "An injected delete_all stays inert, and a test proves it. 1,013 unit tests and 449 E2E tests, measured locally; the public repo runs CI on GitHub Actions.",
+      "The model's output is validated against a schema. An injected delete_all stays inert, and a test proves it. CI runs 1,013 unit tests and 139 Rust core tests; the Playwright E2E tests run locally.",
     "project.planner.change":
       "I would add CI from day one (it only arrived when the repo went public) and an eval set for the agent, which does not exist yet.",
     "project.link.site": "Website",

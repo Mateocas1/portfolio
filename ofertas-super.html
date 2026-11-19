@@ -113,16 +113,16 @@
         </p>
         <p class="hero-lead text-appear">
           Compara precios de 5 supermercados argentinos (Carrefour, Coto,
-          Disco, Jumbo y Vea): unos 24.500 productos y 47.500 ofertas que se
-          actualizan a diario con USD 0 de infraestructura, emparejados por
-          GTIN-14. Permite armar una canasta entre tiendas, publica las bajas
+          Disco, Jumbo y Vea): más de 25.000 productos y 50.000 ofertas en un
+          catálogo diario, emparejados por GTIN-14 y servidos con USD 0 de
+          infraestructura. Permite armar una canasta entre tiendas, publica las bajas
           de precio del día. El pipeline de un índice de canasta está armado,
           pero todavía no produce datos.
         </p>
         <p class="case-note text-appear">
-          <b>Estado:</b> de nuevo en línea, después de una pausa de 30 días
-          por exceso de CPU en el plan gratuito de Vercel. La causa y el
-          arreglo están en el postmortem, más abajo.
+          <b>Estado:</b> en línea en ofertasuper.com desde el 14/11, después
+          de una pausa de 30 días por exceso de CPU en el plan gratuito de
+          Vercel. La causa y el arreglo están en el postmortem, más abajo.
         </p>
         <div class="hero-actions text-appear">
           <a class="button ghost" href="./index.html#proyectos"
@@ -314,8 +314,8 @@
             <p>
               Las páginas pesadas bajaron de 10-16 s a 18-173 ms de CPU por
               request; 500 búsquedas de producto, de 4.375 ms a 8 ms. Medido en
-              una réplica local; todavía no está medido en producción: se mide
-              cuando Vercel levante la pausa.
+              una réplica local. El sitio volvió el 14/11 con el arreglo; la
+              CPU en producción todavía no está medida.
             </p>
           </article>
           <article class="text-appear">
@@ -365,7 +365,7 @@
 
     <footer class="site-footer">
       <span>Mateo Vazquez Castiglione</span>
-      <span>Desarrollador Backend · APIs e Integraciones</span>
+      <span>Desarrollador backend e integraciones con IA</span>
       <div class="footer-social">
         <a href="https://github.com/Mateocas1" target="_blank" rel="noreferrer"
           >GitHub</a
